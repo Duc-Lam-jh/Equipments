@@ -1,15 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setActiveUser } from '../../app/redux';
 
 const Homepage = () => {
-  const userEmail = useSelector(state => state.auth.userEmail);
+  const dispatch = useDispatch();
 
   return (
-    <React.Fragment>
+    <>
       <h2>Home</h2>
-      <Link to='/login'>Login page</Link>
-    </React.Fragment>  
+      <button onClick={() => dispatch(setActiveUser({ email: null }))}>Sign out</button>
+    </>  
   )
 };
 export default Homepage;

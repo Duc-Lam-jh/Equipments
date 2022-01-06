@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   const userEmail = useSelector(state => state.auth.userEmail);
-
+  console.log(userEmail);
   return (
     <Router>
       <Routes>
