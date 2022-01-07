@@ -1,17 +1,16 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveUser } from '../../app/redux';
+import { signIn } from '../../app/redux';
 
 import './style.css';
 
 const LoginForm = () => {
-  const userEmail = useSelector(state => state.auth.userEmail);
+  const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
 
   const handleSubmit = (formData) => {
-    // console.log(formData);
-    dispatch(setActiveUser(formData));
+    dispatch(signIn(formData));
   }
 
   const handleValidate = (formData) => {
@@ -62,6 +61,8 @@ const LoginForm = () => {
                 </>
               )}
             </Field>
+
+            {error && <div>{ error }</div>}
               
             <button type="submit">Submit</button>
           </form>
