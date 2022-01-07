@@ -9,24 +9,22 @@ import AdminHomepage from '../pages/homepage/adminHomepage';
 import './App.css';
 
 function App() {
-  const userEmail = localStorage.getItem("userEmail");
-  const userRole = localStorage.getItem("userRole");
-  
-  const userEmailFromState = useSelector(state => state.auth.userEmail);
-  const userRoleFromState = useSelector(state => state.auth.userRole);
+  const userEmail = useSelector(state => state.auth.userEmail);
+  const userRole = useSelector(state => state.auth.userRole);
 
   return (
     <Router>
       <Routes>
-        {!userEmailFromState && <Route path='/' element={<LoginPage />} />}
-        {userRoleFromState==="admin" ?
-        <>
-          <Route path='/' element={<AdminHomepage />} />
-          <Route path='/user' element={<Homepage />} />
-        </> :
-        <>
-          <Route path='/' element={<Homepage />} />
-        </>}
+
+        {!userEmail && <Route path='/' element={<LoginPage />} />}
+        {userRole === "admin" ?
+          <>
+            <Route path='/' element={<AdminHomepage />} />
+            <Route path='/user' element={<Homepage />} />
+          </> :
+          <>
+            <Route path='/' element={<Homepage />} />
+          </>}
       </Routes>
     </Router>
   );
