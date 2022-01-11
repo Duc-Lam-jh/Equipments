@@ -9,8 +9,6 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_SET_ACTIVE_USER:
-      localStorage.setItem("userEmail", action.userEmail);
-      localStorage.setItem("userRole", action.userRole);
       return {
         ...state,
         userEmail: action.userEmail,
@@ -24,7 +22,6 @@ const authReducer = (state = initialState, action) => {
         userRole: null
       }
     case actionTypes.AUTH_USER_SIGN_OUT:
-      localStorage.clear();
       return {
         userEmail: null,
         userRole: null
