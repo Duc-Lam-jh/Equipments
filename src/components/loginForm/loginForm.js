@@ -3,6 +3,8 @@ import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../app/redux';
 
+import { emailRegex } from '../../app/utilities/regex';
+
 import './style.css';
 
 const LoginForm = () => {
@@ -15,13 +17,13 @@ const LoginForm = () => {
 
   const handleValidate = (formData) => {
     const errors = {};
-    const emailRegExp = /^[A-Za-z0-9-_+\.]+@[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)+\w{1,3}$/m;
+    const { email, password } = formData;
 
-    if(!emailRegExp.test(formData.email)){
+    if(!emailRegex.test(email)){
       errors.email = 'Invalid email!';
     }
 
-    if(!formData.password || formData.password.length < 5){
+    if(!password || password.length < 5){
       errors.password = 'Password too short!';
     }
 
