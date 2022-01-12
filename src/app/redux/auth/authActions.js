@@ -30,6 +30,7 @@ const setErrorWrongPassword = () => {
 
 const signIn = (credentials) => {
   const uri = process.env.REACT_APP_BASE_API_URL + '/users?q=' + credentials.email;
+
   return (dispatch) => {
     fetch(uri)
     .then(res => res.json())
