@@ -1,4 +1,4 @@
-export const isUserLoggedIn = () => {
+export const getUserFromBrowser = () => {
   const userEmail = localStorage.getItem("userEmail");
   const userRole = localStorage.getItem("userRole");
 

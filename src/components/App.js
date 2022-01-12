@@ -2,7 +2,7 @@ import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import { isUserLoggedIn } from '../app/utilities/utilities';
+import { getUserFromBrowser } from '../app/utilities/utilities';
 import { setActiveUser } from '../app/redux';
 
 import NotFound from '../pages/NotFoundPage';
@@ -14,7 +14,7 @@ import './App.css';
 function App() {
   const dispatch = useDispatch();
 
-  const userData = isUserLoggedIn();
+  const userData = getUserFromBrowser();
   if (userData) {
     dispatch(setActiveUser({ ...userData }));
   }
