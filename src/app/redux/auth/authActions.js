@@ -8,7 +8,7 @@ const setActiveUser = (credentials) => {
   }
 }
 
-const signOut = () => {
+const setUserToNull = () => {
   return {
     type: actionTypes.AUTH_USER_SIGN_OUT,
   }
@@ -42,9 +42,19 @@ const signIn = (credentials) => {
         dispatch(setErrorWrongPassword());
         } else {
           dispatch(setActiveUser({...data[0]}));
+
+          localStorage.setItem("userEmail", data[0].email);
+          localStorage.setItem("userRole", data[0].role);
         }
       }
     })
+  }
+}
+
+const signOut = () => {
+  return (dispatch) => {
+    localStorage.clear();
+    dispatch(setUserToNull());
   }
 }
 
