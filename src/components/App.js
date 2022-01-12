@@ -2,10 +2,11 @@ import { React } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import NotFound from '../pages/notFoundPage';
-import LoginPage from '../pages/loginPage/loginPage';
-import Homepage from '../pages/homepage/homepage';
-import AdminHomepage from '../pages/homepage/adminHomepage';
+import NotFound from '../pages/NotFoundPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RootHomepage from '../pages/homepage/RootHomepage';
+import Homepage from '../pages/homepage/Homepage';
+import AdminHomepage from '../pages/homepage/AdminHomepage';
 
 import './App.css';
 
@@ -16,19 +17,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {!userEmail &&
-          <>
-            <Route path='/' element={<LoginPage />} />
-          </>}
-        {userRole === "admin" ?
-          <>
-            <Route path='/' element={<AdminHomepage />} />
-            <Route path='/user' element={<Homepage />} />
-          </> :
-          <>
-            <Route path='/' element={<Homepage />} />
-            <Route path="/user" element={<Navigate to="/" />} />
-          </>}
+        <Route path='/' element={ <RootHomepage /> } />
+        <Route path='/login' element={!userEmail ? <LoginPage /> : <Navigate to='/' />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
