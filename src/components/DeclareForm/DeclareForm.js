@@ -22,8 +22,7 @@ class DeclareForm extends Component {
 
   handleSubmit = (formData) => {
     formData.userId = this.state.userId;
-    const isSuccessful = this.props.submit(formData);
-    console.log(isSuccessful);
+    this.props.submit(formData);
   }
 
   render() {
