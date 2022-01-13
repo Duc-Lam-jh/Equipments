@@ -1,0 +1,51 @@
+.declareForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 500px;
+  
+  color: #009aa8;
+}
+
+.declareForm label{
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.declareForm label .input{
+  min-width: 75%;
+  padding: 5px 0px;
+}
+
+.input select,
+label .input input{
+  width: stretch;
+  padding: 5px 15px;
+  text-align: left;
+}
+
+.declareForm button{
+  padding: 10px;
+  width: 200px;
+  margin-top: 10px;
+
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #009aa8;
+  border: none;
+}
+
+.declareForm button:hover{
+  background-color: #07b9c9;
+}
