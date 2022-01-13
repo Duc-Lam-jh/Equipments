@@ -1,0 +1,25 @@
+.device-type-picker{
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+
+  font-size: medium;
+  font-weight: 600;
+  gap: 50px;
+}
+
+.device-type-picker a{
+  padding: 5px 20px;
+  color: #009aa8;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 300ms;
+}
+
+.device-type-picker a:hover,
+.device-type-picker .active {
+  background-color: #009aa8;
+  color: white;
+  transition: 300ms;
+}
