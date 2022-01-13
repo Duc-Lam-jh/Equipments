@@ -1,0 +1,21 @@
+.sidebar .item{
+  display: flex;
+  align-items: center;
+  padding-inline-start: 50px;
+
+  min-height: 60px;
+  width: 100%;
+
+  color: white;
+  font-size: larger;
+  font-weight: 600;
+  transition: 500ms;
+}
+
+.sidebar .item:hover{
+  background-color: white;
+  color: #009aa8;
+  transition: 500ms;
+
+  cursor: pointer;
+}
