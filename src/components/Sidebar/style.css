@@ -1,12 +1,12 @@
-.sidebar{
-  grid-column: 0;
-  
+.sidebar{  
+  position: absolute;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  width: 250px;
   min-height: 100vh;
 
   background-color: #009aa8;
-
 }
