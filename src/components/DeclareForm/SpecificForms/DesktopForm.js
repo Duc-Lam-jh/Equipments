@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 
 class DesktopForm extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (formData) => {
-    console.log(formData);
+    formData.type = 'desktop';
+    this.props.handleSubmit(formData);
   }
 
   render() {

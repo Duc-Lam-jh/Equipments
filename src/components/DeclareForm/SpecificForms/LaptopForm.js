@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 
 class LaptopForm extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (formData) => {
-    console.log(formData);
+    formData.type = 'laptop';
+    this.props.handleSubmit(formData);
   }
 
   render() {
@@ -37,7 +41,7 @@ class LaptopForm extends Component {
                 <>
                   <label>Brand
                     <div className='input'>
-                      <input {...input} type="text" placeholder="Hãng máy..." required={true}/>
+                      <input {...input} type="text" placeholder="Hãng máy..." required={true} />
                     </div>
                   </label>
                 </>
@@ -49,7 +53,7 @@ class LaptopForm extends Component {
                 <>
                   <label>Processor
                     <div className='input'>
-                      <input {...input} type="text" placeholder="Cấu hình máy tính..." required={true}/>
+                      <input {...input} type="text" placeholder="Cấu hình máy tính..." required={true} />
                     </div>
                   </label>
                 </>
@@ -61,7 +65,7 @@ class LaptopForm extends Component {
                 <>
                   <label>Series number
                     <div className='input'>
-                      <input {...input} type="text" placeholder="Số series của máy..." required={true}/>
+                      <input {...input} type="text" placeholder="Số series của máy..." required={true} />
                     </div>
                   </label>
                 </>

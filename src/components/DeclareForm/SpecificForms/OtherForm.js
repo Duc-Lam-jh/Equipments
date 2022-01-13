@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 
 class OtherForm extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (formData) => {
-    console.log(formData);
+    formData.type = 'other';
+    this.props.handleSubmit(formData);
   }
 
   render() {
@@ -37,7 +41,7 @@ class OtherForm extends Component {
                 <>
                   <label>Description
                     <div className='input'>
-                      <input {...input} type="text" placeholder="Đó là thiết bị gì..." required={true}/>
+                      <input {...input} type="text" placeholder="Đó là thiết bị gì..." required={true} />
                     </div>
                   </label>
                 </>
@@ -49,7 +53,7 @@ class OtherForm extends Component {
                 <>
                   <label>Brand
                     <div className='input'>
-                      <input {...input} type="text" placeholder="Hãng của thiết bị..." required={true}/>
+                      <input {...input} type="text" placeholder="Hãng của thiết bị..." required={true} />
                     </div>
                   </label>
                 </>

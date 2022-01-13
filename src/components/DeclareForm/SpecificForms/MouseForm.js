@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 
 class MouseForm extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (formData) => {
-    console.log(formData);
+    formData.type = 'mouse';
+    this.props.handleSubmit(formData);
   }
 
   render() {
