@@ -36,9 +36,6 @@ const Homepage = () => {
           <Route path='/devices' element={<TestPage />} />
           <Route path='/declare-device/*' element={<DeclareForm />} />
         </Routes>
-        <div className='content'>
-          <button onClick={() => dispatch(signOut())}>Sign out</button>
-        </div>
       </div>
     </>
   )
