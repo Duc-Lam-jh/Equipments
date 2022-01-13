@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../app/img/logo-white.png';
 
 import SidebarItem from './SidebarItem/SidebarItem';
@@ -18,10 +18,10 @@ class Sidebar extends Component {
     const sidebarItems = this.state.items.map((item, index) => <NavLink className='item' key={index} to={item.path}><SidebarItem title={item.title} /></NavLink>);
     return <>
       <div className="sidebar">
-        <div className='logo'>
+        <Link to='/' className='logo'>
           <img src={logo} width={50}/> 
           <p>Journey Horizon</p>
-        </div>
+        </Link>
         {sidebarItems}
       </div>
     </>;
