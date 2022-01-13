@@ -11,7 +11,7 @@ class SidebarItem extends React.Component {
   }
 
   render() { 
-    return <div className='item'>{this.state.title}</div>;
+    return <p>{this.state.title}</p>;
   }
 }
  
