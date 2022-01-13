@@ -4,53 +4,52 @@
       "id": 1,
       "email": "test@mail.com",
       "password": "123456",
-      "role": "admin",
-      "team": "Admin"
+      "role": "admin"
     },
     {
       "id": 2,
       "email": "test2@mail.com",
       "password": "123456",
-      "role": "user",
-      "team": "Yin Yang"
+      "role": "user"
     },
     {
       "id": 3,
       "email": "test3@mail.com",
       "password": "123456",
-      "role": "user",
-      "team": "Sweet Cake"
+      "role": "user"
     },
     {
       "id": 4,
       "email": "test4@mail.com",
       "password": "123456",
-      "role": "user",
-      "team": "Design"
+      "role": "user"
     }
   ],
   "devices": [
     {
       "id": 1,
       "userId": 1,
-      "type": "desktop",
-      "brand": "Dell",
-      "seriesNumber": 1234567,
-      "size": "15x15x15"
+      "type": "laptop",
+      "brand": "ASUS",
+      "seriesNumber": "1234567",
+      "processor": "i5-1035G1",
+      "team": "Yin Yang"
     },
     {
       "id": 2,
       "userId": 1,
-      "type": "laptop",
+      "type": "desktop",
       "brand": "Asus",
-      "processor": "i5-1035G1"
+      "size": "15x15x15",
+      "team": "Yin Yang"
     },
     {
       "id": 3,
       "userId": 1,
       "type": "mouse",
       "brand": "Logitech",
-      "processor": "i5-1035G1"
+      "processor": "i5-1035G1",
+      "team": "Yin Yang"
     }
   ]
 }
