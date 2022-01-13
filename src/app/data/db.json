@@ -28,6 +28,29 @@
       "role": "user",
       "team": "Design"
     }
-   
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "desktop",
+      "brand": "Dell",
+      "seriesNumber": 1234567,
+      "size": "15x15x15"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "laptop",
+      "brand": "Asus",
+      "processor": "i5-1035G1"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "type": "mouse",
+      "brand": "Logitech",
+      "processor": "i5-1035G1"
+    }
   ]
 }
