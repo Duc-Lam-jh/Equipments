@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Homepage from './Homepage';
 import AdminHomepage from './AdminHomepage';
-import LoginPage from '../loginPage/LoginPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 class RootHomepage extends Component {
   constructor(props) {

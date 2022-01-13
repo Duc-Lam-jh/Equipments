@@ -6,8 +6,8 @@ import { getUserFromBrowser } from '../app/utilities/utilities';
 import { setActiveUser } from '../app/redux';
 
 import NotFound from '../pages/NotFoundPage';
-import LoginPage from '../pages/loginPage/LoginPage';
-import RootHomepage from '../pages/homepage/RootHomepage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RootHomepage from '../pages/Homepage/RootHomepage';
 
 import './App.css';
 
