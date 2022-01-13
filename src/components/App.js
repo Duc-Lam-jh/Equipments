@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<RootHomepage />} />
+        <Route path='/*' element={<RootHomepage />} />
         <Route path='/login' element={!userEmail ? <LoginPage /> : <Navigate to='/' />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
