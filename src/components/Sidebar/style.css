@@ -13,3 +13,13 @@
 .sidebar a{
   text-decoration: none;
 }
+
+.sidebar .item.button{
+  margin-top: auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.sidebar .item.button p{
+  margin: 0;
+}

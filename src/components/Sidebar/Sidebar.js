@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../app/img/logo-white.png';
 
 import SidebarItem from './SidebarItem/SidebarItem';
+import { signOut } from '../../app/redux';
 
 import './style.css'
 
@@ -11,6 +13,7 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       items: props.items,
+      signOut: () => props.signOut()
     }
   }
 
@@ -23,9 +26,16 @@ class Sidebar extends Component {
           <p>Journey Horizon</p>
         </Link>
         {sidebarItems}
+        <div className='item button' onClick={this.state.signOut}><p>Log out</p></div>
       </div>
     </>;
   }
 }
 
-export default Sidebar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Sidebar);
