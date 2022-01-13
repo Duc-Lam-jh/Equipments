@@ -50,6 +50,54 @@
       "brand": "Logitech",
       "processor": "i5-1035G1",
       "team": "Yin Yang"
+    },
+    {
+      "team": "yin-yang",
+      "brand": "Apple",
+      "size": "25x65",
+      "configuration": "cấu hình",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "team": "yin-yang",
+      "brand": "Asus",
+      "size": "12x15",
+      "configuration": "asdasdf",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "team": "yin-yang",
+      "brand": "Samsung",
+      "size": "25x52",
+      "configuration": "sfdsf",
+      "userId": "2",
+      "id": 6
+    },
+    {
+      "team": "yin-yang",
+      "brand": "Apple",
+      "configuration": "151265",
+      "seriesNumber": "99999",
+      "type": "laptop",
+      "userId": "2",
+      "id": 7
+    },
+    {
+      "team": "yin-yang",
+      "description": "Loa",
+      "brand": "Xiaomi",
+      "type": "other",
+      "userId": "2",
+      "id": 8
+    },
+    {
+      "team": "yin-yang",
+      "brand": "Razer",
+      "type": "mouse",
+      "userId": 2,
+      "id": 9
     }
   ]
 }
