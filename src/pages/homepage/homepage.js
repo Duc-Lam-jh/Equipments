@@ -8,6 +8,7 @@ import DeclareForm from '../../components/DeclareForm/DeclareForm';
 import TestPage from '../TestPage';
 
 import './style.css';
+import RequestForm from '../../components/RequestForm/RequestForm';
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Homepage = () => {
           <Route path='/' element={<Navigate to='/devices' />} />
           <Route path='/devices' element={<TestPage />} />
           <Route path='/declare-device/*' element={<DeclareForm />} />
+          <Route path='/request-device' element={<RequestForm />} />
         </Routes>
       </div>
     </>
