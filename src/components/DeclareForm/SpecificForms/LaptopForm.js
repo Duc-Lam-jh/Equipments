@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
+import ImageInput from '../../ImageInput/ImageInput';
 
 class LaptopForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      image: null
+    }
   }
 
   handleSubmit = (formData) => {
     formData.type = 'laptop';
+    formData.image = this.state.image;
     this.props.handleSubmit(formData);
+  }
+
+  handleAddImage = (image) => {
+    this.setState({image: image});
   }
 
   render() {
@@ -67,6 +76,16 @@ class LaptopForm extends Component {
                     <div className='input'>
                       <input {...input} type="text" placeholder="Số series của máy..." required={true} />
                     </div>
+                  </label>
+                </>
+              )}
+            </Field>
+
+            <Field name="image">
+              {() => (
+                <>
+                  <label>Image
+                    <ImageInput onChange={(image) => this.handleAddImage(image)} />
                   </label>
                 </>
               )}
