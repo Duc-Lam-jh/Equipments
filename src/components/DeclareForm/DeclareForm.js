@@ -8,7 +8,7 @@ import LaptopForm from './SpecificForms/LaptopForm';
 import DesktopForm from './SpecificForms/DesktopForm';
 import MouseForm from './SpecificForms/MouseForm';
 import OtherForm from './SpecificForms/OtherForm';
-import { declareNewDevice } from '../../app/redux/form/formActions';
+import { declareNewDevice } from '../../app/redux';
 
 import './style.css';
 
