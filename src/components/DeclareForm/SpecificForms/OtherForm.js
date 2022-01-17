@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-class OtherForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: null
-    }
-  }
+import { FORM_TYPE_OTHER } from '../formTypes';
 
+class OtherForm extends Component {
   handleSubmit = (formData) => {
-    formData.type = 'other';
-    formData.image = this.state.image;
+    formData.type = FORM_TYPE_OTHER;
     this.props.handleSubmit(formData);
   }
 
   handleAddImage = (image) => {
-    this.setState({image: image});
+    this.props.handleAddImage(image);
   }
 
   render() {

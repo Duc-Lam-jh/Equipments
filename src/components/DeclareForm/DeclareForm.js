@@ -16,13 +16,21 @@ class DeclareForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      userId: props.userId
+      userId: props.userId,
+      images: []
     }
   }
 
   handleSubmit = (formData) => {
     formData.userId = this.state.userId;
+    formData.images = this.state.images;
     this.props.submit(formData);
+  }
+
+  handleAddImage = (image) => {
+    const images = this.state.images;
+    images.push(image);
+    this.setState({images: images});
   }
 
   render() {
@@ -30,10 +38,10 @@ class DeclareForm extends Component {
       <DeviceTypePicker />
       <Routes>
         <Route path='/' element={<Navigate to='laptop' />} />
-        <Route path='/laptop' element={<LaptopForm handleSubmit={(formData) => this.handleSubmit(formData)} />} />
-        <Route path='/desktop' element={<DesktopForm handleSubmit={(formData) => this.handleSubmit(formData)} />} />
-        <Route path='/mouse' element={<MouseForm handleSubmit={(formData) => this.handleSubmit(formData)} />} />
-        <Route path='/other' element={<OtherForm handleSubmit={(formData) => this.handleSubmit(formData)} />} />
+        <Route path='/laptop' element={<LaptopForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
+        <Route path='/desktop' element={<DesktopForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
+        <Route path='/mouse' element={<MouseForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
+        <Route path='/other' element={<OtherForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
       </Routes>
     </div>;
   }

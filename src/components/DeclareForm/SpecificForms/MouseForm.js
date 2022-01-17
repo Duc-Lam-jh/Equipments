@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-class MouseForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: null
-    }
-  }
+import { FORM_TYPE_MOUSE } from '../formTypes';
 
+class MouseForm extends Component {
   handleSubmit = (formData) => {
-    formData.type = 'mouse';
-    formData.image = this.state.image;
+    formData.type = FORM_TYPE_MOUSE;
     this.props.handleSubmit(formData);
   }
 
   handleAddImage = (image) => {
-    this.setState({image: image});
+    this.props.handleAddImage(image);
   }
 
   render() {
