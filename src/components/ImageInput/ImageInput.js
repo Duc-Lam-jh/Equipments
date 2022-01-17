@@ -11,7 +11,7 @@ class ImageDropzone extends Component {
 
   handleChange = (e) => {
     const image = e.target.files[0];
-    this.removeThumbnail(e.target);
+    // this.removeThumbnail(e.target);
     if (!image.type.startsWith("image/")){
       this.setState({error: "File must be a picture!"});
     } else {
@@ -56,7 +56,7 @@ class ImageDropzone extends Component {
     return <>
       <div className='input dropzone'>
         <div className='dropzone-before'>Click to upload an image of the device</div>
-        <input name="image" id="image" type="file" onChange={(e) => this.handleChange(e)} accept='image/*' required={true}/>
+        <input name="image" id="image" type="file" onChange={(e) => this.handleChange(e)} accept='image/*' required={true} multiple/>
         {error && <div>{error}</div>}
       </div>
     </>;
