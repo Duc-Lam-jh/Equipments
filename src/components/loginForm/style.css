@@ -35,7 +35,7 @@ label .input input{
   text-align: left;
 }
 
-.loginForm button{
+button{
   padding: 10px;
   width: 200px;
   margin-top: 10px;
@@ -47,6 +47,6 @@ label .input input{
   border: none;
 }
 
-.loginForm button:hover{
+button:hover{
   background-color: #07b9c9;
 }
