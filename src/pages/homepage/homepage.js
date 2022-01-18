@@ -15,10 +15,6 @@ const Homepage = () => {
 
   const listOfPages = [
     {
-      title: "Devices in possession",
-      path: "/devices"
-    },
-    {
       title: "Declare possession",
       path: "/declare-device"
     },
@@ -33,8 +29,7 @@ const Homepage = () => {
       <div className='container'>
         <Sidebar items={listOfPages} />
         <Routes>
-          <Route path='/' element={<Navigate to='/devices' />} />
-          <Route path='/devices' element={<TestPage />} />
+          <Route path='/*' element={<Navigate to='/declare-device' />} />
           <Route path='/declare-device/*' element={<DeclareForm />} />
           <Route path='/request-device' element={<RequestForm />} />
         </Routes>
