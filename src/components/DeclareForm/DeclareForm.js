@@ -8,17 +8,17 @@ import LaptopForm from './SpecificForms/LaptopForm';
 import DesktopForm from './SpecificForms/DesktopForm';
 import MouseForm from './SpecificForms/MouseForm';
 import OtherForm from './SpecificForms/OtherForm';
-import { declareNewDevice } from '../../app/redux';
+import MessagePrompt from '../MessagePrompt/MessagePrompt';
+import { declareNewDevice, setFormPrompt } from '../../app/redux';
 
 import './style.css';
 
 class DeclareForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       userId: props.userId,
       images: [],
-      error: null
     }
   }
 
@@ -31,11 +31,14 @@ class DeclareForm extends Component {
   handleAddImage = (image) => {
     const images = this.state.images;
     images.push(image);
-    this.setState({images: images});
+    this.setState({ images: images });
   }
 
   render() {
+    const msg = this.props.msg;
+
     return <div className='content'>
+      { msg && <MessagePrompt msg={msg} button={{text: 'OK'}} handleClick={() => { this.props.setFormPrompt(null) }} /> }
       <DeviceTypePicker />
       <Routes>
         <Route path='/' element={<Navigate to='laptop' />} />
@@ -50,13 +53,16 @@ class DeclareForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    error: state.form.error,
+    msg: state.form.msg
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submit: (formData) => dispatch(declareNewDevice(formData))
+    submit: formData => dispatch(declareNewDevice(formData)),
+    setFormPrompt: msg => dispatch(setFormPrompt(msg)),
   }
 }
 
