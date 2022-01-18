@@ -17,7 +17,8 @@ class DeclareForm extends Component {
     super(props);
     this.state = {
       userId: props.userId,
-      images: []
+      images: [],
+      error: null
     }
   }
 
