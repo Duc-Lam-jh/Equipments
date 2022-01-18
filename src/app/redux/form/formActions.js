@@ -1,3 +1,19 @@
+import actionTypes from './formActionTypes';
+
+const setFormPrompt = msg => {
+  return {
+    type: actionTypes.FORM_PROMPT,
+    msg: msg
+  }
+}
+
+const setFormError = error => {
+  return {
+    type: actionTypes.FORM_ERROR,
+    error: error
+  }
+}
+
 const declareNewDevice = (formData) => {
   const uri = process.env.REACT_APP_BASE_API_URL + '/devices';
 
@@ -9,10 +25,9 @@ const declareNewDevice = (formData) => {
       },
       body: JSON.stringify(formData)
     }).then(() => {
-      return true;
+      dispatch(setFormPrompt('Successful!'));
     }).catch(error => {
-      console.log(error);
-      return false;
+      dispatch(setFormPrompt(error.message));
     })
   }
 }
@@ -28,12 +43,17 @@ const requestNewDevice = (formData) => {
       },
       body: JSON.stringify(formData)
     }).then(() => {
-      return true;
+      dispatch(setFormPrompt('Successful!'));
     }).catch(error => {
       console.log(error);
-      return false;
+      dispatch(setFormError(error.message));
     })
   }
 }
 
-export { declareNewDevice, requestNewDevice }
+export { 
+  setFormPrompt,
+  setFormError,
+  declareNewDevice, 
+  requestNewDevice 
+}
