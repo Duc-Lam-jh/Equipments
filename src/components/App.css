@@ -7,9 +7,24 @@ body{
 
   justify-content: center;
   align-items: center;
+
+  background-color: whitesmoke;
 }
 
 h1, h2, h3{
   text-align: center;
   color: #009aa8;
+}
+
+input {
+	width: stretch;
+  height: 25px;
+	padding: 5px 15px;
+	text-align: left;
+  border: 0px;
+  border-bottom: 1px solid #009aa8;
+}
+
+input:focus{
+  outline: 0px;
 }
