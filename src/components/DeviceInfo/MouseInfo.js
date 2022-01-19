@@ -13,7 +13,7 @@ const MouseInfo = (props) => {
       <div className='images'>
         {images.map((image, index) => {
           return (
-            <img key={index} src={image} width="300px" />
+            <img key={index} src={image} />
           )
         })}
       </div>
