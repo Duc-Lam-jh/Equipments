@@ -35,7 +35,8 @@ class Sidebar extends Component {
   }
 
   render() {
-    const sidebarItems = this.state.items.map((item, index) => <NavLink className='item' key={index} to={item.path}><SidebarItem title={item.title} /></NavLink>);
+    const sidebarItems = this.state.items.map((item, index) => <NavLink className='item' key={index} to={item.path} 
+    onClick={this.toggleSidebar} ><SidebarItem title={item.title} /></NavLink>);
     return <>
       <div id='sidebar' className="sidebar inactive">
         <div className='sidebar-button' onClick={this.toggleSidebar}>
