@@ -57,6 +57,7 @@ const signOut = () => {
   return (dispatch) => {
     localStorage.clear();
     dispatch(setUserToNull());
+    window.location.href = '/';
   }
 }
 
