@@ -26,15 +26,15 @@ class LaptopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Team
-                    <div className='input'>
-                      <select {...input} form='laptopForm'>
-                        <option value="sweet-cake">Sweet Cake</option>
-                        <option value="yin-yang">Yin Yang</option>
-                        <option value="design">Design</option>
-                        <option value="admin">Admin</option>
-                      </select>
-                    </div>
                   </label>
+                  <div className='input'>
+                    <select {...input} form='laptopForm'>
+                      <option value="sweet-cake">Sweet Cake</option>
+                      <option value="yin-yang">Yin Yang</option>
+                      <option value="design">Design</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
                 </>
               )}
             </Field>
@@ -43,10 +43,10 @@ class LaptopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Brand
-                    <div className='input'>
-                      <input {...input} type="text" placeholder="Hãng máy..." required={true} />
-                    </div>
                   </label>
+                  <div className='input'>
+                    <input {...input} type="text" placeholder="Hãng máy..." required={true} />
+                  </div>
                 </>
               )}
             </Field>
@@ -55,10 +55,10 @@ class LaptopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Processor
-                    <div className='input'>
-                      <input {...input} type="text" placeholder="Cấu hình máy tính..." required={true} />
-                    </div>
                   </label>
+                  <div className='input'>
+                    <input {...input} type="text" placeholder="Cấu hình máy tính..." required={true} />
+                  </div>
                 </>
               )}
             </Field>
@@ -67,10 +67,10 @@ class LaptopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Serial number
-                    <div className='input'>
-                      <input {...input} type="text" placeholder="Số series của máy..." required={true} />
-                    </div>
                   </label>
+                  <div className='input'>
+                    <input {...input} type="text" placeholder="Số series của máy..." required={true} />
+                  </div>
                 </>
               )}
             </Field>
@@ -79,13 +79,15 @@ class LaptopForm extends Component {
               {() => (
                 <>
                   <label>Image
-                    <ImageInput onChange={(image) => this.handleAddImage(image)} />
                   </label>
+                  <label className="image"><ImageInput onChange={(image) => this.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>
 
-            <button type="submit">Save</button>
+            <div className='col-span2'>
+              <button type="submit">Save</button>
+            </div>
           </form>
         )
         }

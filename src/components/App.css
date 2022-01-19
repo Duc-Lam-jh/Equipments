@@ -16,6 +16,7 @@ h1, h2, h3{
   color: #009aa8;
 }
 
+select,
 input {
 	width: stretch;
   height: 25px;
@@ -23,6 +24,11 @@ input {
 	text-align: left;
   border: 0px;
   border-bottom: 1px solid #009aa8;
+  background-color: white;
+}
+
+select{
+  height: 35px;
 }
 
 input:focus{

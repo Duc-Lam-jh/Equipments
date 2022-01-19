@@ -26,6 +26,7 @@ class DesktopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Team
+                  </label>
                     <div className='input'>
                       <select {...input} form='DesktopForm'>
                         <option value="sweet-cake">Sweet Cake</option>
@@ -34,7 +35,6 @@ class DesktopForm extends Component {
                         <option value="admin">Admin</option>
                       </select>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -43,10 +43,10 @@ class DesktopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Brand
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Hãng màn hình..." required={true}/>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -55,10 +55,10 @@ class DesktopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Size
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Kích thước màn hình..." required={true}/>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -67,10 +67,10 @@ class DesktopForm extends Component {
               {({ input }) => (
                 <>
                   <label>Configuration
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Cấu hình màn hình..." required={true}/>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -79,13 +79,15 @@ class DesktopForm extends Component {
               {() => (
                 <>
                   <label>Image
-                    <ImageInput onChange={(image) => this.handleAddImage(image)} />
                   </label>
+                  <label className="image"><ImageInput onChange={(image) => this.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>
 
-            <button type="submit">Save</button>
+            <div className='col-span2'>
+              <button type="submit">Save</button>
+            </div>
           </form>
         )
         }

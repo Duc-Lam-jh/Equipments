@@ -26,6 +26,7 @@ class MouseForm extends Component {
               {({ input }) => (
                 <>
                   <label>Team
+                  </label>
                     <div className='input'>
                       <select {...input} form='MouseForm'>
                         <option value="sweet-cake">Sweet Cake</option>
@@ -34,7 +35,6 @@ class MouseForm extends Component {
                         <option value="admin">Admin</option>
                       </select>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -43,10 +43,10 @@ class MouseForm extends Component {
               {({ input }) => (
                 <>
                   <label>Brand
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Hãng của chuột..." required={true}/>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -55,13 +55,15 @@ class MouseForm extends Component {
               {() => (
                 <>
                   <label>Image
-                    <ImageInput onChange={(image) => this.handleAddImage(image)} />
                   </label>
+                  <label className="image"><ImageInput onChange={(image) => this.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>
 
-            <button type="submit">Save</button>
+            <div className='col-span2'>
+              <button type="submit">Save</button>
+            </div>
           </form>
         )
         }
