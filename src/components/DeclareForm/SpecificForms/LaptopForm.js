@@ -66,7 +66,7 @@ class LaptopForm extends Component {
             <Field name="seriesNumber">
               {({ input }) => (
                 <>
-                  <label>Series number
+                  <label>Serial number
                     <div className='input'>
                       <input {...input} type="text" placeholder="Số series của máy..." required={true} />
                     </div>
