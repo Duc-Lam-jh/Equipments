@@ -4,9 +4,10 @@
   justify-content: center;
   align-items: center;
 
+  width: 100%;
+
   margin-bottom: 50px;
   box-sizing: border-box;
-  width: 500px;
   
   color: #009aa8;
 }
@@ -15,6 +16,7 @@
   position: relative;
 
   display: flex;
+  column-gap: 10px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -49,4 +51,11 @@ label .input input{
 
 .declareForm button:hover{
   background-color: #07b9c9;
+}
+
+@media screen and (min-width: 900px) {
+  .declareForm{
+    min-width: 500px;
+    max-width: 600px;
+  }
 }
