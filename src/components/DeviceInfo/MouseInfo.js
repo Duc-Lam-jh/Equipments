@@ -3,7 +3,6 @@ import React from 'react';
 const MouseInfo = (props) => {
   const { detail } = props;
   const images = detail.images;
-  console.log(images);
 
   return (
     <div className='info-table'>
