@@ -1,23 +1,38 @@
-.device-type-picker{
-  display: flex;
-  align-items: center;
+.device-type-picker {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+  justify-content: space-around;
 
-  font-size: medium;
-  font-weight: 600;
-  gap: 50px;
+  width: 75%;
+  
+	font-size: medium;
 }
 
-.device-type-picker a{
-  padding: 5px 20px;
-  color: #009aa8;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: 300ms;
+.device-type-picker a {
+	padding: 5px 20px;
+	color: #009aa8;
+	text-decoration: none;
+	border-radius: 30px;
+	transition: 300ms;
 }
 
-.device-type-picker a:hover,
 .device-type-picker .active {
-  background-color: #009aa8;
-  color: white;
-  transition: 300ms;
+	background-color: #009aa8;
+	color: white;
+	transition: 300ms;
+}
+
+@media screen and (min-width: 900px) {
+	.device-type-picker {
+		gap: 50px;
+		font-weight: 600;
+	}
+
+	.device-type-picker a:hover,
+	.device-type-picker .active {
+		background-color: #009aa8;
+		color: white;
+		transition: 300ms;
+	}
 }
