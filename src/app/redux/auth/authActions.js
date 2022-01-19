@@ -3,6 +3,7 @@ import actionTypes from './authActionTypes';
 const setActiveUser = (credentials) => {
   return {
     type: actionTypes.AUTH_SET_ACTIVE_USER,
+    userId: credentials.id,
     userEmail: credentials.email,
     userRole: credentials.role,
   }
@@ -45,6 +46,7 @@ const signIn = (credentials) => {
 
           localStorage.setItem("userEmail", data[0].email);
           localStorage.setItem("userRole", data[0].role);
+          localStorage.setItem("userId", data[0].id);
         }
       }
     })

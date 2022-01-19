@@ -7,7 +7,7 @@ import { setActiveUser } from '../app/redux';
 
 import NotFound from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
-import RootHomepage from '../pages/homepage/RootHomepage';
+import RootHomepage from '../pages/Homepage/RootHomepage';
 
 import './App.css';
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<RootHomepage />} />
+        <Route path='/*' element={<RootHomepage />} />
         <Route path='/login' element={!userEmail ? <LoginPage /> : <Navigate to='/' />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

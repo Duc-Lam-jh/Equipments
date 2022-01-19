@@ -1,20 +1,19 @@
-.loginForm{
+.declareForm{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  margin-bottom: 50px;
   box-sizing: border-box;
-  padding: 25px;
   width: 500px;
   
   color: #009aa8;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px 5px rgb(241, 240, 240);
 }
 
-.loginForm label{
+.declareForm label{
+  position: relative;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,18 +23,19 @@
   margin-bottom: 2px;
 }
 
-.loginForm label .input{
-  width: 70%;
-  padding: 5px 15px;
+.declareForm label .input{
+  min-width: 75%;
+  padding: 5px 0px;
 }
 
+.input select,
 label .input input{
-  width: 100%;
+  width: stretch;
   padding: 5px 15px;
   text-align: left;
 }
 
-button{
+.declareForm button{
   padding: 10px;
   width: 200px;
   margin-top: 10px;
@@ -47,6 +47,6 @@ button{
   border: none;
 }
 
-button:hover{
+.declareForm button:hover{
   background-color: #07b9c9;
 }

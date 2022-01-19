@@ -66,7 +66,7 @@ const LoginForm = () => {
 
             {error && <div>{ error }</div>}
               
-            <button type="submit">Submit</button>
+            <button type="submit">Log in</button>
           </form>
         )}
       />

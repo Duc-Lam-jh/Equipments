@@ -1,6 +1,7 @@
 import actionTypes from './authActionTypes';
 
 const initialState = {
+  userId: null,
   userEmail: null,
   userRole: null,
   error: null,
@@ -11,6 +12,7 @@ const authReducer = (state = initialState, action) => {
     case actionTypes.AUTH_SET_ACTIVE_USER:
       return {
         ...state,
+        userId: action.userId,
         userEmail: action.userEmail,
         userRole: action.userRole,
         error: null,
@@ -23,6 +25,7 @@ const authReducer = (state = initialState, action) => {
       }
     case actionTypes.AUTH_USER_SIGN_OUT:
       return {
+        userId: null,
         userEmail: null,
         userRole: null
       }

@@ -1,0 +1,28 @@
+.prompt-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 99;
+}
+
+.message-prompt{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 50px;
+
+  color: #009aa8;
+  background-color: rgba(255, 255, 255);
+  box-shadow: 0 0 1px #009aa8;
+  border-radius: 20px;
+}
