@@ -13,7 +13,7 @@
   background-color: #009aa8;
 
   cursor: pointer;
-  z-index: 5;
+  z-index: 99;
 }
 
 .sidebar{
@@ -28,6 +28,7 @@
 
   background-color: #009aa8;
   transition: 300ms ease-out;
+  z-index: 99;
 }
 
 .sidebar.inactive{
