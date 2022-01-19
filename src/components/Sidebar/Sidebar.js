@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+
 import logo from '../../app/img/logo-white.png';
+import menuIcon from '../../app/img/menu-icon.png';
+import closeIcon from '../../app/img/close-icon.png';
 
 import SidebarItem from './SidebarItem/SidebarItem';
 import { signOut } from '../../app/redux';
@@ -17,12 +20,29 @@ class Sidebar extends Component {
     }
   }
 
+  toggleSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+    const menuIconImg = sidebar.querySelector('#menu-icon-img');
+
+    if (sidebar.classList.contains('inactive')) {
+      sidebar.classList.remove('inactive');
+      menuIconImg.src = closeIcon;
+    } else {
+      sidebar.classList.add('inactive');
+      menuIconImg.src = menuIcon;
+    }
+
+  }
+
   render() {
     const sidebarItems = this.state.items.map((item, index) => <NavLink className='item' key={index} to={item.path}><SidebarItem title={item.title} /></NavLink>);
     return <>
-      <div className="sidebar">
+      <div id='sidebar' className="sidebar inactive">
+        <div className='sidebar-button' onClick={this.toggleSidebar}>
+          <img id='menu-icon-img' src={menuIcon} width="45px" />
+        </div>
         <Link to='/' className='logo'>
-          <img src={logo} width={50}/> 
+          <img src={logo} width={50} />
           <p>Journey Horizon</p>
         </Link>
         {sidebarItems}
