@@ -60,6 +60,7 @@ const DeviceDetail = () => {
     return (
       <>
         <div className='content'>
+          <button className='edit-device-button' onClick={() => alert(device.id)}>Edit</button>
           <h2>Device information</h2>
           {renderDevice(device)}
           <h2>Holder information</h2>
