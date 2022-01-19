@@ -14,21 +14,29 @@ const DeviceDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [device, setDevice] = useState(null);
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(async () => {
     setIsLoading(true);
 
     const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
     const deviceReponse = await fetch(deviceURI);
-    const device = await deviceReponse.json();
-    setDevice(device[0]);
+    const deviceData = await deviceReponse.json();
+    setDevice(deviceData[0]);
+    
+    if(deviceData[0] !== undefined){
+      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + deviceData[0].userId;
+      const userResponse = await fetch(userURI);
+      const user = await userResponse.json();
+      setUser(user[0]);
+  
+      setError(null);
+      setIsLoading(false);
+    } else {
+      setError('Không có dữ liệu');
+      setIsLoading(false);
+    }
 
-    const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + device[0].userId;
-    const userResponse = await fetch(userURI);
-    const user = await userResponse.json();
-    setUser(user[0]);
-
-    setIsLoading(false);
   }, [])
 
   const renderDevice = (device) => {
@@ -56,6 +64,8 @@ const DeviceDetail = () => {
 
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>;
+  } else if (error) {
+    return <div className='content'><p>{error}</p></div>;
   } else {
     return (
       <>
