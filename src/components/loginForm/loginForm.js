@@ -19,11 +19,11 @@ const LoginForm = () => {
     const errors = {};
     const { email, password } = formData;
 
-    if(!emailRegex.test(email)){
+    if (!emailRegex.test(email)) {
       errors.email = 'Invalid email!';
     }
 
-    if(!password || password.length < 5){
+    if (!password || password.length < 5) {
       errors.password = 'Password too short!';
     }
 
@@ -33,8 +33,8 @@ const LoginForm = () => {
   return (
     <>
       <Form
-        onSubmit={ handleSubmit }
-        validate={ handleValidate }
+        onSubmit={handleSubmit}
+        validate={handleValidate}
         render={({ handleSubmit }) => (
           <form className="loginForm" onSubmit={handleSubmit}>
 
@@ -42,11 +42,11 @@ const LoginForm = () => {
               {({ input, meta }) => (
                 <>
                   <label>Email
-                    <div className='input'>
-                      <input {...input} type="text" placeholder="Email" autoComplete='off'/>
-                      {meta.error && meta.touched && <div>{meta.error}</div>}
-                    </div>
                   </label>
+                  <div className='input'>
+                    <input {...input} type="text" placeholder="Email" autoComplete='off' />
+                    {meta.error && meta.touched && <div>{meta.error}</div>}
+                  </div>
                 </>
               )}
             </Field>
@@ -55,18 +55,22 @@ const LoginForm = () => {
               {({ input, meta }) => (
                 <>
                   <label>Password
-                    <div className='input'>
-                      <input {...input} type="password" placeholder="Password" />
-                      {meta.error && meta.touched && <div>{meta.error}</div>}
-                    </div>
                   </label>
+                  <div className='input'>
+                    <input {...input} type="password" placeholder="Password" />
+                    {meta.error && meta.touched && <div>{meta.error}</div>}
+                  </div>
                 </>
               )}
             </Field>
 
-            {error && <div>{ error }</div>}
-              
+            <div className='col-span2'>
+            {error && <div>{error}</div>}
+            </div>
+
+            <div className='col-span2'>
             <button type="submit">Log in</button>
+            </div>
           </form>
         )}
       />
