@@ -21,8 +21,8 @@ const AdminHomepage = () => {
 
   return (
     <>
+      <Sidebar items={listOfPages} />
       <div className='container'>
-        <Sidebar items={listOfPages} />
         <Routes>
           <Route path='/*' element={<Navigate to='/devices' />} />
           <Route path='/devices' element={<DeviceList />} />
