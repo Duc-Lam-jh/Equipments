@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_LAPTOP } from '../formTypes';
+import { FORM_TYPE_LAPTOP } from '../../../app/utilities/index';
 
 class LaptopForm extends Component {
   handleSubmit = (formData) => {

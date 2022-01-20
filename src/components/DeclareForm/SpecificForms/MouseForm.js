@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_MOUSE } from '../formTypes';
+import { FORM_TYPE_MOUSE } from '../../../app/utilities/index';
 
 class MouseForm extends Component {
   handleSubmit = (formData) => {

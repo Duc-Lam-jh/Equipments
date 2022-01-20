@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_OTHER } from '../formTypes';
+import { FORM_TYPE_OTHER } from '../../../app/utilities/index';
 
 class OtherForm extends Component {
   handleSubmit = (formData) => {

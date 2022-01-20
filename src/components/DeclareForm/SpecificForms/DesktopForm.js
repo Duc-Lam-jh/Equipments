@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_DESKTOP } from '../formTypes';
+import { FORM_TYPE_DESKTOP } from '../../../app/utilities/index';
 
 class DesktopForm extends Component {
   handleSubmit = (formData) => {
