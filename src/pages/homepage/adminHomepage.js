@@ -4,8 +4,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import DeviceDetail from '../../pages/DeviceDetail/DeviceDetail';
-import Test from '../TestPage';
 import DeviceList from '../../components/DeviceList/DeviceList';
+import DeviceEditPage from '../DeviceEditPage/DeviceEditPage';
+import Test from '../TestPage';
 
 const AdminHomepage = () => {
   const listOfPages = [
@@ -27,6 +28,7 @@ const AdminHomepage = () => {
           <Route path='/*' element={<Navigate to='/devices' />} />
           <Route path='/devices' element={<DeviceList />} />
           <Route path='/devices/:id' element={<DeviceDetail />} />
+          <Route path='/devices/:id/edit' element={<DeviceEditPage />} />
           <Route path='/requests/*' element={<Test />} />
         </Routes>
       </div>
