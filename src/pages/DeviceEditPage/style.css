@@ -1,0 +1,52 @@
+.edit-table {
+	display: grid;
+	grid-template-columns: 1fr 2.5fr;
+	row-gap: 5px;
+
+	padding: 20px;
+	width: 80%;
+
+	border: 2px dashed #009aa8;
+	background-color: white;
+}
+
+.edit-table div {
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+}
+
+.edit-table .title {
+	font-weight: 600;
+	color: white;
+	background-color: #009aa8;
+}
+
+.edit-table .images {
+	grid-column: 1/span 2;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	padding: 10px;
+
+	width: 100%;
+	height: 100%;
+
+	border-bottom: 0;
+}
+
+.edit-table .images img {
+	width: 70%;
+}
+
+@media screen and (min-width: 900px) {
+	.edit-table {
+		min-width: 500px;
+		max-width: 800px;
+	}
+
+  .edit-table .images img {
+    width: 400px;
+  }
+}
