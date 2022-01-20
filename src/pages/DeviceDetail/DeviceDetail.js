@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+
 import LaptopInfo from '../../components/DeviceInfo/LaptopInfo';
 import DesktopInfo from '../../components/DeviceInfo/DesktopInfo';
 import MouseInfo from '../../components/DeviceInfo/MouseInfo';
@@ -25,13 +26,13 @@ const DeviceDetail = () => {
     const deviceReponse = await fetch(deviceURI);
     const deviceData = await deviceReponse.json();
     setDevice(deviceData[0]);
-    
-    if(deviceData[0] !== undefined){
+
+    if (deviceData[0] !== undefined) {
       const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + deviceData[0].userId;
       const userResponse = await fetch(userURI);
       const user = await userResponse.json();
       setUser(user[0]);
-  
+
       setError(null);
       setIsLoading(false);
     } else {
@@ -72,7 +73,7 @@ const DeviceDetail = () => {
     return (
       <>
         <div className='content'>
-          <button className='edit-device-button' onClick={() => alert(device.id)}>Edit</button>
+          <Link to='edit'><button className='edit-device-button'>Edit</button></Link>
           <h2>Device information</h2>
           {renderDevice(device)}
           <h2>Holder information</h2>
@@ -81,14 +82,6 @@ const DeviceDetail = () => {
       </>
     )
   }
-
-  return (
-    <>
-      <div className='content'>
-
-      </div>
-    </>
-  )
 }
 
 export default DeviceDetail;
