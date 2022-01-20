@@ -7,6 +7,8 @@ import MouseInfo from '../../components/DeviceInfo/MouseInfo';
 import OtherInfo from '../../components/DeviceInfo/OtherInfo';
 import UserInfo from '../../components/DeviceInfo/UserInfo';
 
+import { FORM_TYPE_DESKTOP, FORM_TYPE_LAPTOP, FORM_TYPE_MOUSE, FORM_TYPE_OTHER } from '../../app/utilities';
+
 import './style.css';
 
 const DeviceDetail = () => {
@@ -41,13 +43,13 @@ const DeviceDetail = () => {
 
   const renderDevice = (device) => {
     switch (device.type) {
-      case 'laptop':
+      case FORM_TYPE_LAPTOP:
         return <LaptopInfo detail={device} />
-      case 'desktop':
+      case FORM_TYPE_DESKTOP:
         return <DesktopInfo detail={device} />
-      case 'mouse':
+      case FORM_TYPE_MOUSE:
         return <MouseInfo detail={device} />
-      case 'other':
+      case FORM_TYPE_OTHER:
         return <OtherInfo detail={device} />
       default:
         return <p>other</p>
