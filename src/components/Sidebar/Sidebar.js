@@ -8,6 +8,7 @@ import closeIcon from '../../app/img/close-icon.png';
 
 import SidebarItem from './SidebarItem/SidebarItem';
 import { signOut } from '../../app/redux';
+import { LOGO_SIZE, MENU_BUTTON_SIZE } from '../../app/utilities';
 
 import './style.css'
 
@@ -40,10 +41,10 @@ class Sidebar extends Component {
     return <>
       <div id='sidebar' className="sidebar inactive">
         <div className='sidebar-button' onClick={this.toggleSidebar}>
-          <img id='menu-icon-img' src={menuIcon} width="45px" />
+          <img id='menu-icon-img' src={menuIcon} width={MENU_BUTTON_SIZE} />
         </div>
         <Link to='/' className='logo'>
-          <img src={logo} width={50} />
+          <img src={logo} width={LOGO_SIZE} />
           <p>Journey Horizon</p>
         </Link>
         {sidebarItems}
