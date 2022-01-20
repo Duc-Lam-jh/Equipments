@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_OTHER } from '../formTypes';
+import { FORM_TYPE_OTHER } from '../../../app/utilities/index';
 
 class OtherForm extends Component {
   handleSubmit = (formData) => {
@@ -26,6 +26,7 @@ class OtherForm extends Component {
               {({ input }) => (
                 <>
                   <label>Team
+                  </label>
                     <div className='input'>
                       <select {...input} form='OtherForm'>
                         <option value="sweet-cake">Sweet Cake</option>
@@ -34,7 +35,6 @@ class OtherForm extends Component {
                         <option value="admin">Admin</option>
                       </select>
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -43,10 +43,10 @@ class OtherForm extends Component {
               {({ input }) => (
                 <>
                   <label>Description
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Đó là thiết bị gì..." required={true} />
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -55,10 +55,10 @@ class OtherForm extends Component {
               {({ input }) => (
                 <>
                   <label>Brand
+                  </label>
                     <div className='input'>
                       <input {...input} type="text" placeholder="Hãng của thiết bị..." required={true} />
                     </div>
-                  </label>
                 </>
               )}
             </Field>
@@ -67,13 +67,15 @@ class OtherForm extends Component {
               {() => (
                 <>
                   <label>Image
-                    <ImageInput onChange={(image) => this.handleAddImage(image)} />
                   </label>
+                  <label className="image"><ImageInput onChange={(image) => this.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>
 
-            <button type="submit">Save</button>
+            <div className='col-span2'>
+              <button type="submit">Save</button>
+            </div>
           </form>
         )
         }

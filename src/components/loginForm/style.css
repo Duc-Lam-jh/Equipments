@@ -1,52 +1,65 @@
-.loginForm{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.loginForm {
+	display: flex;
+	flex-direction: column;
 
-  box-sizing: border-box;
-  padding: 25px;
-  width: 500px;
-  
-  color: #009aa8;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px 5px rgb(241, 240, 240);
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 10px;
+	width: 90vw;
+
+	color: #009aa8;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px 5px rgb(241, 240, 240);
 }
 
-.loginForm label{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.loginForm label {
+	grid-column: 1;
+	width: 100px;
 
-  margin-top: 10px;
-  margin-bottom: 2px;
+	margin-top: 10px;
+	margin-bottom: 2px;
 }
 
-.loginForm label .input{
-  width: 70%;
-  padding: 5px 15px;
+.loginForm .input {
+	grid-column: 2;
+	margin-top: 2px;
+	margin-bottom: 10px;
 }
 
-label .input input{
-  width: 100%;
-  padding: 5px 15px;
-  text-align: left;
+.col-span2 {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	grid-column: 1/span 2;
 }
 
-button{
-  padding: 10px;
-  width: 200px;
-  margin-top: 10px;
+button {
+	padding: 10px;
+	width: 200px;
+	margin-top: 10px;
 
-  color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  background-color: #009aa8;
-  border: none;
+	color: white;
+	font-weight: 600;
+	border-radius: 10px;
+	background-color: #009aa8;
+	border: none;
 }
 
-button:hover{
-  background-color: #07b9c9;
+button:hover {
+	background-color: #07b9c9;
+}
+
+@media screen and (min-width: 900px) {
+	.loginForm {
+		width: 500px;
+		display: grid;
+		grid-template-columns: 100px auto;
+	}
+
+	.loginForm .input {
+		margin-top: 0px;
+		margin-bottom: 10px;
+	}
 }

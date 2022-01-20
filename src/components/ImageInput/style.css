@@ -1,23 +1,24 @@
-.declareForm label .dropzone{
+.dropzone{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  max-width: 200px;
+  max-width: stretch;
   min-height: 300px;
 
   color: #10afc4;
+  background-color: white;
   border: #009aa8 dashed 2px;
   border-radius: 15px;
   cursor: pointer;
 }
 
-label .dropzone input{
+.dropzone input{
   display: none;
 }
 
-label .dropzone .dropzone-thumbnail{
+.dropzone .dropzone-thumbnail{
   width: 100%;
   height: 300px;
   background-size: cover;

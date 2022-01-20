@@ -4,10 +4,17 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 
 const LoginPage = () => {
   return (
-    <React.Fragment>
+    <div className='content'>
       <h3>Log in with your company account</h3>
       <LoginForm />
-    </React.Fragment>
+      <p>
+        Admin: test@mail.com - 123456
+        <br />
+        User 1: test2@mail.com - 123456
+        <br />
+        User 2: test3@mail.com - 123456
+      </p>
+    </div>
   )
 };
 export default LoginPage;

@@ -9,13 +9,13 @@
   text-decoration: none;
   font-size: larger;
   font-weight: 600;
-  transition: 500ms;
+  transition: 400ms;
 }
 
 .sidebar .item:hover{
   background-color: white;
   color: #009aa8;
-  transition: 500ms;
+  transition: 400ms;
 
   cursor: pointer;
 }

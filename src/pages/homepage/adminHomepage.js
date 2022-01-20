@@ -1,16 +1,35 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { signOut } from '../../app/redux';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import Sidebar from '../../components/Sidebar/Sidebar';
+import DeviceDetail from '../../pages/DeviceDetail/DeviceDetail';
+import Test from '../TestPage';
+import DeviceList from '../../components/DeviceList/DeviceList';
 
 const AdminHomepage = () => {
-  const dispatch = useDispatch();
+  const listOfPages = [
+    {
+      title: "Devices",
+      path: "/devices"
+    },
+    {
+      title: "Requests",
+      path: "/requests"
+    },
+  ]
 
   return (
     <>
-      <h2>Admin home</h2>
-      <Link to='/user'>User home</Link>
-      <button onClick={() => dispatch(signOut())}>Sign out</button>
+      <Sidebar items={listOfPages} />
+      <div className='container'>
+        <Routes>
+          <Route path='/*' element={<Navigate to='/devices' />} />
+          <Route path='/devices' element={<DeviceList />} />
+          <Route path='/devices/:id' element={<DeviceDetail />} />
+          <Route path='/requests/*' element={<Test />} />
+        </Routes>
+      </div>
     </>
   )
 };

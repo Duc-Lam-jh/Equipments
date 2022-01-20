@@ -1,52 +1,67 @@
-.declareForm{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.declareForm {
+	display: flex;
+	flex-direction: column;
 
-  margin-bottom: 50px;
-  box-sizing: border-box;
-  width: 500px;
-  
-  color: #009aa8;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 20px;
+
+	color: #009aa8;
 }
 
-.declareForm label{
-  position: relative;
+.declareForm label {
+	grid-column: 1;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  margin-top: 10px;
-  margin-bottom: 2px;
+	margin-top: 10px;
+	margin-bottom: 2px;
 }
 
-.declareForm label .input{
-  min-width: 75%;
-  padding: 5px 0px;
+.declareForm .input {
+	grid-column: 2;
+	margin-top: 2px;
+	margin-bottom: 10px;
 }
 
-.input select,
-label .input input{
-  width: stretch;
-  padding: 5px 15px;
-  text-align: left;
+.declareForm label.image {
+	grid-column: 2;
+	width: stretch;
 }
 
-.declareForm button{
-  padding: 10px;
-  width: 200px;
-  margin-top: 10px;
-
-  color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  background-color: #009aa8;
-  border: none;
+.col-span2 {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	grid-column: 1/span 2;
 }
 
-.declareForm button:hover{
-  background-color: #07b9c9;
+button {
+	padding: 10px;
+	width: 200px;
+	margin-top: 10px;
+
+	color: white;
+	font-weight: 600;
+	border-radius: 10px;
+	background-color: #009aa8;
+	border: none;
+}
+
+button:hover {
+	background-color: #07b9c9;
+}
+
+@media screen and (min-width: 900px) {
+	.declareForm {
+		min-width: 500px;
+		max-width: 800px;
+		display: grid;
+		column-gap: 10px;
+		grid-template-columns: 200px auto;
+	}
+
+	.declareForm .input {
+		margin-top: 0px;
+		margin-bottom: 10px;
+	}
 }
