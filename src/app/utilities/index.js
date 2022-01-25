@@ -5,3 +5,4 @@ export const FORM_TYPE_OTHER = 'other';
 
 export const LOGO_SIZE = 50;
 export const MENU_BUTTON_SIZE = 45;
+export const REMOVE_BUTTON_SIZE = 30;
