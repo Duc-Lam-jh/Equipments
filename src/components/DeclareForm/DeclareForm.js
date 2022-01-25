@@ -38,14 +38,30 @@ class DeclareForm extends Component {
     const msg = this.props.msg;
 
     return <div className='content'>
-      { msg && <MessagePrompt msg={msg} button={{text: 'OK'}} handleClick={() => { this.props.setFormPrompt(null) }} /> }
+      {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
       <DeviceTypePicker />
       <Routes>
         <Route path='/' element={<Navigate to='laptop' />} />
-        <Route path='/laptop' element={<LaptopForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
-        <Route path='/desktop' element={<DesktopForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
-        <Route path='/mouse' element={<MouseForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
-        <Route path='/other' element={<OtherForm handleSubmit={(formData) => this.handleSubmit(formData)} handleAddImage={(image) => this.handleAddImage(image)} />} />
+        <Route path='/laptop'
+          element={<LaptopForm
+            handleSubmit={(formData) => this.handleSubmit(formData)}
+            handleAddImage={(image) => this.handleAddImage(image)} />}
+        />
+        <Route path='/desktop'
+          element={<DesktopForm
+            handleSubmit={(formData) => this.handleSubmit(formData)}
+            handleAddImage={(image) => this.handleAddImage(image)} />}
+        />
+        <Route path='/mouse'
+          element={<MouseForm
+            handleSubmit={(formData) => this.handleSubmit(formData)}
+            handleAddImage={(image) => this.handleAddImage(image)} />}
+        />
+        <Route path='/other'
+          element={<OtherForm
+            handleSubmit={(formData) => this.handleSubmit(formData)}
+            handleAddImage={(image) => this.handleAddImage(image)} />}
+        />
       </Routes>
     </div>;
   }
