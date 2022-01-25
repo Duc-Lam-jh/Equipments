@@ -28,10 +28,10 @@ class DeclareForm extends Component {
     this.props.submit(formData);
   }
 
-  handleAddImage = (image) => {
-    const images = this.state.images;
-    images.push(image);
-    this.setState({ images: images });
+  handleAddImage = (images) => {
+    this.setState({
+      images: [...images]
+    })
   }
 
   render() {
