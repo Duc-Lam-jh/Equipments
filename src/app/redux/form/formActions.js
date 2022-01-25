@@ -32,6 +32,23 @@ const declareNewDevice = (formData) => {
   }
 }
 
+const editDeviceDetail = (formData) => {
+  const uri = process.env.REACT_APP_BASE_API_URL + '/devices/' + formData.id;
+  return (dispatch) => {
+    fetch(uri, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then(() => {
+      dispatch(setFormPrompt('Successful!'));
+    }).catch(error => {
+      dispatch(setFormPrompt(error.message));
+    })
+  }
+}
+
 const requestNewDevice = (formData) => {
   const uri = process.env.REACT_APP_BASE_API_URL + '/requests';
 
@@ -51,9 +68,11 @@ const requestNewDevice = (formData) => {
   }
 }
 
-export { 
+
+export {
   setFormPrompt,
   setFormError,
-  declareNewDevice, 
-  requestNewDevice 
+  declareNewDevice,
+  requestNewDevice,
+  editDeviceDetail
 }
