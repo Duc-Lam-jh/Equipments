@@ -19,27 +19,30 @@ const DeviceDetail = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
-    setIsLoading(true);
+  useEffect(() => {
+    const getDevice = async () => {
+      const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
+      const deviceReponse = await fetch(deviceURI);
+      const deviceData = await deviceReponse.json();
+      setDevice(deviceData[0]);
 
-    const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
-    const deviceReponse = await fetch(deviceURI);
-    const deviceData = await deviceReponse.json();
-    setDevice(deviceData[0]);
-
-    if (deviceData[0] !== undefined) {
-      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + deviceData[0].userId;
-      const userResponse = await fetch(userURI);
-      const user = await userResponse.json();
-      setUser(user[0]);
-
-      setError(null);
-      setIsLoading(false);
-    } else {
-      setError('Không có dữ liệu');
+      if (deviceData[0] !== undefined) {
+        await getUser(deviceData[0].userId);
+        setError(null);
+      } else {
+        setError('Không có dữ liệu');
+      }
       setIsLoading(false);
     }
 
+    const getUser = async (id) => {
+      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + id;
+      const userResponse = await fetch(userURI);
+      const user = await userResponse.json();
+      setUser(user[0]);
+    }
+
+    getDevice();
   }, [])
 
   const renderDevice = (device) => {
