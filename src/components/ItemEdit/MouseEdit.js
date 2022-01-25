@@ -1,15 +1,17 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
+import ImageInput from '../ImageInput/ImageInput';
 
 const MouseEdit = (props) => {
-  const { detail } = props;
-  const images = detail.images;
+  const { detail, images } = props;
 
   const handleSubmit = (formData) => {
-    if(!formData.brand) {
+    props.handleSubmit(formData);
+  }
 
-    }
-    console.log(formData);
+
+  const handleAddImage = (image) => {
+    props.handleAddImage(image);
   }
 
   return (
@@ -31,13 +33,15 @@ const MouseEdit = (props) => {
               )}
             </Field>
 
-            <div className='images'>
-              {images.map((image, index) => {
-                return (
-                  <img key={index} src={image} />
-                )
-              })}
-            </div>
+            <Field name="image">
+              {() => (
+                <>
+                  <div className='title'>Images
+                  </div>
+                  <label className="image"><ImageInput images={images} onChange={(image) => handleAddImage(image)} /></label>
+                </>
+              )}
+            </Field>
 
             <div className='button col-span2'>
               <button type="submit">Save</button>

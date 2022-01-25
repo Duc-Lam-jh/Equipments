@@ -1,15 +1,17 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
+import ImageInput from '../ImageInput/ImageInput';
+
 
 const DesktopEdit = (props) => {
-  const { detail } = props;
-  const images = detail.images;
+  const { detail, images } = props;
 
   const handleSubmit = (formData) => {
-    if(!formData.brand) {
+    props.handleSubmit(formData);
+  }
 
-    }
-    console.log(formData);
+  const handleAddImage = (image) => {
+    props.handleAddImage(image);
   }
 
   return (
@@ -25,7 +27,7 @@ const DesktopEdit = (props) => {
                 <>
                   <div className='title'>Brand</div>
                   <div className='input'>
-                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} />
+                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required/>
                   </div>
                 </>
               )}
@@ -36,7 +38,7 @@ const DesktopEdit = (props) => {
                 <>
                   <div className='title'>Configuration</div>
                   <div className='input'>
-                    <input {...input} type="text" placeholder={detail.configuration} />
+                    <input {...input} type="text" placeholder={detail.configuration} required/>
                   </div>
                 </>
               )}
@@ -47,19 +49,21 @@ const DesktopEdit = (props) => {
                 <>
                   <div className='title'>Size</div>
                   <div className='input'>
-                    <input {...input} type="text" placeholder={detail.size} />
+                    <input {...input} type="text" placeholder={detail.size} required/>
                   </div>
                 </>
               )}
             </Field>
 
-            <div className='images'>
-              {images.map((image, index) => {
-                return (
-                  <img key={index} src={image} />
-                )
-              })}
-            </div>
+            <Field name="image">
+              {() => (
+                <>
+                  <div className='title'>Images
+                  </div>
+                  <label className="image"><ImageInput images={images} onChange={(image) => handleAddImage(image)} /></label>
+                </>
+              )}
+            </Field>
 
             <div className='button col-span2'>
               <button type="submit">Save</button>
