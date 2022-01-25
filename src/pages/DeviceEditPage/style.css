@@ -1,8 +1,7 @@
 .edit-table {
-	display: grid;
-	grid-template-columns: 1fr 2.5fr;
+	display: flex;
+	flex-direction: column;
 	row-gap: 5px;
-	column-gap: 5px;
 
 	padding: 20px;
 	width: 80%;
@@ -44,6 +43,10 @@
 
 @media screen and (min-width: 900px) {
 	.edit-table {
+		display: grid;
+		grid-template-columns: 1fr 2.5fr;
+		row-gap: 5px;
+		column-gap: 5px;
 		min-width: 500px;
 		max-width: 800px;
 	}
