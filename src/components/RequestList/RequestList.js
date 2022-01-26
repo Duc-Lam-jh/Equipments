@@ -1,10 +1,15 @@
 import React from 'react';
 
-const RequestList = () => {
+import './style.css';
 
+const RequestList = () => {
   return(
     <>
-      list
+      <div className='request-list'>
+        <div className='item'>ad</div>
+        <div className='item'>ad</div>
+        <div className='item'>ad</div>
+      </div>
     </>
   )
 }
