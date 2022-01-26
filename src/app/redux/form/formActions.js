@@ -1,5 +1,7 @@
 import actionTypes from './formActionTypes';
 
+import { SUCCESS_MESSAGE } from '../index';
+
 const setFormPrompt = msg => {
   return {
     type: actionTypes.FORM_PROMPT,
@@ -25,7 +27,7 @@ const declareNewDevice = (formData) => {
       },
       body: JSON.stringify(formData)
     }).then(() => {
-      dispatch(setFormPrompt('Successful!'));
+      dispatch(setFormPrompt(SUCCESS_MESSAGE));
     }).catch(error => {
       dispatch(setFormPrompt(error.message));
     })
@@ -42,7 +44,7 @@ const editDeviceDetail = (formData) => {
       },
       body: JSON.stringify(formData)
     }).then(() => {
-      dispatch(setFormPrompt('Successful!'));
+      dispatch(setFormPrompt(SUCCESS_MESSAGE));
     }).catch(error => {
       dispatch(setFormPrompt(error.message));
     })
@@ -60,14 +62,13 @@ const requestNewDevice = (formData) => {
       },
       body: JSON.stringify(formData)
     }).then(() => {
-      dispatch(setFormPrompt('Successful!'));
+      dispatch(setFormPrompt(SUCCESS_MESSAGE));
     }).catch(error => {
       console.log(error);
       dispatch(setFormError(error.message));
     })
   }
 }
-
 
 export {
   setFormPrompt,
