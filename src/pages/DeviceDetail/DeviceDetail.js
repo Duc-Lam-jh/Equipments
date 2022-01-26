@@ -27,8 +27,8 @@ const DeviceDetail = () => {
       setDevice(deviceData[0]);
 
       if (deviceData[0] !== undefined) {
-        await getUser(deviceData[0].userId);
         setError(null);
+        await getUser(deviceData[0].userId);
       } else {
         setError('Không có dữ liệu');
       }
