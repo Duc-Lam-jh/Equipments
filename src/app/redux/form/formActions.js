@@ -53,6 +53,7 @@ const editDeviceDetail = (formData) => {
 
 const requestNewDevice = (formData) => {
   const uri = process.env.REACT_APP_BASE_API_URL + '/requests';
+  formData.status = 'pending';
 
   return (dispatch) => {
     fetch(uri, {
