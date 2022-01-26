@@ -3,32 +3,32 @@
 	flex-direction: column;
 }
 
-.dropzone-button{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.dropzone-button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-  padding: 10px;
+	padding: 10px;
 
-  max-width: stretch;
+	max-width: stretch;
 
 	text-align: center;
-  color: white;
-  background-color: #009aa8;
-  border-radius: 5px;
-  cursor: pointer;
+	color: white;
+	background-color: #009aa8;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
-.dropzone input{
-  display: none;
+.dropzone input {
+	display: none;
 }
 
-.image-container{
+.image-container {
 	position: relative;
 }
 
-.image-container img{
+.image-container img {
 	width: 100%;
 }
 
@@ -50,4 +50,3 @@
 .image-container .remove-image-button:hover {
 	background-color: rgb(255, 0, 0);
 }
-
