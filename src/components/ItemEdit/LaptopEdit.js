@@ -26,7 +26,7 @@ const LaptopEdit = (props) => {
                 <>
                   <div className='title'>Brand</div>
                   <div className='input'>
-                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} />
+                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required/>
                   </div>
                 </>
               )}
@@ -37,7 +37,7 @@ const LaptopEdit = (props) => {
                 <>
                   <div className='title'>Processor</div>
                   <div className='input'>
-                    <input {...input} type="text" placeholder={detail.configuration} />
+                    <input {...input} type="text" placeholder={detail.configuration} required/>
                   </div>
                 </>
               )}
@@ -48,7 +48,7 @@ const LaptopEdit = (props) => {
                 <>
                   <div className='title'>Serial number</div>
                   <div className='input'>
-                    <input {...input} type="text" placeholder={detail.seriesNumber} />
+                    <input {...input} type="text" placeholder={detail.seriesNumber} required/>
                   </div>
                 </>
               )}

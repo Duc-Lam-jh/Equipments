@@ -26,7 +26,7 @@ const OtherEdit = (props) => {
                 <>
                   <div className='title'>Brand</div>
                   <div className='input'>
-                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} />
+                    <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required/>
                   </div>
                 </>
               )}
@@ -37,7 +37,7 @@ const OtherEdit = (props) => {
                 <>
                   <div className='title'>Description</div>
                   <div className='input'>
-                    <input {...input} type="text" placeholder={detail.description} />
+                    <input {...input} type="text" placeholder={detail.description} required/>
                   </div>
                 </>
               )}
