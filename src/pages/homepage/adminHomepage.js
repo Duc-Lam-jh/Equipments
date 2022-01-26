@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
-import DeviceDetail from '../../pages/DeviceDetail/DeviceDetail';
+import DeviceDetail from '../DeviceDetail/DeviceDetail';
 import DeviceList from '../../components/DeviceList/DeviceList';
 import DeviceEditPage from '../DeviceEditPage/DeviceEditPage';
 import Test from '../TestPage';

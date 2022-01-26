@@ -1,6 +1,6 @@
 import actionTypes from './formActionTypes';
 
-import { SUCCESS_MESSAGE } from '../index';
+import { SUCCESS_MESSAGE } from '../../utilities/index';
 
 const setFormPrompt = msg => {
   return {
