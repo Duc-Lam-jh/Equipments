@@ -5,19 +5,10 @@ import ImageInput from '../ImageInput/ImageInput';
 const MouseEdit = (props) => {
   const { detail, images } = props;
 
-  const handleSubmit = (formData) => {
-    props.handleSubmit(formData);
-  }
-
-
-  const handleAddImage = (image) => {
-    props.handleAddImage(image);
-  }
-
   return (
     <>
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={props.handleSubmit}
         initialValues={detail}
         render={({ handleSubmit }) => (
           <form className="edit-table" onSubmit={handleSubmit}>
@@ -38,7 +29,7 @@ const MouseEdit = (props) => {
                 <>
                   <div className='title'>Images
                   </div>
-                  <label className="image"><ImageInput images={images} onChange={(image) => handleAddImage(image)} /></label>
+                  <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>
