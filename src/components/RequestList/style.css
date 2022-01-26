@@ -4,10 +4,29 @@
   align-items: center;
   row-gap: 10px;
 
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 
+.request-list .item {
+  display: grid;
+  grid-template-columns: auto 5fr 1fr;
+
+  width: 100%;
+}
+
+.request-list .item .device-type{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+
+  background-color: #009aa8;
+  border-radius: 10px 0 0 10px;
+}
+
 @media screen and (min-width: 900px) {
-  
+  .request-list {
+    width: 70%;
+  }
 }
