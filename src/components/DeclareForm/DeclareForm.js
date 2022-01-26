@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Test from '../../pages/TestPage';
 
 import DeviceTypePicker from './DeviceTypePicker/DeviceTypePicker';
 import LaptopForm from './SpecificForms/LaptopForm';
