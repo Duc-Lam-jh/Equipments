@@ -29,7 +29,7 @@ const AdminHomepage = () => {
           <Route path='/devices' element={<DeviceList />} />
           <Route path='/devices/:id' element={<DeviceDetail />} />
           <Route path='/devices/:id/edit' element={<DeviceEditPage />} />
-          <Route path='/requests/*' element={<Test />} />
+          <Route path='/requests' element={<Test />} />
         </Routes>
       </div>
     </>
