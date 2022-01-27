@@ -56,24 +56,28 @@ const DeviceEditPage = () => {
 
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>;
-  } else if (error) {
-    return <div className='content'><p>{error}</p></div>;
-  } else {
-    return (
-      <>
-        <div className='content'>
-          {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { dispatch(setFormPrompt(null)) }} />}
-          <h2>Edit device information</h2>
-          {/* {device && renderDevice(device)} */}
-          {device && <ItemEdit
-            detail={device} images={images}
-            handleSubmit={(formData) => handleSubmit(formData)}
-            handleAddImage={(image) => handleAddImage(image)}
-          />}
-        </div>
-      </>
-    )
   }
+  if (error) {
+    return <div className='content'><p>{error}</p></div>;
+  }
+
+  return (
+    <>
+      <div className='content'>
+        {msg &&
+          <MessagePrompt
+            msg={msg} button={{ text: 'OK' }}
+            handleClick={() => { dispatch(setFormPrompt(null)) }} />
+        }
+        <h2>Edit device information</h2>
+        {device && <ItemEdit
+          detail={device} images={images}
+          handleSubmit={(formData) => handleSubmit(formData)}
+          handleAddImage={(image) => handleAddImage(image)}
+        />}
+      </div>
+    </>
+  )
 }
 
 export default DeviceEditPage;
