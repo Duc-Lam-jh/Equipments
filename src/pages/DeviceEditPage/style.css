@@ -12,14 +12,18 @@
 
 .edit-table div {
 	display: flex;
+	align-items: center;
 	padding: 10px 20px;
+}
+
+
+.edit-table div.input {
+	padding: 0 20px;
 }
 
 .edit-table .title {
 	font-weight: 600;
-	max-height: 40px;
-	color: white;
-	background-color: #009aa8;
+	color: #009aa8;
 }
 
 .edit-table .images {
@@ -48,5 +52,12 @@
 		column-gap: 5px;
 		min-width: 500px;
 		max-width: 800px;
+	}
+
+	.edit-table .title {
+		font-weight: 600;
+		max-height: 40px;
+		color: white;
+		background-color: #009aa8;
 	}
 }

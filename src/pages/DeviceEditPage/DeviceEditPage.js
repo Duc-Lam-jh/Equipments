@@ -3,13 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import './style.css';
-import LaptopEdit from '../../components/ItemEdit/LaptopEdit';
-import DesktopEdit from '../../components/ItemEdit/DesktopEdit';
-import MouseEdit from '../../components/ItemEdit/MouseEdit';
-import OtherEdit from '../../components/ItemEdit/OtherEdit';
+import ItemEdit from '../../components/ItemEdit/ItemEdit';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
 
-import { FORM_TYPE_DESKTOP, FORM_TYPE_LAPTOP, FORM_TYPE_MOUSE, FORM_TYPE_OTHER } from '../../app/utilities';
 import { editDeviceDetail, setFormPrompt } from '../../app/redux';
 
 const DeviceEditPage = () => {
@@ -58,37 +54,6 @@ const DeviceEditPage = () => {
     setImages([...images]);
   }
 
-  const renderDevice = (device) => {
-    switch (device.type) {
-      case FORM_TYPE_LAPTOP:
-        return <LaptopEdit
-          detail={device} images={images}
-          handleSubmit={(formData) => handleSubmit(formData)}
-          handleAddImage={(image) => handleAddImage(image)}
-        />
-      case FORM_TYPE_DESKTOP:
-        return <DesktopEdit
-          detail={device} images={images}
-          handleSubmit={(formData) => handleSubmit(formData)}
-          handleAddImage={(image) => handleAddImage(image)}
-        />
-      case FORM_TYPE_MOUSE:
-        return <MouseEdit
-          detail={device} images={images}
-          handleSubmit={(formData) => handleSubmit(formData)}
-          handleAddImage={(image) => handleAddImage(image)}
-        />
-      case FORM_TYPE_OTHER:
-        return <OtherEdit
-          detail={device} images={images}
-          handleSubmit={(formData) => handleSubmit(formData)}
-          handleAddImage={(image) => handleAddImage(image)}
-        />
-      default:
-        return <p>other</p>
-    }
-  }
-
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>;
   } else if (error) {
@@ -99,7 +64,12 @@ const DeviceEditPage = () => {
         <div className='content'>
           {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { dispatch(setFormPrompt(null)) }} />}
           <h2>Edit device information</h2>
-          {device && renderDevice(device)}
+          {/* {device && renderDevice(device)} */}
+          {device && <ItemEdit
+            detail={device} images={images}
+            handleSubmit={(formData) => handleSubmit(formData)}
+            handleAddImage={(image) => handleAddImage(image)}
+          />}
         </div>
       </>
     )
