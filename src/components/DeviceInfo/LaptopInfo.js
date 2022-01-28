@@ -27,4 +27,13 @@ const LaptopInfo = (props) => {
   )
 }
 
+LaptopInfo.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    configuration: 'Chưa có thông tin',
+    seriesNumber: 'Chưa có thông tin',
+    images: []
+  },
+}
+
 export default LaptopInfo;

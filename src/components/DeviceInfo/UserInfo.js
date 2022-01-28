@@ -16,4 +16,12 @@ const UserInfo = (props) => {
   )
 }
 
+UserInfo.defaultProps = {
+  detail: {
+    name: 'Chưa có thông tin',
+    email: 'Chưa có thông tin',
+    team: 'Chưa có thông tin'
+  }
+}
+
 export default UserInfo;

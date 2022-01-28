@@ -27,4 +27,13 @@ const DesktopInfo = (props) => {
   )
 }
 
+DesktopInfo.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    configuration: 'Chưa có thông tin',
+    size: 'Chưa có thông tin',
+    images: []
+  },
+}
+
 export default DesktopInfo;

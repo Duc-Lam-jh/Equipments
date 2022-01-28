@@ -21,4 +21,11 @@ const MouseInfo = (props) => {
   )
 }
 
+MouseInfo.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    images: []
+  },
+}
+
 export default MouseInfo;

@@ -24,4 +24,12 @@ const OtherInfo = (props) => {
   )
 }
 
+OtherInfo.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    description: 'Chưa có thông tin',
+    images: []
+  },
+}
+
 export default OtherInfo;
