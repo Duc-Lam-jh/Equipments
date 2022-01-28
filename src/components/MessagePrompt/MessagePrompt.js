@@ -35,7 +35,7 @@ MessagePrompt.defaultProps = {
 }
 
 MessagePrompt.propsTypes = {
-  msg: PropTypes.string
+  msg: PropTypes.string.isRequired
 }
 
 export default MessagePrompt;
