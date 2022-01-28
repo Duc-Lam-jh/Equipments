@@ -71,10 +71,30 @@ const requestNewDevice = (formData) => {
   }
 }
 
+const editRequest = (requestData) => {
+  const uri = process.env.REACT_APP_BASE_API_URL + '/requests/' + requestData.id;
+
+  return (dispatch) => {
+    fetch(uri, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    }).then(() => {
+      dispatch(setFormPrompt(SUCCESS_MESSAGE));
+    }).catch(error => {
+      console.log(error);
+      dispatch(setFormError(error.message));
+    })
+  }
+}
+
 export {
   setFormPrompt,
   setFormError,
   declareNewDevice,
   requestNewDevice,
-  editDeviceDetail
+  editDeviceDetail,
+  editRequest
 }
