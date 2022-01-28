@@ -12,17 +12,6 @@ const EditItemFields = (props) => {
   const renderDesktopFields = () => {
     return (
       <>
-        <Field name="brand">
-          {({ input, meta }) => (
-            <>
-              <div className='title'>Brand</div>
-              <div className='input'>
-                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
-              </div>
-            </>
-          )}
-        </Field>
-
         <Field name="size">
           {({ input, meta }) => (
             <>
@@ -44,16 +33,6 @@ const EditItemFields = (props) => {
             </>
           )}
         </Field>
-
-        <Field name="image">
-          {() => (
-            <>
-              <div className='title'>Images
-              </div>
-              <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
-            </>
-          )}
-        </Field>
       </>
     )
   }
@@ -61,17 +40,6 @@ const EditItemFields = (props) => {
   const renderLaptopFields = () => {
     return (
       <>
-        <Field name="brand">
-          {({ input, meta }) => (
-            <>
-              <div className='title'>Brand</div>
-              <div className='input'>
-                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
-              </div>
-            </>
-          )}
-        </Field>
-
         <Field name="seriesNumber">
           {({ input, meta }) => (
             <>
@@ -93,61 +61,17 @@ const EditItemFields = (props) => {
             </>
           )}
         </Field>
-
-        <Field name="image">
-          {() => (
-            <>
-              <div className='title'>Images
-              </div>
-              <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
-            </>
-          )}
-        </Field>
       </>
     )
   }
 
   const renderMouseFields = () => {
-    return (
-      <>
-        <Field name="brand">
-          {({ input, meta }) => (
-            <>
-              <div className='title'>Brand</div>
-              <div className='input'>
-                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
-              </div>
-            </>
-          )}
-        </Field>
-
-        <Field name="image">
-          {() => (
-            <>
-              <div className='title'>Images
-              </div>
-              <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
-            </>
-          )}
-        </Field>
-      </>
-    )
+    return null;
   }
 
   const renderOtherFields = () => {
     return (
       <>
-        <Field name="brand">
-          {({ input, meta }) => (
-            <>
-              <div className='title'>Brand</div>
-              <div className='input'>
-                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
-              </div>
-            </>
-          )}
-        </Field>
-
         <Field name="description">
           {({ input, meta }) => (
             <>
@@ -158,6 +82,39 @@ const EditItemFields = (props) => {
             </>
           )}
         </Field>
+      </>
+    )
+  }
+
+  const renderSeparateFields = (type) => {
+    switch (type) {
+      case FORM_TYPE_DESKTOP:
+        return renderDesktopFields();
+      case FORM_TYPE_LAPTOP:
+        return renderLaptopFields();
+      case FORM_TYPE_MOUSE:
+        return renderMouseFields();
+      case FORM_TYPE_OTHER:
+        return renderOtherFields();
+      default:
+        return null;
+    }
+  }
+
+  return(
+    <>
+      <Field name="brand">
+          {({ input, meta }) => (
+            <>
+              <div className='title'>Brand</div>
+              <div className='input'>
+                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
+              </div>
+            </>
+          )}
+        </Field>
+
+        {renderSeparateFields(detail.type)}
 
         <Field name="image">
           {() => (
@@ -168,22 +125,9 @@ const EditItemFields = (props) => {
             </>
           )}
         </Field>
-      </>
-    )
-  }
+    </>
+  )
 
-  switch (detail.type) {
-    case FORM_TYPE_DESKTOP:
-      return renderDesktopFields();
-    case FORM_TYPE_LAPTOP:
-      return renderLaptopFields();
-    case FORM_TYPE_MOUSE:
-      return renderMouseFields();
-    case FORM_TYPE_OTHER:
-      return renderOtherFields();
-    default:
-      return null;
-  }
 }
 
 export default EditItemFields;
