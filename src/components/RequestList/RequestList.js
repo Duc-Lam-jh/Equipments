@@ -47,18 +47,21 @@ const RequestList = (props) => {
         return (
           <div className='device-type'>
             <img src={desktopIcon} alt='Device type: desktop' width={DEVICE_TYPE_ICON_SIZE} />
+            <div>Desktop</div>
           </div>
         )
       case FORM_TYPE_LAPTOP:
         return (
           <div className='device-type'>
             <img src={laptopIcon} alt='Device type: laptop' width={DEVICE_TYPE_ICON_SIZE} />
+            <div>Laptop/PC</div>
           </div>
         )
       case FORM_TYPE_MOUSE:
         return (
           <div className='device-type'>
             <img src={mouseIcon} alt='Device type: mouse' width={DEVICE_TYPE_ICON_SIZE} />
+            <div>Mouse</div>
           </div>
         )
       case FORM_TYPE_OTHER:
