@@ -65,10 +65,6 @@ const EditItemFields = (props) => {
     )
   }
 
-  const renderMouseFields = () => {
-    return null;
-  }
-
   const renderOtherFields = () => {
     return (
       <>
@@ -92,39 +88,38 @@ const EditItemFields = (props) => {
         return renderDesktopFields();
       case FORM_TYPE_LAPTOP:
         return renderLaptopFields();
-      case FORM_TYPE_MOUSE:
-        return renderMouseFields();
       case FORM_TYPE_OTHER:
         return renderOtherFields();
+      case FORM_TYPE_MOUSE:
       default:
         return null;
     }
   }
 
-  return(
+  return (
     <>
       <Field name="brand">
-          {({ input, meta }) => (
-            <>
-              <div className='title'>Brand</div>
-              <div className='input'>
-                <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
-              </div>
-            </>
-          )}
-        </Field>
+        {({ input, meta }) => (
+          <>
+            <div className='title'>Brand</div>
+            <div className='input'>
+              <input {...input} name="brand" type="text" autoComplete='off' placeholder={detail.brand} required />
+            </div>
+          </>
+        )}
+      </Field>
 
-        {renderSeparateFields(detail.type)}
+      {renderSeparateFields(detail.type)}
 
-        <Field name="image">
-          {() => (
-            <>
-              <div className='title'>Images
-              </div>
-              <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
-            </>
-          )}
-        </Field>
+      <Field name="image">
+        {() => (
+          <>
+            <div className='title'>Images
+            </div>
+            <label className="image"><ImageInput images={images} onChange={(image) => props.handleAddImage(image)} /></label>
+          </>
+        )}
+      </Field>
     </>
   )
 
