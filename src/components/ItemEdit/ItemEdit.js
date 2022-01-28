@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form } from 'react-final-form';
+import PropTypes from 'prop-types';
+
 import EditItemFields from './EditItemFields';
 
 const ItemEdit = (props) => {
@@ -34,6 +36,11 @@ ItemEdit.defaultProps = {
     seriesNumber: 'Chưa có thông tin',
   },
   images: []
+}
+
+ItemEdit.propTypes = {
+  detail: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired
 }
 
 export default ItemEdit;
