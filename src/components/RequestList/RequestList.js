@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import {
   FORM_TYPE_DESKTOP,
@@ -27,10 +27,10 @@ const RequestList = (props) => {
             <div className='subtitle'>{request.reason}</div>
           </div>
           <div className='controls'>
-            <button className='accept'>
+            <button className='accept' onClick={() => handleChangeRequestStatus(request, 'accepted')}>
               Accept
             </button>
-            <button className='decline'>
+            <button className='decline' onClick={() => handleChangeRequestStatus(request, 'declined')}>
               Decline
             </button>
           </div>
@@ -69,6 +69,13 @@ const RequestList = (props) => {
           </div>
         )
     }
+  }
+
+  const handleChangeRequestStatus = (request, status) => {
+    request.status = status;
+    delete request.user;
+
+    props.handleChangeRequestStatus(request);
   }
 
   return (
