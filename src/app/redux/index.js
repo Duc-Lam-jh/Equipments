@@ -4,6 +4,7 @@ export {
   setActiveUser } from './auth/authActions';
 export { 
   requestNewDevice, 
+  editRequest,
   declareNewDevice, 
   editDeviceDetail, 
   setFormPrompt, 
