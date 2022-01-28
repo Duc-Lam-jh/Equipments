@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../../app/img/logo-white.png';
@@ -61,6 +62,10 @@ Sidebar.defaultProps = {
       title: 'Home'
     }
   ]
+}
+
+Sidebar.propsType = {
+  items: PropTypes.array.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {
