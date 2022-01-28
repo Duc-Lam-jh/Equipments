@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RequestList from '../../components/RequestList/RequestList';
+import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
+import { editRequest, setFormPrompt } from '../../app/redux';
 
 const RequestListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [requests, setRequests] = useState([]);
+  const dispatch = useDispatch();
+  const msg = useSelector(state => state.form.msg);
 
   useEffect(() => {
     const getUser = async (id) => {
@@ -30,18 +35,29 @@ const RequestListPage = () => {
     setIsLoading(false);
   }, [])
 
+  const handleChangeRequestStatus = (request) => {
+    dispatch(editRequest(request));
+
+    setRequests(requests.filter(item => item.id !== request.id));
+  }
+
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>
-  } else {
-    return (
+  } 
+
+  return (
       <>
+      {msg &&
+          <MessagePrompt
+            msg={msg} button={{ text: 'OK' }}
+            handleClick={() => { dispatch(setFormPrompt(null)) }} />
+        }
         <div className='content'>
           <h1>List of requests</h1>
-          {requests && <RequestList requests={requests} />}
+          {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
         </div>
       </>
     )
   }
-}
 
 export default RequestListPage;
