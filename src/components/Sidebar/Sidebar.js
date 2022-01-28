@@ -54,6 +54,15 @@ class Sidebar extends Component {
   }
 }
 
+Sidebar.defaultProps = {
+  items: [
+    {
+      path: '/',
+      title: 'Home'
+    }
+  ]
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut())
