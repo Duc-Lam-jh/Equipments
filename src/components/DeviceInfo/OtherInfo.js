@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const OtherInfo = (props) => {
   const { detail } = props;
@@ -30,6 +31,10 @@ OtherInfo.defaultProps = {
     description: 'Chưa có thông tin',
     images: []
   },
+}
+
+OtherInfo.propTypes = {
+  detail: PropTypes.object.isRequired
 }
 
 export default OtherInfo;

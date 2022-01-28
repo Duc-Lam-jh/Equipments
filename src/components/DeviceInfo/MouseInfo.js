@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MouseInfo = (props) => {
   const { detail } = props;
@@ -26,6 +27,10 @@ MouseInfo.defaultProps = {
     brand: 'Chưa có thông tin',
     images: []
   },
+}
+
+MouseInfo.propTypes = {
+  detail: PropTypes.object.isRequired
 }
 
 export default MouseInfo;

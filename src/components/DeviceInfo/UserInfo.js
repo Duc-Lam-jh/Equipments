@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const UserInfo = (props) => {
   const { detail } = props;
@@ -22,6 +23,10 @@ UserInfo.defaultProps = {
     email: 'Chưa có thông tin',
     team: 'Chưa có thông tin'
   }
+}
+
+UserInfo.propTypes = {
+  detail: PropTypes.object.isRequired
 }
 
 export default UserInfo;

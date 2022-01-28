@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LaptopInfo = (props) => {
   const { detail } = props;
@@ -34,6 +35,10 @@ LaptopInfo.defaultProps = {
     seriesNumber: 'Chưa có thông tin',
     images: []
   },
+}
+
+LaptopInfo.propTypes = {
+  detail: PropTypes.object.isRequired
 }
 
 export default LaptopInfo;
