@@ -84,7 +84,7 @@ const RequestList = (props) => {
   return (
     <>
       <div className='request-list'>
-        {renderListItem()}
+        {requests && renderListItem()}
       </div>
     </>
   )
