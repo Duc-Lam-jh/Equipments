@@ -8,8 +8,8 @@
 }
 
 .info-table {
-	display: grid;
-	grid-template-columns: 1fr 2.5fr;
+	display: flex;
+	flex-direction: column;
 	row-gap: 5px;
 
 	padding: 20px;
@@ -28,8 +28,9 @@
 
 .info-table .title {
 	font-weight: 600;
-	color: white;
-	background-color: #009aa8;
+	color: #009aa8;
+	padding: 10px 0;
+	border: 0;
 }
 
 .info-table .images {
@@ -52,8 +53,19 @@
 
 @media screen and (min-width: 900px) {
 	.info-table {
+		display: grid;
+		grid-template-columns: 1fr 2.5fr;
+		row-gap: 5px;
+
 		min-width: 500px;
 		max-width: 800px;
+	}
+
+	.info-table .title {
+		font-weight: 600;
+		color: white;
+		padding: 10px 20px;
+		background-color: #009aa8;
 	}
 
   .info-table .images img {

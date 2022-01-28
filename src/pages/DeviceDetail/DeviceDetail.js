@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+
 import LaptopInfo from '../../components/DeviceInfo/LaptopInfo';
 import DesktopInfo from '../../components/DeviceInfo/DesktopInfo';
 import MouseInfo from '../../components/DeviceInfo/MouseInfo';
@@ -18,27 +19,30 @@ const DeviceDetail = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
-    setIsLoading(true);
+  useEffect(() => {
+    const getDevice = async () => {
+      const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
+      const deviceReponse = await fetch(deviceURI);
+      const deviceData = await deviceReponse.json();
+      setDevice(deviceData[0]);
 
-    const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
-    const deviceReponse = await fetch(deviceURI);
-    const deviceData = await deviceReponse.json();
-    setDevice(deviceData[0]);
-    
-    if(deviceData[0] !== undefined){
-      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + deviceData[0].userId;
-      const userResponse = await fetch(userURI);
-      const user = await userResponse.json();
-      setUser(user[0]);
-  
-      setError(null);
-      setIsLoading(false);
-    } else {
-      setError('Không có dữ liệu');
+      if (deviceData[0] !== undefined) {
+        setError(null);
+        await getUser(deviceData[0].userId);
+      } else {
+        setError('Không có dữ liệu');
+      }
       setIsLoading(false);
     }
 
+    const getUser = async (id) => {
+      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + id;
+      const userResponse = await fetch(userURI);
+      const user = await userResponse.json();
+      setUser(user[0]);
+    }
+
+    getDevice();
   }, [])
 
   const renderDevice = (device) => {
@@ -72,7 +76,7 @@ const DeviceDetail = () => {
     return (
       <>
         <div className='content'>
-          <button className='edit-device-button' onClick={() => alert(device.id)}>Edit</button>
+          <Link to='edit'><button className='edit-device-button'>Edit</button></Link>
           <h2>Device information</h2>
           {renderDevice(device)}
           <h2>Holder information</h2>
@@ -81,14 +85,6 @@ const DeviceDetail = () => {
       </>
     )
   }
-
-  return (
-    <>
-      <div className='content'>
-
-      </div>
-    </>
-  )
 }
 
 export default DeviceDetail;
