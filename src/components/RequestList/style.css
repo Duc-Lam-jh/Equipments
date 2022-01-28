@@ -62,12 +62,12 @@
 }
 
 .item .controls .decline {
-	color: #009aa8;
+	color: #ff0000;
 	background-color: transparent;
 }
 
 .item .controls .decline:hover {
-	color: #2fafbb;
+	color: rgb(255, 123, 123);
 }
 
 @media screen and (min-width: 900px) {
