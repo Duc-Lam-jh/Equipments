@@ -25,4 +25,15 @@ const ItemEdit = (props) => {
   )
 }
 
+ItemEdit.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    configuration: 'Chưa có thông tin',
+    size: 'Chưa có thông tin',
+    description: 'Chưa có thông tin',
+    seriesNumber: 'Chưa có thông tin',
+  },
+  images: []
+}
+
 export default ItemEdit;
