@@ -29,4 +29,8 @@ class MessagePrompt extends Component {
   }
 }
 
+MessagePrompt.defaultProps = {
+  msg: 'OK'
+}
+
 export default MessagePrompt;
