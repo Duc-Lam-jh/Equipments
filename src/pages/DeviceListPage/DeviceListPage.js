@@ -27,7 +27,7 @@ const DeviceListPage = () => {
   return (
     <>
       <div className='content'>
-        <h2>Device list</h2>
+        <h1>Device list</h1>
         {devices && <DeviceList
           devices={devices}/>}
       </div>
