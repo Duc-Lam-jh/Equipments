@@ -38,7 +38,7 @@ const DeviceList = (props) => {
           <div className='item'>
             {renderDeviceType(device.type)}
             {renderImage(device.images[0])}
-            <div className='owner'>Owner: {device.user.name}</div>
+            <div className='owner'>Owner: {device.userName}</div>
           </div>
         </Link>
       )
