@@ -15,6 +15,7 @@ class ImageInput extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.images.length !== this.state.images.length){
+      // console.log(this.state.images.length);
       this.props.onChange(this.state.images);
     }
   }
@@ -32,7 +33,8 @@ class ImageInput extends Component {
       reader.readAsDataURL(image);
       reader.onload = () => {
         this.setState({
-          images: [...this.state.images, reader.result]
+          images: [...this.state.images, reader.result],
+          prevImages: [...this.state.images, reader.result]
         })
       }
     })
