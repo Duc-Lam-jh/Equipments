@@ -1,0 +1,10 @@
+.device-list-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.device-list-container .item {
+  background-color: blue;
+  padding: 50px;
+}
