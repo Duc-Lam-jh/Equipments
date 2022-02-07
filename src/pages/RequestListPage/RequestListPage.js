@@ -3,13 +3,53 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RequestList from '../../components/RequestList/RequestList';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
+import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import { editRequest, setFormPrompt } from '../../app/redux';
+import {
+  FORM_TYPE_DESKTOP,
+  FORM_TYPE_LAPTOP,
+  FORM_TYPE_MOUSE,
+  FORM_TYPE_OTHER
+} from '../../app/utilities/index'
 
 const RequestListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [requests, setRequests] = useState([]);
+  const [originalRequests, setOriginalRequests] = useState([]);
   const dispatch = useDispatch();
   const msg = useSelector(state => state.form.msg);
+
+  const filterList = [
+    {
+      name: 'All',
+      type: 'all'
+    },
+    {
+      name: 'Laptop/PC',
+      type: FORM_TYPE_LAPTOP
+    },
+    {
+      name: 'Desktop',
+      type: FORM_TYPE_DESKTOP
+    },
+    {
+      name: 'Mouse',
+      type: FORM_TYPE_MOUSE
+    },
+    {
+      name: 'Other',
+      type: FORM_TYPE_OTHER
+    }
+  ]
+
+  const handleChangeFilter = type => {
+    if(type === 'all') {
+      setRequests([...originalRequests]);
+      return;
+    }
+    const filteredArray = originalRequests.filter(item => item.type === type);
+    setRequests([...filteredArray]);
+  }
 
   useEffect(() => {
     const getUser = async (id) => {
@@ -29,6 +69,7 @@ const RequestListPage = () => {
       }
       
       setRequests(requestData);
+      setOriginalRequests(requestData);
       setIsLoading(false);
     }
 
@@ -54,6 +95,7 @@ const RequestListPage = () => {
         }
         <div className='content'>
           <h1>List of requests</h1>
+          <ArrayFilter filterList={filterList} handleChangeFilter={(type) => handleChangeFilter(type)} />
           {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
         </div>
       </>
