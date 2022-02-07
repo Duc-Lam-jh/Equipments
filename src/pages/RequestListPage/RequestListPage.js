@@ -80,6 +80,8 @@ const RequestListPage = () => {
     dispatch(editRequest(request));
 
     setRequests(requests.filter(item => item.id !== request.id));
+    setOriginalRequests(originalRequests.filter(item => item.id !== request.id));
+
   }
 
   if (isLoading) {
