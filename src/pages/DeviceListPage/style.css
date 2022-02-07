@@ -1,10 +1,29 @@
 .device-list-container{
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 20px;
+
+  width: 90%;
 }
 
 .device-list-container .item {
+  display: flex;
+  flex-direction: column;
+
+  width: 250px;
+  height: 250px;
+
+  flex: 0 0 250px;
+
   background-color: blue;
-  padding: 50px;
+}
+
+.device-list-container .item .title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
