@@ -25,9 +25,6 @@ const DeviceList = (props) => {
   }
 
   const renderImage = (image) => {
-    // const container = document.createElement('div');
-    // container.style.backgroundImage = 'url(image)';
-    // container.classList.add('image');
     return <div className='image'>
       <img src={image} alt='Preview image of device' />
     </div>;
@@ -35,12 +32,15 @@ const DeviceList = (props) => {
 
   const renderDevices = () => {
     const deviceList = devices.map(device => {
+      const deviceUri = '/devices/' + device.id;
       return (
-        <div className='item' key={device.id}>
-          {renderDeviceType(device.type)}
-          {renderImage(device.images[0])}
-          <div className='owner'>Owner: {device.user.name}</div>
-        </div>
+        <Link to={deviceUri} key={device.id}>
+          <div className='item'>
+            {renderDeviceType(device.type)}
+            {renderImage(device.images[0])}
+            <div className='owner'>Owner: {device.user.name}</div>
+          </div>
+        </Link>
       )
     });
     return deviceList;
