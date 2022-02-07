@@ -34,13 +34,22 @@
 .device-list-container .item .image {
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 
-  background-color: #13ccdd;
+  background-color: #73f3ff;
+}
+
+.item .image img{
+  width: 100%;
 }
 
 .device-list-container .item .owner {
   position: absolute;
   bottom: 0px;
+
+  max-width: 80%;
   
   padding: 3px 10px;
 
