@@ -39,7 +39,13 @@ ItemEdit.defaultProps = {
 }
 
 ItemEdit.propTypes = {
-  detail: PropTypes.object.isRequired,
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    configuration: PropTypes.string,
+    size: PropTypes.string,
+    description: PropTypes.string,
+    seriesNumber: PropTypes.string,
+  }).isRequired,
   images: PropTypes.array.isRequired
 }
 
