@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../../app/img/logo-white.png';
@@ -52,6 +53,19 @@ class Sidebar extends Component {
       </div>
     </>;
   }
+}
+
+Sidebar.defaultProps = {
+  items: [
+    {
+      path: '/',
+      title: 'Home'
+    }
+  ]
+}
+
+Sidebar.propsType = {
+  items: PropTypes.array.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
 class MessagePrompt extends Component {
@@ -27,6 +28,14 @@ class MessagePrompt extends Component {
       </div>
     );
   }
+}
+
+MessagePrompt.defaultProps = {
+  msg: 'OK'
+}
+
+MessagePrompt.propsTypes = {
+  msg: PropTypes.string.isRequired
 }
 
 export default MessagePrompt;

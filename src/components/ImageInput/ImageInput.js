@@ -32,7 +32,8 @@ class ImageInput extends Component {
       reader.readAsDataURL(image);
       reader.onload = () => {
         this.setState({
-          images: [...this.state.images, reader.result]
+          images: [...this.state.images, reader.result],
+          prevImages: [...this.state.images, reader.result]
         })
       }
     })

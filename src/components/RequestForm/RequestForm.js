@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
-import { requestNewDevice } from '../../app/redux';
+import MessagePrompt from '../MessagePrompt/MessagePrompt';
+import { requestNewDevice, setFormPrompt } from '../../app/redux';
 
 class RequestForm extends Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class RequestForm extends Component {
   }
 
   render() {
+    const msg = this.props.msg;
+
     return <div className='content'>
+      {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
       <h2>Fill in the form to request a new device</h2>
       <Form
         onSubmit={this.handleSubmit}
@@ -83,13 +87,15 @@ class RequestForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    msg: state.form.msg
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submit: (formData) => dispatch(requestNewDevice(formData))
+    submit: (formData) => dispatch(requestNewDevice(formData)),
+    setFormPrompt: msg => dispatch(setFormPrompt(msg)),
   }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form } from 'react-final-form';
+import PropTypes from 'prop-types';
+
 import EditItemFields from './EditItemFields';
 
 const ItemEdit = (props) => {
@@ -23,6 +25,28 @@ const ItemEdit = (props) => {
       />
     </>
   )
+}
+
+ItemEdit.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    configuration: 'Chưa có thông tin',
+    size: 'Chưa có thông tin',
+    description: 'Chưa có thông tin',
+    seriesNumber: 'Chưa có thông tin',
+  },
+  images: []
+}
+
+ItemEdit.propTypes = {
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    configuration: PropTypes.string,
+    size: PropTypes.string,
+    description: PropTypes.string,
+    seriesNumber: PropTypes.string,
+  }).isRequired,
+  images: PropTypes.array.isRequired
 }
 
 export default ItemEdit;

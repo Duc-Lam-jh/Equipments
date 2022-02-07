@@ -5,13 +5,10 @@ import ImageInput from '../../ImageInput/ImageInput';
 import { FORM_TYPE_DESKTOP } from '../../../app/utilities/index';
 
 class DesktopForm extends Component {
+
   handleSubmit = (formData) => {
     formData.type = FORM_TYPE_DESKTOP;
     this.props.handleSubmit(formData);
-  }
-
-  handleAddImage = (image) => {
-    this.props.handleAddImage(image);
   }
 
   render() {
@@ -80,7 +77,7 @@ class DesktopForm extends Component {
                 <>
                   <label>Image
                   </label>
-                  <label className="image"><ImageInput onChange={(image) => this.handleAddImage(image)} /></label>
+                  <label className="image"><ImageInput onChange={(image) => this.props.handleAddImage(image)} /></label>
                 </>
               )}
             </Field>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DesktopInfo = (props) => {
   const { detail } = props;
@@ -25,6 +26,24 @@ const DesktopInfo = (props) => {
 
     </div>
   )
+}
+
+DesktopInfo.defaultProps = {
+  detail: {
+    brand: 'Chưa có thông tin',
+    configuration: 'Chưa có thông tin',
+    size: 'Chưa có thông tin',
+    images: []
+  },
+}
+
+DesktopInfo.propTypes = {
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    configuration: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired
+  }).isRequired
 }
 
 export default DesktopInfo;
