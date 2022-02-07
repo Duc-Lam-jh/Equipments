@@ -15,7 +15,6 @@ class ImageInput extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.images.length !== this.state.images.length){
-      // console.log(this.state.images.length);
       this.props.onChange(this.state.images);
     }
   }
