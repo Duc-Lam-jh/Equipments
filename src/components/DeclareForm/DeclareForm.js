@@ -28,7 +28,6 @@ class DeclareForm extends Component {
   }
 
   handleAddImage = (images) => {
-    console.log('length: ', images.length);
     this.setState({
       images: [...images]
     })
