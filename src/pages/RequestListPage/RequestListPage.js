@@ -27,12 +27,12 @@ const RequestListPage = () => {
       for(let i = 0; i < requestData.length; i++) {
         requestData[i].user = await getUser(requestData[i].userId);
       }
-
+      
       setRequests(requestData);
+      setIsLoading(false);
     }
 
     getPendingRequests();
-    setIsLoading(false);
   }, [])
 
   const handleChangeRequestStatus = (request) => {
