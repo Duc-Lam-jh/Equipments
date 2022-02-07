@@ -38,7 +38,12 @@ DesktopInfo.defaultProps = {
 }
 
 DesktopInfo.propTypes = {
-  detail: PropTypes.object.isRequired
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    configuration: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired
+  }).isRequired
 }
 
 export default DesktopInfo;

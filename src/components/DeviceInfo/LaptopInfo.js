@@ -38,7 +38,12 @@ LaptopInfo.defaultProps = {
 }
 
 LaptopInfo.propTypes = {
-  detail: PropTypes.object.isRequired
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    configuration: PropTypes.string.isRequired,
+    seriesNumber: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired
+  }).isRequired
 }
 
 export default LaptopInfo;

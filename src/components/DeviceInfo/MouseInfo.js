@@ -30,7 +30,10 @@ MouseInfo.defaultProps = {
 }
 
 MouseInfo.propTypes = {
-  detail: PropTypes.object.isRequired
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired
+  }).isRequired
 }
 
 export default MouseInfo;

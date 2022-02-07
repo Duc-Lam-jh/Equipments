@@ -26,7 +26,11 @@ UserInfo.defaultProps = {
 }
 
 UserInfo.propTypes = {
-  detail: PropTypes.object.isRequired
+  detail: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    team: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default UserInfo;
