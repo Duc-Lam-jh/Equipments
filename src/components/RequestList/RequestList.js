@@ -5,7 +5,9 @@ import {
   FORM_TYPE_LAPTOP,
   FORM_TYPE_MOUSE,
   FORM_TYPE_OTHER,
-  DEVICE_TYPE_ICON_SIZE
+  DEVICE_TYPE_ICON_SIZE,
+  ACCEPT_KEYWORD,
+  DECLINE_KEYWORD
 } from '../../app/utilities/index';
 import laptopIcon from '../../app/img/laptop-icon.png';
 import desktopIcon from '../../app/img/desktop-icon.png';
@@ -27,10 +29,10 @@ const RequestList = (props) => {
             <div className='subtitle'>{request.reason}</div>
           </div>
           <div className='controls'>
-            <button className='accept' onClick={() => handleChangeRequestStatus(request, 'accepted')}>
+            <button className='accept' onClick={() => handleChangeRequestStatus(request, ACCEPT_KEYWORD)}>
               Accept
             </button>
-            <button className='decline' onClick={() => handleChangeRequestStatus(request, 'declined')}>
+            <button className='decline' onClick={() => handleChangeRequestStatus(request, DECLINE_KEYWORD)}>
               Decline
             </button>
           </div>

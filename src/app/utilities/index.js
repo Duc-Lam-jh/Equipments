@@ -4,6 +4,8 @@ export const FORM_TYPE_LAPTOP = 'laptop';
 export const FORM_TYPE_OTHER = 'other';
 
 export const SUCCESS_MESSAGE = 'Successful!';
+export const ACCEPT_KEYWORD = 'accepted';
+export const DECLINE_KEYWORD = 'declined';
 
 export const LOGO_SIZE = 50;
 export const MENU_BUTTON_SIZE = 45;
