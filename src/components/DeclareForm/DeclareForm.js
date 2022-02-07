@@ -17,6 +17,7 @@ class DeclareForm extends Component {
     super(props);
     this.state = {
       userId: props.userId,
+      userName: props.userName,
       images: [],
     }
   }
@@ -24,11 +25,11 @@ class DeclareForm extends Component {
   handleSubmit = (formData) => {
     formData.userId = this.state.userId;
     formData.images = this.state.images;
+    formData.userName = this.state.userName;
     this.props.submit(formData);
   }
 
   handleAddImage = (images) => {
-    console.log('length: ', images.length);
     this.setState({
       images: [...images]
     })
@@ -70,6 +71,7 @@ class DeclareForm extends Component {
 const mapStateToProps = (state) => {
   return {
     userId: state.auth.userId,
+    userName: state.auth.userName,
     error: state.form.error,
     msg: state.form.msg
   }
