@@ -10,6 +10,10 @@
   width: 90%;
 }
 
+.device-list-container Link{
+  text-decoration: none;
+}
+
 .device-list-container .item {
   position: relative;
   display: flex;
@@ -26,7 +30,6 @@
   padding: 10px 0;
 
   font-weight: 600;
-  text-decoration: none;
 
   color: white;
   background-color: #009aa8;

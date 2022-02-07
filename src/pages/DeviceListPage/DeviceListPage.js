@@ -7,6 +7,12 @@ const DeviceListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [devices, setDevices] = useState([]);
 
+  const filterList = [
+    {
+      name: 'All',
+    }
+  ]
+
   useEffect(() => {
     const getDevices = async () => {
       const uri = process.env.REACT_APP_BASE_API_URL + '/devices';

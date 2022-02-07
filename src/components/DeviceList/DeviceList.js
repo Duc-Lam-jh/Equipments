@@ -34,13 +34,11 @@ const DeviceList = (props) => {
     const deviceList = devices.map(device => {
       const deviceUri = '/devices/' + device.id;
       return (
-        <Link to={deviceUri} key={device.id}>
-          <div className='item'>
+          <Link to={deviceUri} key={device.id} style={{textDecoration: 'none'}} className='item'>
             {renderDeviceType(device.type)}
             {renderImage(device.images[0])}
             <div className='owner'>Owner: {device.userName}</div>
-          </div>
-        </Link>
+          </Link>
       )
     });
     return deviceList;
