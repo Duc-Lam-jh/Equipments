@@ -1,14 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DeviceList = () => {
+const DeviceList = (props) => {
+  const { devices } = props;
 
-  return(
+  return (
     <>
-      <div className='content'>
-        <Link to='1'>1</Link>
-        <Link to='2'>2</Link>
-        <Link to='3'>3</Link>
+      <div className='device-list-container'>
+        <div className='item'>
+          <div className='device-type'>Laptop/PC</div>
+          <div className='image'></div>
+          <div className='owner'>Duc Lam</div>
+          <div className='team'>Yin yang</div>
+        </div>
+        <div className='item'>
+          asdasd
+        </div>
+        <div className='item'>
+          asdasd
+        </div>
+        <div className='item'>
+          asdasd
+        </div>
+        <div className='item'>
+          asdasd
+        </div>
       </div>
     </>
   )
