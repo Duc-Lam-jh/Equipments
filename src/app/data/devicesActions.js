@@ -1,4 +1,4 @@
-import { doc, getDocs } from 'firebase/firestore';
+import { getDocs, getDoc, doc } from 'firebase/firestore';
 import { devicesCollection } from '../../app/firebase/firestoreConfig';
 
 const getAllDevices = async () => {
@@ -16,6 +16,18 @@ const getAllDevices = async () => {
   return devices;
 }
 
+const getDeviceById = async id => {
+  // const deviceQuery = query(devicesCollection, where(FieldPath.documentId(), "==", id));
+  const snap = await getDoc(doc(devicesCollection, id));
+  if (snap.exists()) {
+    return snap.data();
+  }
+  else {
+    return null;
+  }
+}
+
 export {
-  getAllDevices
+  getAllDevices,
+  getDeviceById
 }
