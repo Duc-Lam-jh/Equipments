@@ -5,11 +5,15 @@ import RequestList from '../../components/RequestList/RequestList';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import { editRequest, setFormPrompt } from '../../app/redux';
+
+import { getRequestsByStatus } from '../../app/data/requestsActions';
+import { getUserById } from '../../app/data/usersActions';
+
 import {
   FORM_TYPE_DESKTOP,
   FORM_TYPE_LAPTOP,
   FORM_TYPE_MOUSE,
-  FORM_TYPE_OTHER
+  PENDING_KEYWORD
 } from '../../app/utilities/index'
 
 const RequestListPage = () => {
@@ -48,20 +52,12 @@ const RequestListPage = () => {
   }
 
   useEffect(() => {
-    const getUser = async (id) => {
-      const uri = process.env.REACT_APP_BASE_API_URL + '/users?id=' + id;
-      const userResponse = await fetch(uri);
-      const user = await userResponse.json();
-      return user[0];
-    }
 
     const getPendingRequests = async () => {
-      const uri = process.env.REACT_APP_BASE_API_URL + '/requests?status=pending';
-      const response = await fetch(uri);
-      const requestData = await response.json();
+      const requestData = await getRequestsByStatus(PENDING_KEYWORD);
 
       for(let i = 0; i < requestData.length; i++) {
-        requestData[i].user = await getUser(requestData[i].userId);
+        requestData[i].user = await getUserById(requestData[i].userId);
       }
       
       setRequests(requestData);
