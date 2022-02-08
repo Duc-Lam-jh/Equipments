@@ -40,7 +40,7 @@ const DeviceListPage = () => {
     }
   ]
 
-  const handleChangeFilter = type => {
+  const filterDeviceList = type => {
     if(type === 'all') {
       setDevices([...originalDevices]);
       return;
@@ -72,7 +72,7 @@ const DeviceListPage = () => {
       <div className='content'>
         <h1>Device list</h1>
 
-        <ArrayFilter filterList={filterList} handleChangeFilter={(type) => handleChangeFilter(type)} />
+        <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
 
         {devices && <DeviceList
           devices={devices} />}

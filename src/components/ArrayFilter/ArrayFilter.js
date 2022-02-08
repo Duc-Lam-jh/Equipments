@@ -16,7 +16,7 @@ const ArrayFilter = (props) => {
         item.classList.remove('active');
       }
     })
-    props.handleChangeFilter(type);
+    props.handleFilterArray(type);
   }
 
   const renderFilter = () => {

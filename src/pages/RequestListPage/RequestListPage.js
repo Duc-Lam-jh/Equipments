@@ -35,14 +35,10 @@ const RequestListPage = () => {
     {
       name: 'Mouse',
       type: FORM_TYPE_MOUSE
-    },
-    {
-      name: 'Other',
-      type: FORM_TYPE_OTHER
     }
   ]
 
-  const handleChangeFilter = type => {
+  const filterRequestList = type => {
     if(type === 'all') {
       setRequests([...originalRequests]);
       return;
@@ -97,7 +93,7 @@ const RequestListPage = () => {
         }
         <div className='content'>
           <h1>List of requests</h1>
-          <ArrayFilter filterList={filterList} handleChangeFilter={(type) => handleChangeFilter(type)} />
+          <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterRequestList(type)} />
           {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
         </div>
       </>
