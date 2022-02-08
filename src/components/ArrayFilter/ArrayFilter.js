@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
 const ArrayFilter = (props) => {
   const { filterList } = props;
+  const filterContainer = useRef(null);
 
   const handleChangeFilter = (type) => {
-    const buttons = document.querySelectorAll('.filter-item');
+    const container = filterContainer.current;
+    const buttons = container.querySelectorAll('.filter-item');
     buttons.forEach(item => {
       if(item.id === type){
         item.classList.add('active');
@@ -29,7 +31,7 @@ const ArrayFilter = (props) => {
 
   return (
     <>
-      <div className='device-type-picker'>
+      <div className='device-type-picker' ref={filterContainer}>
         {renderFilter()}
       </div>
     </>
