@@ -11,7 +11,6 @@ import {
 
 const DeviceList = (props) => {
   const { devices } = props;
-  console.log(devices);
 
   const renderDeviceType = (type) => {
     switch (type) {

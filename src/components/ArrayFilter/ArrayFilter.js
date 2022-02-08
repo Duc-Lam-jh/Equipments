@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
 const ArrayFilter = (props) => {
@@ -33,6 +34,13 @@ const ArrayFilter = (props) => {
       </div>
     </>
   )
+}
+
+ArrayFilter.propTypes = {
+ filterList: PropTypes.arrayOf(PropTypes.shape({
+   name: PropTypes.string.isRequired,
+   type: PropTypes.string.isRequired
+ }))
 }
 
 export default ArrayFilter;
