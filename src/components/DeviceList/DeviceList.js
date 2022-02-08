@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import {
@@ -10,6 +11,7 @@ import {
 
 const DeviceList = (props) => {
   const { devices } = props;
+  console.log(devices);
 
   const renderDeviceType = (type) => {
     switch (type) {
@@ -51,6 +53,17 @@ const DeviceList = (props) => {
       </div>
     </>
   )
+}
+
+DeviceList.propTypes = {
+  detail: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired,
+    configuration: PropTypes.string,
+    size: PropTypes.string,
+    team: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+  })
 }
 
 export default DeviceList;
