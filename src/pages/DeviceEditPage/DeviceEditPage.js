@@ -7,6 +7,7 @@ import ItemEdit from '../../components/ItemEdit/ItemEdit';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
 
 import { editDeviceDetail, setFormPrompt } from '../../app/redux';
+import { getDeviceById } from '../../app/data/devicesActions';
 
 const DeviceEditPage = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,11 @@ const DeviceEditPage = () => {
     setIsLoading(true);
 
     const getDevice = async () => {
-      const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
-      const deviceReponse = await fetch(deviceURI);
-      const deviceData = await deviceReponse.json();
+      const deviceData = await getDeviceById(id);
 
-      if (deviceData[0] !== undefined) {
-        setDevice(deviceData[0]);
-        setImages(deviceData[0].images);
+      if (deviceData !== undefined) {
+        setDevice(deviceData);
+        setImages(deviceData.images);
         setError(null);
         setIsLoading(false);
       } else {

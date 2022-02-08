@@ -21,9 +21,6 @@ const getDeviceById = async id => {
   if (snap.exists()) {
     return snap.data();
   }
-  else {
-    return null;
-  }
 }
 
 export {
