@@ -17,7 +17,6 @@ const getAllDevices = async () => {
 }
 
 const getDeviceById = async id => {
-  // const deviceQuery = query(devicesCollection, where(FieldPath.documentId(), "==", id));
   const snap = await getDoc(doc(devicesCollection, id));
   if (snap.exists()) {
     return snap.data();
