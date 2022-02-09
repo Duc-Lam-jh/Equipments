@@ -6,6 +6,7 @@ const setActiveUser = (credentials) => {
     userId: credentials.id,
     userEmail: credentials.email,
     userRole: credentials.role,
+    userName: credentials.name
   }
 }
 
@@ -47,6 +48,7 @@ const signIn = (credentials) => {
           localStorage.setItem("userEmail", data[0].email);
           localStorage.setItem("userRole", data[0].role);
           localStorage.setItem("userId", data[0].id);
+          localStorage.setItem("userName", data[0].name);
         }
       }
     })

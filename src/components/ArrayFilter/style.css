@@ -1,0 +1,19 @@
+.filter-item {
+	padding: 5px 20px;
+	color: #009aa8;
+	border-radius: 20px;
+}
+
+.filter-item:hover,
+.filter-item.active {
+	color: white;
+	background-color: #009aa8;
+}
+
+@media screen and (min-width: 900px) {
+	.filter-item {
+		border: #009aa8 solid 2px;
+	
+		cursor: pointer;
+	}
+}
