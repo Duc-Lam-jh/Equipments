@@ -2,6 +2,7 @@ import actionTypes from './formActionTypes';
 
 import { SUCCESS_MESSAGE } from '../../utilities/index';
 import { addNewRequest } from '../../data/requestsActions';
+import { addNewDevice } from '../../data/devicesActions';
 
 const setFormPrompt = msg => {
   return {
@@ -18,16 +19,9 @@ const setFormError = error => {
 }
 
 const declareNewDevice = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/devices';
-
   return (dispatch) => {
-    fetch(uri, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
+    addNewDevice(formData)
+    .then(() => {
       dispatch(setFormPrompt(SUCCESS_MESSAGE));
     }).catch(error => {
       dispatch(setFormPrompt(error.message));

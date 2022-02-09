@@ -1,5 +1,9 @@
-import { getDocs, getDoc, doc } from 'firebase/firestore';
+import { 
+  getDocs, getDoc, doc,
+  addDoc, setDoc
+} from 'firebase/firestore';
 import { devicesCollection } from '../../app/firebase/firestoreConfig';
+import { setFormPrompt } from '../redux/form/formActions';
 
 const getAllDevices = async () => {
   const response = await getDocs(devicesCollection);
@@ -23,7 +27,18 @@ const getDeviceById = async id => {
   }
 }
 
+const addNewDevice = async data => {
+  try{
+    addDoc(devicesCollection, data)
+  }
+  catch (error) {
+    setFormPrompt(error);
+  }
+}
+
 export {
   getAllDevices,
-  getDeviceById
+  getDeviceById,
+
+  addNewDevice
 }
