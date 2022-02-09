@@ -1,6 +1,7 @@
 import actionTypes from './formActionTypes';
 
 import { SUCCESS_MESSAGE } from '../../utilities/index';
+import { addNewRequest } from '../../data/requestsActions';
 
 const setFormPrompt = msg => {
   return {
@@ -52,20 +53,13 @@ const editDeviceDetail = (formData) => {
 }
 
 const requestNewDevice = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/requests';
   formData.status = 'pending';
 
   return (dispatch) => {
-    fetch(uri, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
+    addNewRequest(formData)
+    .then(() => {
       dispatch(setFormPrompt(SUCCESS_MESSAGE));
     }).catch(error => {
-      console.log(error);
       dispatch(setFormError(error.message));
     })
   }

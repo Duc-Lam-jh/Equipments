@@ -1,5 +1,10 @@
-import { getDocs, getDoc, doc, query, where } from 'firebase/firestore';
+import { 
+  getDocs, getDoc, doc, 
+  setDoc, addDoc,
+  query, where 
+} from 'firebase/firestore';
 import { requestsCollection } from '../../app/firebase/firestoreConfig';
+import { setFormPrompt } from '../redux/form/formActions';
 
 const getAllRequests = async () => {
   const response = await getDocs(requestsCollection);
@@ -39,8 +44,19 @@ const getRequestById = async id => {
   }
 }
 
+const addNewRequest = async (data) => {
+  try{
+    addDoc(requestsCollection, data)
+  }
+  catch (error) {
+    setFormPrompt(error);
+  }
+}
+
 export {
   getAllRequests,
   getRequestsByStatus,
-  getRequestById
+  getRequestById,
+
+  addNewRequest
 }
