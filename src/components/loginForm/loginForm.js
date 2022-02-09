@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../app/redux';
@@ -12,6 +12,12 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(error){
+      setIsLoading(false);
+    }
+  })
 
   const handleSubmit = (formData) => {
     dispatch(signIn(formData));

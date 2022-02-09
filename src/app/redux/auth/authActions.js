@@ -42,23 +42,22 @@ const setError = (msg) => {
 }
 
 const signIn = (credentials) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/users?q=' + credentials.email;
-
   return (dispatch) => {
+    dispatch(setError(null));
     signInWithEmailAndPassword(authConnection, credentials.email, credentials.password)
       .then(cred => {
         getUserByEmail(cred.user.email)
-        .then(userData => {
-          dispatch(setActiveUser({...userData}));
+          .then(userData => {
+            dispatch(setActiveUser({ ...userData }));
 
-          localStorage.setItem("userEmail", userData.email);
-          localStorage.setItem("userRole", userData.role);
-          localStorage.setItem("userId", userData.id);
-          localStorage.setItem("userName", userData.name);
-        })
-        .catch(error => {
-          dispatch(setError(error.message));
-        })
+            localStorage.setItem("userEmail", userData.email);
+            localStorage.setItem("userRole", userData.role);
+            localStorage.setItem("userId", userData.id);
+            localStorage.setItem("userName", userData.name);
+          })
+          .catch(error => {
+            dispatch(setError(error.message));
+          })
       })
       .catch(error => {
         dispatch(setError(error.message));
