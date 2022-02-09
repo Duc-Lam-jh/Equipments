@@ -34,10 +34,10 @@ const getUserByEmail = async email => {
   const response = await getDocs(userQuery);
   const documents = response.docs;
 
-  if(documents.length !== 1){
+  if (documents.length !== 1) {
     return
   }
-  return documents[0].data();
+  return { ...documents[0].data(), id: documents[0].id };
 }
 
 export {

@@ -29,7 +29,7 @@ const getDeviceById = async id => {
 
 const addNewDevice = async data => {
   try {
-    addDoc(devicesCollection, data)
+    addDoc(devicesCollection, data);
   }
   catch (error) {
     setFormPrompt(error);
