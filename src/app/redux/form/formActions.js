@@ -2,7 +2,7 @@ import actionTypes from './formActionTypes';
 
 import { SUCCESS_MESSAGE } from '../../utilities/index';
 import { addNewRequest } from '../../data/requestsActions';
-import { addNewDevice } from '../../data/devicesActions';
+import { addNewDevice, editDeviceById } from '../../data/devicesActions';
 
 const setFormPrompt = msg => {
   return {
@@ -21,28 +21,22 @@ const setFormError = error => {
 const declareNewDevice = (formData) => {
   return (dispatch) => {
     addNewDevice(formData)
-    .then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      dispatch(setFormPrompt(error.message));
-    })
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormPrompt(error.message));
+      })
   }
 }
 
 const editDeviceDetail = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/devices/' + formData.id;
   return (dispatch) => {
-    fetch(uri, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      dispatch(setFormPrompt(error.message));
-    })
+    editDeviceById(formData)
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormPrompt(error.message));
+      })
   }
 }
 
@@ -51,11 +45,11 @@ const requestNewDevice = (formData) => {
 
   return (dispatch) => {
     addNewRequest(formData)
-    .then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      dispatch(setFormError(error.message));
-    })
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormError(error.message));
+      })
   }
 }
 
