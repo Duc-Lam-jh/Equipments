@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../app/redux';
 
+import MessagePrompt from '../MessagePrompt/MessagePrompt';
 import { emailRegex } from '../../app/utilities/regex';
 
 import './style.css';
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
 
   const handleSubmit = (formData) => {
     dispatch(signIn(formData));
+    setIsLoading(true);
   }
 
   const handleValidate = (formData) => {
@@ -32,6 +35,7 @@ const LoginForm = () => {
 
   return (
     <>
+    {isLoading && <MessagePrompt msg="Logging in..." />}
       <Form
         onSubmit={handleSubmit}
         validate={handleValidate}
