@@ -1,10 +1,13 @@
-import { getDocs, getDoc, doc } from 'firebase/firestore';
+import {
+  getDocs, getDoc, doc,
+  query, where
+} from 'firebase/firestore';
 import { usersCollection } from '../../app/firebase/firestoreConfig';
 
 const getAllUsers = async () => {
   const response = await getDocs(usersCollection);
   const documents = response.docs;
-  
+
   const users = [];
   documents.forEach(item => {
     users.push({
@@ -26,7 +29,19 @@ const getUserById = async id => {
   }
 }
 
+const getUserByEmail = async email => {
+  const userQuery = query(usersCollection, where("email", "==", email));
+  const response = await getDocs(userQuery);
+  const documents = response.docs;
+
+  if(documents.length !== 1){
+    return
+  }
+  return documents[0].data();
+}
+
 export {
   getAllUsers,
-  getUserById
+  getUserById,
+  getUserByEmail
 }

@@ -1,4 +1,8 @@
 import actionTypes from './authActionTypes';
+import { signInWithEmailAndPassword, signOut as firebaseSignOut } from "firebase/auth"
+
+import { authConnection } from "../../firebase/authConfig"
+import { getUserByEmail } from '../../data/usersActions';
 
 const setActiveUser = (credentials) => {
   return {
@@ -30,28 +34,35 @@ const setErrorWrongPassword = () => {
   }
 }
 
+const setError = (msg) => {
+  return {
+    type: actionTypes.AUTH_ERROR,
+    error: msg,
+  }
+}
+
 const signIn = (credentials) => {
   const uri = process.env.REACT_APP_BASE_API_URL + '/users?q=' + credentials.email;
 
   return (dispatch) => {
-    fetch(uri)
-    .then(res => res.json())
-    .then(data => {
-      if(data.length === 0) {
-        dispatch(setErrorUserNotExist());
-      } else {
-        if(credentials.password !== data[0].password) {
-        dispatch(setErrorWrongPassword());
-        } else {
-          dispatch(setActiveUser({...data[0]}));
+    signInWithEmailAndPassword(authConnection, credentials.email, credentials.password)
+      .then(cred => {
+        getUserByEmail(cred.user.email)
+        .then(userData => {
+          dispatch(setActiveUser({...userData}));
 
-          localStorage.setItem("userEmail", data[0].email);
-          localStorage.setItem("userRole", data[0].role);
-          localStorage.setItem("userId", data[0].id);
-          localStorage.setItem("userName", data[0].name);
-        }
-      }
-    })
+          localStorage.setItem("userEmail", userData.email);
+          localStorage.setItem("userRole", userData.role);
+          localStorage.setItem("userId", userData.id);
+          localStorage.setItem("userName", userData.name);
+        })
+        .catch(error => {
+          dispatch(setError(error.message));
+        })
+      })
+      .catch(error => {
+        dispatch(setError(error.message));
+      })
   }
 }
 
@@ -59,7 +70,7 @@ const signOut = () => {
   return (dispatch) => {
     localStorage.clear();
     dispatch(setUserToNull());
-    window.location.href = '/';
+    firebaseSignOut(authConnection);
   }
 }
 
