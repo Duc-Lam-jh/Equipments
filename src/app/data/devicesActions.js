@@ -29,6 +29,7 @@ const getDeviceById = async id => {
 
 const addNewDevice = async data => {
   try{
+    console.log(data);
     addDoc(devicesCollection, data)
   }
   catch (error) {

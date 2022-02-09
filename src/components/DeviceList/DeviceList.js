@@ -12,8 +12,8 @@ import {
 const DeviceList = (props) => {
   const { devices } = props;
 
-  const renderDeviceType = (type) => {
-    switch (type) {
+  const renderDeviceType = (device) => {
+    switch (device.type) {
       case FORM_TYPE_DESKTOP:
         return <div className='device-type'>Desktop</div>
       case FORM_TYPE_LAPTOP:
@@ -21,7 +21,7 @@ const DeviceList = (props) => {
       case FORM_TYPE_MOUSE:
         return <div className='device-type'>Mouse</div>
       case FORM_TYPE_OTHER:
-        return <div className='device-type'>Other</div>
+        return <div className='device-type'>{device.description}</div>
     }
   }
 
@@ -36,7 +36,7 @@ const DeviceList = (props) => {
       const deviceUri = '/devices/' + device.id;
       return (
           <Link to={deviceUri} key={device.id} style={{textDecoration: 'none'}} className='item'>
-            {renderDeviceType(device.type)}
+            {renderDeviceType(device)}
             {renderImage(device.images[0])}
             <div className='owner'>Owner: {device.userName}</div>
           </Link>
