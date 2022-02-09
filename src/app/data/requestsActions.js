@@ -40,7 +40,7 @@ const getRequestsByStatus = async (status) => {
 const getRequestById = async id => {
   const snap = await getDoc(doc(requestsCollection, id));
   if (snap.exists()) {
-    return snap.data();
+    return { ...snap.data(), id: id};
   }
 }
 
@@ -53,10 +53,21 @@ const addNewRequest = async (data) => {
   }
 }
 
+const editRequestById = async data => {
+  try {
+    const documentRef = doc(requestsCollection, data.id);
+    delete data.id;
+    setDoc(documentRef, data);
+  }
+  catch (error) {
+    setFormPrompt(error);
+  }
+}
+
 export {
   getAllRequests,
   getRequestsByStatus,
   getRequestById,
-
-  addNewRequest
+  addNewRequest,
+  editRequestById
 }
