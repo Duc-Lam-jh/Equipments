@@ -42,6 +42,7 @@ const getRequestById = async id => {
   if (snap.exists()) {
     return { ...snap.data(), id: id};
   }
+  return null;
 }
 
 const addNewRequest = async (data) => {

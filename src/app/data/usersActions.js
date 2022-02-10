@@ -24,9 +24,7 @@ const getUserById = async id => {
   if (snap.exists()) {
     return snap.data();
   }
-  else {
-    return null;
-  }
+  return null;
 }
 
 const getUserByEmail = async email => {
