@@ -33,7 +33,7 @@ const getUserByEmail = async email => {
   const documents = response.docs;
 
   if (documents.length !== 1) {
-    return
+    return null;
   }
   return { ...documents[0].data(), id: documents[0].id };
 }

@@ -50,8 +50,13 @@ const signIn = (credentials) => {
       .then(cred => {
         getUserByEmail(cred.user.email)
           .then(userData => {
-            saveUserToBrowser({...userData});
-            dispatch(setActiveUser({ ...userData }));
+            if(userData !== null){
+              saveUserToBrowser({...userData});
+              dispatch(setActiveUser({ ...userData }));
+            }
+            else{
+              dispatch(setErrorUserNotExist());
+            }
           })
       })
       .catch(error => {
