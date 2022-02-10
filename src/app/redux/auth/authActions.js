@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signOut as firebaseSignOut } from "firebase
 
 import { authConnection } from "../../firebase/authConfig"
 import { getUserByEmail } from '../../data/usersActions';
+import { saveUserToBrowser } from '../../utilities/utilities';
 
 const setActiveUser = (credentials) => {
   return {
@@ -44,19 +45,13 @@ const setError = (msg) => {
 const signIn = (credentials) => {
   return (dispatch) => {
     dispatch(setError(null));
+
     signInWithEmailAndPassword(authConnection, credentials.email, credentials.password)
       .then(cred => {
         getUserByEmail(cred.user.email)
           .then(userData => {
+            saveUserToBrowser({...userData});
             dispatch(setActiveUser({ ...userData }));
-
-            localStorage.setItem("userEmail", userData.email);
-            localStorage.setItem("userRole", userData.role);
-            localStorage.setItem("userId", userData.id);
-            localStorage.setItem("userName", userData.name);
-          })
-          .catch(error => {
-            dispatch(setError(error.message));
           })
       })
       .catch(error => {
