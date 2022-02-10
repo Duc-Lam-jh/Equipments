@@ -43,25 +43,22 @@ const setError = (msg) => {
 }
 
 const signIn = (credentials) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setError(null));
-
-    signInWithEmailAndPassword(authConnection, credentials.email, credentials.password)
-      .then(cred => {
-        getUserByEmail(cred.user.email)
-          .then(userData => {
-            if(userData !== null){
-              saveUserToBrowser({...userData});
-              dispatch(setActiveUser({ ...userData }));
-            }
-            else{
-              dispatch(setErrorUserNotExist());
-            }
-          })
-      })
-      .catch(error => {
-        dispatch(setError(error.message));
-      })
+    try{
+      const signInResult = await signInWithEmailAndPassword(authConnection, credentials.email, credentials.password);
+      const userData = await getUserByEmail(signInResult.user.email);
+      if(userData !== null){
+        saveUserToBrowser({...userData});
+        dispatch(setActiveUser({ ...userData }));
+      }
+      else{
+        dispatch(setErrorUserNotExist());
+      }
+    }
+    catch(error){
+      dispatch(setError(error.message));
+    }
   }
 }
 
