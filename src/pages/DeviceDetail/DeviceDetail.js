@@ -26,7 +26,7 @@ const DeviceDetail = () => {
       const deviceData = await getDeviceById(id);
       setDevice(deviceData);
 
-      if (deviceData !== undefined) {
+      if (deviceData !== null) {
         setError(null);
         await getUser(deviceData.userId);
       } else {

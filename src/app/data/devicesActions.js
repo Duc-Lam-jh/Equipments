@@ -25,6 +25,7 @@ const getDeviceById = async id => {
   if (snap.exists()) {
     return { ...snap.data(), id: id };
   }
+  return null;
 }
 
 const addNewDevice = async data => {
