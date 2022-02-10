@@ -9,6 +9,8 @@ import OtherInfo from '../../components/DeviceInfo/OtherInfo';
 import UserInfo from '../../components/DeviceInfo/UserInfo';
 
 import { FORM_TYPE_DESKTOP, FORM_TYPE_LAPTOP, FORM_TYPE_MOUSE, FORM_TYPE_OTHER } from '../../app/utilities';
+import { getDeviceById } from '../../app/data/devicesActions';
+import { getUserById } from '../../app/data/usersActions';
 
 import './style.css';
 
@@ -21,14 +23,12 @@ const DeviceDetail = () => {
 
   useEffect(() => {
     const getDevice = async () => {
-      const deviceURI = process.env.REACT_APP_BASE_API_URL + '/devices?id=' + id;
-      const deviceReponse = await fetch(deviceURI);
-      const deviceData = await deviceReponse.json();
-      setDevice(deviceData[0]);
+      const deviceData = await getDeviceById(id);
+      setDevice(deviceData);
 
-      if (deviceData[0] !== undefined) {
+      if (deviceData !== null) {
         setError(null);
-        await getUser(deviceData[0].userId);
+        await getUser(deviceData.userId);
       } else {
         setError('Không có dữ liệu');
       }
@@ -36,10 +36,8 @@ const DeviceDetail = () => {
     }
 
     const getUser = async (id) => {
-      const userURI = process.env.REACT_APP_BASE_API_URL + '/users?id=' + id;
-      const userResponse = await fetch(userURI);
-      const user = await userResponse.json();
-      setUser(user[0]);
+      const user = await getUserById(id);
+      setUser(user);
     }
 
     getDevice();

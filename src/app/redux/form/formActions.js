@@ -1,6 +1,8 @@
 import actionTypes from './formActionTypes';
 
 import { SUCCESS_MESSAGE } from '../../utilities/index';
+import { addNewRequest, editRequestById } from '../../data/requestsActions';
+import { addNewDevice, editDeviceById } from '../../data/devicesActions';
 
 const setFormPrompt = msg => {
   return {
@@ -17,76 +19,48 @@ const setFormError = error => {
 }
 
 const declareNewDevice = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/devices';
-
   return (dispatch) => {
-    fetch(uri, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      dispatch(setFormPrompt(error.message));
-    })
+    addNewDevice(formData)
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormPrompt(error.message));
+      })
   }
 }
 
 const editDeviceDetail = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/devices/' + formData.id;
   return (dispatch) => {
-    fetch(uri, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      dispatch(setFormPrompt(error.message));
-    })
+    editDeviceById(formData)
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormPrompt(error.message));
+      })
   }
 }
 
 const requestNewDevice = (formData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/requests';
   formData.status = 'pending';
 
   return (dispatch) => {
-    fetch(uri, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    }).then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      console.log(error);
-      dispatch(setFormError(error.message));
-    })
+    addNewRequest(formData)
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormError(error.message));
+      })
   }
 }
 
 const editRequest = (requestData) => {
-  const uri = process.env.REACT_APP_BASE_API_URL + '/requests/' + requestData.id;
-
   return (dispatch) => {
-    fetch(uri, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestData)
-    }).then(() => {
-      dispatch(setFormPrompt(SUCCESS_MESSAGE));
-    }).catch(error => {
-      console.log(error);
-      dispatch(setFormError(error.message));
-    })
+    editRequestById(requestData)
+      .then(() => {
+        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+      }).catch(error => {
+        dispatch(setFormError(error.message));
+      })
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAllDevices } from '../../app/data/devicesActions';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import DeviceList from '../../components/DeviceList/DeviceList';
@@ -51,10 +52,7 @@ const DeviceListPage = () => {
 
   useEffect(() => {
     const getDevices = async () => {
-      const uri = process.env.REACT_APP_BASE_API_URL + '/devices';
-      const response = await fetch(uri);
-      const devices = await response.json();
-
+      const devices = await getAllDevices();
       setDevices([...devices]);
       setOriginalDevices([...devices]);
       setIsLoading(false);
