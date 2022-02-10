@@ -8,15 +8,12 @@ const getAllUsers = async () => {
   const response = await getDocs(usersCollection);
   const documents = response.docs;
 
-  const users = [];
-  documents.forEach(item => {
-    users.push({
+  return documents.map(item => {
+    return {
       id: item.id,
       ...item.data()
-    })
+    }
   })
-
-  return users;
 }
 
 const getUserById = async id => {

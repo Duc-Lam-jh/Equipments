@@ -9,15 +9,12 @@ const getAllDevices = async () => {
   const response = await getDocs(devicesCollection);
   const documents = response.docs;
 
-  const devices = [];
-  documents.forEach(item => {
-    devices.push({
+  return documents.map(item => {
+    return {
       id: item.id,
       ...item.data()
-    })
+    }
   })
-
-  return devices;
 }
 
 const getDeviceById = async id => {

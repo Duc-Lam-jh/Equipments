@@ -26,15 +26,12 @@ const getRequestsByStatus = async (status) => {
   const response = await getDocs(requestQuery);
   const documents = response.docs;
 
-  const requests = [];
-  documents.forEach(item => {
-    requests.push({
+  return documents.map(item => {
+    return {
       id: item.id,
       ...item.data()
-    })
+    }
   })
-
-  return requests;
 }
 
 const getRequestById = async id => {
