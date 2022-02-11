@@ -4,6 +4,7 @@ export const FORM_TYPE_LAPTOP = 'laptop';
 export const FORM_TYPE_OTHER = 'other';
 
 export const SUCCESS_MESSAGE = 'Successful!';
+export const LOADING_MESSAGE = 'Loading...';
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
 export const DECLINE_KEYWORD = 'declined';

@@ -1,6 +1,6 @@
 import actionTypes from './formActionTypes';
 
-import { SUCCESS_MESSAGE } from '../../utilities/index';
+import { SUCCESS_MESSAGE, LOADING_MESSAGE } from '../../utilities/index';
 import { addNewRequest, editRequestById } from '../../data/requestsActions';
 import { addNewDevice, editDeviceById } from '../../data/devicesActions';
 
@@ -20,6 +20,7 @@ const setFormError = error => {
 
 const declareNewDevice = (formData) => {
   return (dispatch) => {
+    dispatch(setFormPrompt(LOADING_MESSAGE));
     addNewDevice(formData)
       .then(() => {
         dispatch(setFormPrompt(SUCCESS_MESSAGE));
@@ -31,6 +32,7 @@ const declareNewDevice = (formData) => {
 
 const editDeviceDetail = (formData) => {
   return (dispatch) => {
+    dispatch(setFormPrompt(LOADING_MESSAGE));
     editDeviceById(formData)
       .then(() => {
         dispatch(setFormPrompt(SUCCESS_MESSAGE));
