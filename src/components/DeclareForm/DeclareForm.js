@@ -24,7 +24,7 @@ class DeclareForm extends Component {
 
   handleSubmit = (formData) => {
     if (this.state.images.length === 0) {
-      dispatch(setFormPrompt('Cần có ít nhất 1 ảnh!'));
+      this.props.setFormPrompt('Cần có ít nhất 1 ảnh!');
       return;
     }
     formData.userId = this.state.userId;
