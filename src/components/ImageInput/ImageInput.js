@@ -9,7 +9,7 @@ class ImageInput extends Component {
     this.state = {
       error: null,
       images: props.images ? props.images : [],
-      prevImages: props.images ? props.images : [],
+      prevImages: props.images ? props.images : []
     }
   }
 
@@ -33,7 +33,7 @@ class ImageInput extends Component {
       reader.onload = () => {
         this.setState({
           images: [...this.state.images, reader.result],
-          prevImages: [...this.state.images, reader.result]
+          prevImages: [...this.state.images, reader.result],
         })
       }
     })
