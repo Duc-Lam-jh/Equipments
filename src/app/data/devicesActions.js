@@ -3,7 +3,17 @@ import {
   addDoc, setDoc
 } from 'firebase/firestore';
 import { devicesCollection } from '../../app/firebase/firestoreConfig';
+import { uploadFile } from './storageActions';
 import { setFormPrompt } from '../redux/form/formActions';
+
+const uploadDeviceImages = async images => {
+  const imagesUrl = [];
+  for(let i = 0; i < images.length; i++){
+    const url = await uploadFile(images[i]);
+    imagesUrl.push(url);
+  }
+  return imagesUrl;
+}
 
 const getAllDevices = async () => {
   const response = await getDocs(devicesCollection);
@@ -26,6 +36,8 @@ const getDeviceById = async id => {
 }
 
 const addNewDevice = async data => {
+  const imagesUrl = await uploadDeviceImages(data.images);
+  data.images = [...imagesUrl];
   try {
     addDoc(devicesCollection, data);
   }
@@ -35,6 +47,8 @@ const addNewDevice = async data => {
 }
 
 const editDeviceById = async data => {
+  const imagesUrl = await uploadDeviceImages(data.images);
+  data.images = [...imagesUrl];
   try {
     const documentRef = doc(devicesCollection, data.id);
     delete data.id;
