@@ -9,7 +9,8 @@ class ImageInput extends Component {
     this.state = {
       error: null,
       images: props.images ? props.images : [],
-      prevImages: props.images ? props.images : []
+      prevImages: props.images ? props.images : [],
+      previewImages: []
     }
   }
 
@@ -32,23 +33,25 @@ class ImageInput extends Component {
       reader.readAsDataURL(image);
       reader.onload = () => {
         this.setState({
-          images: [...this.state.images, reader.result],
-          prevImages: [...this.state.images, reader.result],
+          images: [...this.state.images, image],
+          previewImages: [...this.state.previewImages, reader.result],
+          prevImages: [...this.state.previewImages, reader.result],
         })
       }
     })
   }
 
   handleDeleteImage = (index) => {
-    const images = this.state.prevImages.filter((item, i) => i !== index);
-    this.setState({ images: [...images] }, () => {
-      this.setState({prevImages: [...this.state.images]});
+    const images = this.state.images.filter((item, i) => i !== index);
+    const previewImages = this.state.prevImages.filter((item, i) => i !== index);
+    this.setState({ previewImages: [...previewImages], images: [...images] }, () => {
+      this.setState({prevImages: [...this.state.previewImages]});
     });
   }
 
   render() {
     const error = this.state.error;
-    const images = this.state.images;
+    const images = this.state.previewImages;
     return <>
       <div className='dropzone'>
         <div className='dropzone-button'>Click to upload an image of the device</div>
@@ -58,10 +61,10 @@ class ImageInput extends Component {
           {images && images.map((image, index) => {
             return (
               <div id={'image' + index} key={index} className='image-container'>
-                <img src={image} />
+                <img src={image} alt="Preview"/>
                 <button className='remove-image-button' type='button'
                   onClick={() => this.handleDeleteImage(index)}>
-                  <img src={closeIcon} style={{ width: REMOVE_BUTTON_SIZE + 'px' }} />
+                  <img src={closeIcon} style={{ width: REMOVE_BUTTON_SIZE + 'px' }} alt="Remove"/>
                 </button>
               </div>
             )
