@@ -35,3 +35,14 @@ select{
 input:focus{
   outline: 0px;
 }
+
+button {
+	padding: 10px;
+	width: 200px;
+
+	color: white;
+	font-weight: 600;
+	border-radius: 10px;
+	background-color: #009aa8;
+	border: none;
+}
