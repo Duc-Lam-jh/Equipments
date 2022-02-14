@@ -8,7 +8,6 @@ import DesktopForm from './SpecificForms/DesktopForm';
 import MouseForm from './SpecificForms/MouseForm';
 import OtherForm from './SpecificForms/OtherForm';
 import MessagePrompt from '../MessagePrompt/MessagePrompt';
-import LoadingPrompt from '../LoadingPrompt/LoadingPrompt';
 import { declareNewDevice, setFormPrompt } from '../../app/redux';
 
 import './style.css';
@@ -20,6 +19,12 @@ class DeclareForm extends Component {
       userId: props.userId,
       userName: props.userName,
       images: [],
+    }
+  }
+
+  validateFormData = formData => {
+    switch(formData.type){
+
     }
   }
 

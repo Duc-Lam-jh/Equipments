@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import './style.css';
 import ItemEdit from '../../components/ItemEdit/ItemEdit';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
-import LoadingPrompt from '../../components/LoadingPrompt/LoadingPrompt';
 
 import { editDeviceDetail, setFormPrompt } from '../../app/redux';
 import { getDeviceById } from '../../app/data/devicesActions';
@@ -67,7 +66,7 @@ const DeviceEditPage = () => {
     <>
       <div className='content'>
         {loadingMsg &&
-          <LoadingPrompt msg={loadingMsg} />
+          <MessagePrompt msg={loadingMsg} />
         }
         {msg &&
           <MessagePrompt
