@@ -38,6 +38,7 @@ const declareNewDevice = (formData) => {
 
 const editDeviceDetail = (formData) => {
   return (dispatch) => {
+    dispatch(setLoadingPrompt(LOADING_MESSAGE));
     editDeviceById(formData)
       .then(() => {
         dispatch(setFormPrompt(SUCCESS_MESSAGE));
@@ -74,6 +75,7 @@ const editRequest = (requestData) => {
 export {
   setFormPrompt,
   setFormError,
+  setLoadingPrompt,
   declareNewDevice,
   requestNewDevice,
   editDeviceDetail,

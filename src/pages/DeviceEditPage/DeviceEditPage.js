@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import './style.css';
 import ItemEdit from '../../components/ItemEdit/ItemEdit';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
+import LoadingPrompt from '../../components/LoadingPrompt/LoadingPrompt';
 
 import { editDeviceDetail, setFormPrompt } from '../../app/redux';
 import { getDeviceById } from '../../app/data/devicesActions';
@@ -12,6 +13,7 @@ import { getDeviceById } from '../../app/data/devicesActions';
 const DeviceEditPage = () => {
   const dispatch = useDispatch();
   const msg = useSelector(state => state.form.msg);
+  const loadingMsg = useSelector(state => state.form.loading);
 
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -44,8 +46,8 @@ const DeviceEditPage = () => {
       dispatch(setFormPrompt('Cần có ít nhất 1 ảnh!'));
       return;
     }
-    formData.newImages = [...images.filter(item => item instanceof(File))];
-    formData.images = [...images.filter(item => !(item instanceof(File)))];
+    formData.newImages = [...images.filter(item => item instanceof (File))];
+    formData.images = [...images.filter(item => !(item instanceof (File)))];
 
     dispatch(editDeviceDetail(formData));
   }
@@ -64,6 +66,9 @@ const DeviceEditPage = () => {
   return (
     <>
       <div className='content'>
+        {loadingMsg &&
+          <LoadingPrompt msg={loadingMsg} />
+        }
         {msg &&
           <MessagePrompt
             msg={msg} button={{ text: 'OK' }}
