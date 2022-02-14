@@ -70,5 +70,10 @@
 
   .sidebar.inactive{
     width: 250px;
+    background-color: #009aa8;
+  }
+
+  .sidebar.inactive .logo {
+    opacity: 1;
   }
 }
