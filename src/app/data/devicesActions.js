@@ -47,8 +47,9 @@ const addNewDevice = async data => {
 }
 
 const editDeviceById = async data => {
-  const imagesUrl = await uploadDeviceImages(data.images);
-  data.images = [...imagesUrl];
+  const imagesUrl = await uploadDeviceImages(data.newImages);
+  data.images = [...data.images, ...imagesUrl];
+  delete data.newImages;
   try {
     const documentRef = doc(devicesCollection, data.id);
     delete data.id;

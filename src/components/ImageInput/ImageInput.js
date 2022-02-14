@@ -8,8 +8,8 @@ class ImageInput extends Component {
     super(props);
     this.state = {
       error: null,
-      images: [],
-      prevImages: [],
+      images: props.images ? props.images : [],
+      prevImages: props.images ? props.images : [],
       previewImages: props.images ? props.images : []
     }
   }
@@ -44,6 +44,7 @@ class ImageInput extends Component {
   handleDeleteImage = (e, index) => {
     const images = this.state.images.filter((item, i) => i !== index);
     const previewImages = this.state.prevImages.filter((item, i) => i !== index);
+
     this.setState({ previewImages: [...previewImages], images: [...images] }, () => {
       this.setState({prevImages: [...this.state.previewImages]});
     });

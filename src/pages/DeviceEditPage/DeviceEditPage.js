@@ -44,7 +44,8 @@ const DeviceEditPage = () => {
       dispatch(setFormPrompt('Cần có ít nhất 1 ảnh!'));
       return;
     }
-    formData.images = images;
+    formData.newImages = [...images.filter(item => item instanceof(File))];
+    formData.images = [...images.filter(item => !(item instanceof(File)))];
 
     dispatch(editDeviceDetail(formData));
   }
