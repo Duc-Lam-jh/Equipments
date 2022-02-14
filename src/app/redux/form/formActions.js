@@ -27,6 +27,7 @@ const setFormError = error => {
 
 const declareNewDevice = (formData) => {
   return (dispatch) => {
+    dispatch(setLoadingPrompt(LOADING_MESSAGE));
     addNewDevice(formData)
       .then(() => {
         dispatch(setFormPrompt(SUCCESS_MESSAGE));

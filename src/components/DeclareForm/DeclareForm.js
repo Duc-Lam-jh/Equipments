@@ -8,6 +8,7 @@ import DesktopForm from './SpecificForms/DesktopForm';
 import MouseForm from './SpecificForms/MouseForm';
 import OtherForm from './SpecificForms/OtherForm';
 import MessagePrompt from '../MessagePrompt/MessagePrompt';
+import LoadingPrompt from '../LoadingPrompt/LoadingPrompt';
 import { declareNewDevice, setFormPrompt } from '../../app/redux';
 
 import './style.css';
@@ -41,8 +42,10 @@ class DeclareForm extends Component {
 
   render() {
     const msg = this.props.msg;
+    const loadingMsg = this.props.loadingMsg;
 
     return <div className='content'>
+      {loadingMsg && <MessagePrompt msg={loadingMsg} />}
       {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
       <DeviceTypePicker />
       <Routes>
@@ -77,7 +80,8 @@ const mapStateToProps = (state) => {
     userId: state.auth.userId,
     userName: state.auth.userName,
     error: state.form.error,
-    msg: state.form.msg
+    msg: state.form.msg,
+    loadingMsg: state.form.loading
   }
 }
 
