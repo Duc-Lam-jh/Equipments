@@ -22,7 +22,8 @@ const ArrayFilter = (props) => {
   const renderFilter = () => {
     const filters = filterList.map(item => {
       return (
-        <div id={item.type} key={item.type} className='filter-item' onClick={() => handleChangeFilter(item.type)}>{item.name}</div>
+        <div id={item.type} key={item.type} 
+        className={item.isDefault ? 'active filter-item' : 'filter-item'} onClick={() => handleChangeFilter(item.type)}>{item.name}</div>
       )
     })
 
