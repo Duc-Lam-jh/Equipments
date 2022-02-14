@@ -41,12 +41,13 @@ class ImageInput extends Component {
     })
   }
 
-  handleDeleteImage = (index) => {
+  handleDeleteImage = (e, index) => {
     const images = this.state.images.filter((item, i) => i !== index);
     const previewImages = this.state.prevImages.filter((item, i) => i !== index);
     this.setState({ previewImages: [...previewImages], images: [...images] }, () => {
       this.setState({prevImages: [...this.state.previewImages]});
     });
+    e.preventDefault();
   }
 
   render() {
@@ -61,11 +62,11 @@ class ImageInput extends Component {
           {images && images.map((image, index) => {
             return (
               <div id={'image' + index} key={index} className='image-container'>
-                <img src={image} alt="Preview"/>
-                <button className='remove-image-button' type='button'
-                  onClick={() => this.handleDeleteImage(index)}>
-                  <img src={closeIcon} style={{ width: REMOVE_BUTTON_SIZE + 'px' }} alt="Remove"/>
-                </button>
+                <img className='preview-image' src={image} alt="Preview"/>
+                <div className='remove-image-button'
+                  onClick={(e) => this.handleDeleteImage(e, index)}>
+                  <img src={closeIcon} alt="Remove"/>
+                </div>
               </div>
             )
           })}
