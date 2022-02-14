@@ -9,6 +9,13 @@ import MouseForm from './SpecificForms/MouseForm';
 import OtherForm from './SpecificForms/OtherForm';
 import MessagePrompt from '../MessagePrompt/MessagePrompt';
 import { declareNewDevice, setFormPrompt } from '../../app/redux';
+import {
+  FORM_TYPE_DESKTOP,
+  FORM_TYPE_LAPTOP,
+  FORM_TYPE_OTHER,
+  WARNING_AT_LEAST_ONE_PICTURE_MESSAGE,
+  WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS
+} from '../../app/utilities/index';
 
 import './style.css';
 
@@ -23,19 +30,48 @@ class DeclareForm extends Component {
   }
 
   validateFormData = formData => {
-    switch(formData.type){
-
+    if(!formData.brand){
+      return false;
     }
+
+    switch (formData.type) {
+      case FORM_TYPE_DESKTOP: {
+        if (!formData.configuration || !formData.seriesNumber) {
+          return false;
+        }
+      }
+      case FORM_TYPE_LAPTOP: {
+        if (!formData.configuration || !formData.size){
+          return false;
+        }
+      }
+      case FORM_TYPE_OTHER: {
+        if (!formData.description){
+          return false;
+        }
+      }
+      default: {
+        break;
+      }
+    }
+
+    return true;
   }
 
   handleSubmit = (formData) => {
     if (this.state.images.length === 0) {
-      this.props.setFormPrompt('Cần có ít nhất 1 ảnh!');
+      this.props.setFormPrompt(WARNING_AT_LEAST_ONE_PICTURE_MESSAGE);
       return;
     }
+    if (!this.validateFormData(formData)) {
+      this.props.setFormPrompt(WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS);
+      return;
+    }
+
     formData.userId = this.state.userId;
     formData.images = this.state.images;
     formData.userName = this.state.userName;
+
     this.props.submit(formData);
   }
 
