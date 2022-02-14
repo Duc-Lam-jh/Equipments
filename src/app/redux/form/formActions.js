@@ -1,6 +1,13 @@
 import actionTypes from './formActionTypes';
 
-import { SUCCESS_MESSAGE, LOADING_MESSAGE } from '../../utilities/index';
+import {
+  SUCCESS_MESSAGE,
+  LOADING_MESSAGE,
+  DECLARE_DEVICE_SUCCESSFUL,
+  REQUEST_DEVICE_SUCCESSFUL,
+  EDIT_DEVICE_SUCCESSFUL,
+  EDIT_REQUEST_SUCCESSFUL
+} from '../../utilities/index';
 import { addNewRequest, editRequestById } from '../../data/requestsActions';
 import { addNewDevice, editDeviceById } from '../../data/devicesActions';
 
@@ -30,7 +37,7 @@ const declareNewDevice = (formData) => {
     dispatch(setLoadingPrompt(LOADING_MESSAGE));
     addNewDevice(formData)
       .then(() => {
-        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+        dispatch(setFormPrompt(DECLARE_DEVICE_SUCCESSFUL));
       }).catch(error => {
         dispatch(setFormPrompt(error.message));
       })
@@ -42,7 +49,7 @@ const editDeviceDetail = (formData) => {
     dispatch(setLoadingPrompt(LOADING_MESSAGE));
     editDeviceById(formData)
       .then(() => {
-        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+        dispatch(setFormPrompt(EDIT_DEVICE_SUCCESSFUL));
       }).catch(error => {
         dispatch(setFormPrompt(error.message));
       })
@@ -55,7 +62,7 @@ const requestNewDevice = (formData) => {
   return (dispatch) => {
     addNewRequest(formData)
       .then(() => {
-        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+        dispatch(setFormPrompt(REQUEST_DEVICE_SUCCESSFUL));
       }).catch(error => {
         dispatch(setFormError(error.message));
       })
@@ -66,7 +73,7 @@ const editRequest = (requestData) => {
   return (dispatch) => {
     editRequestById(requestData)
       .then(() => {
-        dispatch(setFormPrompt(SUCCESS_MESSAGE));
+        dispatch(setFormPrompt(EDIT_REQUEST_SUCCESSFUL));
       }).catch(error => {
         dispatch(setFormError(error.message));
       })

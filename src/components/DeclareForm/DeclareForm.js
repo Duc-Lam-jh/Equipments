@@ -35,20 +35,23 @@ class DeclareForm extends Component {
     }
 
     switch (formData.type) {
-      case FORM_TYPE_DESKTOP: {
+      case FORM_TYPE_LAPTOP: {
         if (!formData.configuration || !formData.seriesNumber) {
           return false;
         }
+        break;
       }
-      case FORM_TYPE_LAPTOP: {
+      case FORM_TYPE_DESKTOP: {
         if (!formData.configuration || !formData.size){
           return false;
         }
+        break;
       }
       case FORM_TYPE_OTHER: {
         if (!formData.description){
           return false;
         }
+        break;
       }
       default: {
         break;

@@ -53,20 +53,23 @@ const DeviceEditPage = () => {
     }
 
     switch (formData.type) {
-      case FORM_TYPE_DESKTOP: {
+      case FORM_TYPE_LAPTOP: {
         if (!formData.configuration || !formData.seriesNumber) {
           return false;
         }
+        break;
       }
-      case FORM_TYPE_LAPTOP: {
+      case FORM_TYPE_DESKTOP: {
         if (!formData.configuration || !formData.size){
           return false;
         }
+        break;
       }
       case FORM_TYPE_OTHER: {
         if (!formData.description){
           return false;
         }
+        break;
       }
     }
 
@@ -79,7 +82,7 @@ const DeviceEditPage = () => {
       return;
     }
     if (!validateFormData(formData)) {
-      this.props.setFormPrompt(WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS);
+      dispatch(setFormPrompt(WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS));
       return;
     }
 

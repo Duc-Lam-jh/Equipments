@@ -11,6 +11,7 @@ export const LOADING_MESSAGE = 'Loading...';
 export const DECLARE_DEVICE_SUCCESSFUL = 'Successfully registered your device!';
 export const EDIT_DEVICE_SUCCESSFUL = 'Device data is saved!';
 export const REQUEST_DEVICE_SUCCESSFUL = 'Your request has been received!';
+export const EDIT_REQUEST_SUCCESSFUL = 'Request has been processed successfully!';
 
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
