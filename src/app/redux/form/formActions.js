@@ -4,6 +4,13 @@ import { SUCCESS_MESSAGE, LOADING_MESSAGE } from '../../utilities/index';
 import { addNewRequest, editRequestById } from '../../data/requestsActions';
 import { addNewDevice, editDeviceById } from '../../data/devicesActions';
 
+const setLoadingPrompt = msg => {
+  return {
+    type: actionTypes.FORM_LOADING,
+    msg: msg
+  }
+}
+
 const setFormPrompt = msg => {
   return {
     type: actionTypes.FORM_PROMPT,
