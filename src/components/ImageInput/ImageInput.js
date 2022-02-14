@@ -10,7 +10,7 @@ class ImageInput extends Component {
       error: null,
       images: props.images ? props.images : [],
       prevImages: props.images ? props.images : [],
-      previewImages: []
+      previewImages: props.images ? props.images : []
     }
   }
 
