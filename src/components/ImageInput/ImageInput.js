@@ -8,8 +8,8 @@ class ImageInput extends Component {
     super(props);
     this.state = {
       error: null,
-      images: props.images ? props.images : [],
-      prevImages: props.images ? props.images : [],
+      images: [],
+      prevImages: [],
       previewImages: props.images ? props.images : []
     }
   }
