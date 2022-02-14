@@ -5,8 +5,12 @@ export const FORM_TYPE_OTHER = 'other';
 
 export const WARNING_AT_LEAST_ONE_PICTURE_MESSAGE = 'At least 1 picture required!';
 export const WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS = 'You need to fill in all the required fields!';
+
 export const SUCCESS_MESSAGE = 'Successful!';
 export const LOADING_MESSAGE = 'Loading...';
+export const DECLARE_DEVICE_SUCCESSFUL = 'Successfully registered your device!';
+export const EDIT_DEVICE_SUCCESSFUL = 'Device data is saved!';
+export const REQUEST_DEVICE_SUCCESSFUL = 'Your request has been received!';
 
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
