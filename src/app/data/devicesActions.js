@@ -36,10 +36,11 @@ const getDeviceById = async id => {
 }
 
 const addNewDevice = async data => {
-  const imagesUrl = await uploadDeviceImages(data.images);
-  data.images = [...imagesUrl];
+  const dataToSend = {...data};
+  const imagesUrl = await uploadDeviceImages(dataToSend.images);
+  dataToSend.images = [...imagesUrl];
   try {
-    addDoc(devicesCollection, data);
+    addDoc(devicesCollection, dataToSend);
   }
   catch (error) {
     setFormPrompt(error);
@@ -47,13 +48,14 @@ const addNewDevice = async data => {
 }
 
 const editDeviceById = async data => {
-  const imagesUrl = await uploadDeviceImages(data.newImages);
-  data.images = [...data.images, ...imagesUrl];
-  delete data.newImages;
+  const dataToSend = {...data};
+  const imagesUrl = await uploadDeviceImages(dataToSend.newImages);
+  dataToSend.images = [...data.images, ...imagesUrl];
+  delete dataToSend.newImages;
   try {
-    const documentRef = doc(devicesCollection, data.id);
-    delete data.id;
-    setDoc(documentRef, data);
+    const documentRef = doc(devicesCollection, dataToSend.id);
+    delete dataToSend.id;
+    setDoc(documentRef, dataToSend);
   }
   catch (error) {
     setFormPrompt(error);
