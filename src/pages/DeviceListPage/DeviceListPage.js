@@ -55,7 +55,8 @@ const DeviceListPage = () => {
       name: 'Card view',
       type: TOGGLE_VIEW_CARD,
       activeIcon: cardViewIcon_Active,
-      inactiveIcon: cardViewIcon
+      inactiveIcon: cardViewIcon,
+      isDefault: true
     },
     {
       name: 'List view',
