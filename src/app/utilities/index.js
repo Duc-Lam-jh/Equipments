@@ -24,3 +24,4 @@ export const LOGO_SIZE = 50;
 export const MENU_BUTTON_SIZE = 45;
 export const REMOVE_BUTTON_SIZE = 60;
 export const DEVICE_TYPE_ICON_SIZE = 40;
+export const TOGGLE_BUTTON_SIZE = 25;

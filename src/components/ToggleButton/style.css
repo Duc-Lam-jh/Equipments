@@ -12,6 +12,7 @@
   background-color: white;
 
   overflow: hidden;
+  z-index: 5;
 }
 
 .toggle-button .item {
@@ -20,13 +21,13 @@
   align-items: center;
   padding: 7px 10px;
   
-  color: white;
-  background-color: #009aa8;
+  color: #009aa8;
+  background-color: white;
 
   cursor: pointer;
 }
 
-.toggle-button .item.inactive{
-  color: #009aa8;
-  background-color: white;
+.toggle-button .item.active{
+  color: white;
+  background-color: #009aa8;
 } 
