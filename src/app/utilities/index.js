@@ -3,6 +3,9 @@ export const FORM_TYPE_MOUSE = 'mouse';
 export const FORM_TYPE_LAPTOP = 'laptop';
 export const FORM_TYPE_OTHER = 'other';
 
+export const TOGGLE_VIEW_CARD = 'card';
+export const TOGGLE_VIEW_LIST = 'list';
+
 export const WARNING_AT_LEAST_ONE_PICTURE_MESSAGE = 'At least 1 picture required!';
 export const WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS = 'You need to fill in all the required fields!';
 
