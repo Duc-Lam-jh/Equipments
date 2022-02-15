@@ -2,14 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { getAllDevices } from '../../app/data/devicesActions';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import DeviceList from '../../components/DeviceList/DeviceList';
 
 import {
   FORM_TYPE_DESKTOP,
   FORM_TYPE_LAPTOP,
   FORM_TYPE_MOUSE,
-  FORM_TYPE_OTHER
+  FORM_TYPE_OTHER,
+  TOGGLE_VIEW_CARD,
+  TOGGLE_VIEW_LIST
 } from '../../app/utilities/index'
+
+import listViewIcon from '../../app/img/list-icon.png';
+import listViewIcon_Active from '../../app/img/list-icon_active.png';
+import cardViewIcon from '../../app/img/card-icon.png';
+import cardViewIcon_Active from '../../app/img/card-icon_active.png';
 
 import './style.css';
 
@@ -39,6 +47,21 @@ const DeviceListPage = () => {
     {
       name: 'Other',
       type: FORM_TYPE_OTHER
+    }
+  ];
+
+  const toggleButtonList = [
+    {
+      name: 'Card view',
+      type: TOGGLE_VIEW_CARD,
+      activeIcon: cardViewIcon_Active,
+      inactiveIcon: cardViewIcon
+    },
+    {
+      name: 'List view',
+      type: TOGGLE_VIEW_LIST,
+      activeIcon: listViewIcon_Active,
+      inactiveIcon: listViewIcon
     }
   ]
 
@@ -72,6 +95,7 @@ const DeviceListPage = () => {
         <h1>Device list</h1>
 
         <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
+        <ToggleButton buttonList={toggleButtonList} />
 
         {devices && <DeviceList
           devices={devices} />}

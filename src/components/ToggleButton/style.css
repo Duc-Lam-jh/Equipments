@@ -1,0 +1,32 @@
+.toggle-button{
+  display: flex;
+  flex-direction: row;
+
+  position: fixed;
+  right: 20px;
+  bottom: 15px;
+
+  border: #009aa8 solid 3px;
+  border-radius: 30px;
+  
+  background-color: white;
+
+  overflow: hidden;
+}
+
+.toggle-button .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  
+  color: white;
+  background-color: #009aa8;
+
+  cursor: pointer;
+}
+
+.toggle-button .item.inactive{
+  color: #009aa8;
+  background-color: white;
+} 
