@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -6,13 +6,16 @@ import {
   FORM_TYPE_LAPTOP,
   FORM_TYPE_DESKTOP,
   FORM_TYPE_MOUSE,
-  FORM_TYPE_OTHER
+  FORM_TYPE_OTHER,
+  TOGGLE_VIEW_CARD,
+  TOGGLE_VIEW_LIST
 } from '../../app/utilities/index';
 
 const DeviceList = (props) => {
-  const { devices } = props;
+  const { devices, listStyle } = props;
+  const [view, setView] = useState(listStyle);
 
-  const renderDeviceType = (device) => {
+  const renderDeviceType_CardView = (device) => {
     switch (device.type) {
       case FORM_TYPE_DESKTOP:
         return <div className='device-type'>Desktop</div>
@@ -31,24 +34,37 @@ const DeviceList = (props) => {
     </div>;
   }
 
-  const renderDevices = () => {
+  const renderDevices_CardView = () => {
     const deviceList = devices.map(device => {
       const deviceUri = '/devices/' + device.id;
       return (
-          <Link to={deviceUri} key={device.id} style={{textDecoration: 'none'}} className='item'>
-            {renderDeviceType(device)}
-            {renderImage(device.images[0])}
-            <div className='owner'>Owner: {device.userName}</div>
-          </Link>
+        <Link to={deviceUri} key={device.id} style={{ textDecoration: 'none' }} className='item'>
+          {renderDeviceType_CardView(device)}
+          {renderImage(device.images[0])}
+          <div className='owner'>Owner: {device.userName}</div>
+        </Link>
       )
     });
     return deviceList;
   }
 
+  const renderList = () => {
+    switch (listStyle) {
+      case TOGGLE_VIEW_CARD: {
+        return renderDevices_CardView();
+      }
+      case TOGGLE_VIEW_LIST: {
+        return <div>list</div>;
+      }
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       <div className='device-list-container'>
-        {devices && renderDevices()}
+        {devices && renderList()}
       </div>
     </>
   )
