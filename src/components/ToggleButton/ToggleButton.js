@@ -17,6 +17,7 @@ const ToggleButton = (props) => {
       }
     })];
     setButtons([...buttonsAfterToggling]);
+    props.handleToggleButton(clickedButton.type);
   }
 
   const renderItems = () => {

@@ -11,7 +11,7 @@ import {
   FORM_TYPE_MOUSE,
   FORM_TYPE_OTHER,
   TOGGLE_VIEW_CARD,
-  TOGGLE_VIEW_LIST
+  TOGGLE_VIEW_LIST,
 } from '../../app/utilities/index'
 
 import listViewIcon from '../../app/img/list-icon.png';
@@ -23,6 +23,7 @@ import './style.css';
 
 const DeviceListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [view, setView] = useState(TOGGLE_VIEW_CARD);
   const [devices, setDevices] = useState(null);
   const [originalDevices, setOriginalDevices] = useState(null);
 
@@ -75,6 +76,10 @@ const DeviceListPage = () => {
     setDevices([...filteredArray]);
   }
 
+  const changeView = (type) => {
+    setView(type);
+  }
+
   useEffect(() => {
     const getDevices = async () => {
       const devices = await getAllDevices();
@@ -96,10 +101,10 @@ const DeviceListPage = () => {
         <h1>Device list</h1>
 
         <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
-        <ToggleButton buttonList={toggleButtonList} />
+        <ToggleButton buttonList={toggleButtonList} handleToggleButton={(type) => changeView(type)}/>
 
         {devices && <DeviceList
-          devices={devices} />}
+          devices={devices} listStyle={view} />}
       </div>
     </>
   )
