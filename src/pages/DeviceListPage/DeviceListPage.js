@@ -100,7 +100,7 @@ const DeviceListPage = () => {
       <div className='content'>
         <h1>Device list</h1>
 
-        <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
+        <ArrayFilter title='Filter' filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
         <ToggleButton buttonList={toggleButtonList} handleToggleButton={(type) => changeView(type)}/>
 
         {devices && <DeviceList

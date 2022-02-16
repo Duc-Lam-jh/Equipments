@@ -1,7 +1,19 @@
+.filter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	margin: 10px;
+	width: 90%;
+
+	font-size: medium;
+}
+
 .filter-item {
 	padding: 5px 20px;
 	color: #009aa8;
 	border-radius: 20px;
+	margin-left: 5px;
 }
 
 .filter-item:hover,
@@ -13,7 +25,7 @@
 @media screen and (min-width: 900px) {
 	.filter-item {
 		border: #009aa8 solid 2px;
-	
+
 		cursor: pointer;
 	}
 }
