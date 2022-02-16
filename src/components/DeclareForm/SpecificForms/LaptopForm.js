@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
-import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_LAPTOP } from '../../../app/utilities/index';
+import ImageInput from '../../ImageInput/ImageInput';
+import { getNumberOfLaptopOfUser } from '../../../app/data/devicesActions';
+
+import { FORM_TYPE_LAPTOP, LOADING_MESSAGE } from '../../../app/utilities/index';
 
 class LaptopForm extends Component {
+
   handleSubmit = (formData) => {
     formData.type = FORM_TYPE_LAPTOP;
     this.props.handleSubmit(formData);
@@ -15,6 +18,12 @@ class LaptopForm extends Component {
   }
 
   render() {
+    if (this.props.isLaptopDeclared) {
+      return <>
+        <h2>You already declared a laptop</h2>
+      </>
+    }
+
     return <>
       <h2>Give us information on your laptop/PC</h2>
       <Form
@@ -92,6 +101,7 @@ class LaptopForm extends Component {
         )
         }
       />
+
     </>;
   }
 }
