@@ -13,7 +13,9 @@ import {
   FORM_TYPE_DESKTOP,
   FORM_TYPE_LAPTOP,
   FORM_TYPE_MOUSE,
-  PENDING_KEYWORD
+  PENDING_KEYWORD,
+  SORT_DATE_ASCENDING_KEYWORD,
+  SORT_DATE_DESCENDING_KEYWORD
 } from '../../app/utilities/index'
 
 const RequestListPage = () => {
@@ -46,11 +48,11 @@ const RequestListPage = () => {
   const sortList = [
     {
       name: 'Date ascending',
-      type: 'date-asc'
+      type: SORT_DATE_ASCENDING_KEYWORD
     },
     {
       name: 'Date descending',
-      type: 'date-dsc'
+      type: SORT_DATE_DESCENDING_KEYWORD
     },
   ]
 
@@ -66,13 +68,13 @@ const RequestListPage = () => {
   const sortRequestList = type => {
     let sortedArray = [];
     switch (type) {
-      case 'date-asc': {
+      case SORT_DATE_ASCENDING_KEYWORD: {
         sortedArray = [...requests.sort((a, b) => {
           return a.date - b.date;
         })];
         break;
       }
-      case 'date-dsc':
+      case SORT_DATE_DESCENDING_KEYWORD:
       default: {
         sortedArray = [...requests.sort((a, b) => {
           return b.date - a.date;
