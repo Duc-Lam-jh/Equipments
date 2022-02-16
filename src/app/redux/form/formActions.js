@@ -58,6 +58,7 @@ const editDeviceDetail = (formData) => {
 
 const requestNewDevice = (formData) => {
   formData.status = 'pending';
+  formData.date = new Date();
 
   return (dispatch) => {
     addNewRequest(formData)
