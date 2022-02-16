@@ -19,6 +19,8 @@ export const EDIT_REQUEST_SUCCESSFUL = 'Request has been processed successfully!
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
 export const DECLINE_KEYWORD = 'declined';
+export const SORT_DATE_ASCENDING_KEYWORD = 'date-asc';
+export const SORT_DATE_DESCENDING_KEYWORD = 'date-dsc';
 
 export const LOGO_SIZE = 50;
 export const MENU_BUTTON_SIZE = 45;
