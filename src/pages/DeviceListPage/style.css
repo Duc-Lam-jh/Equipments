@@ -1,15 +1,20 @@
 .device-list-container{
   position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: row;
   gap: 20px;
 
   margin-top: 20px;
   
   width: 90%;
+}
+
+.device-list-container.list-view{
+  flex-direction: column;
+  gap: 10px;
 }
 
 .device-list-container Link{
@@ -28,6 +33,32 @@
   border: 4px solid #009aa8;
 }
 
+.device-list-container .item.list-view{
+  width: 100%;
+  height: fit-content;
+
+  display: grid;
+  grid-template-columns: 45px auto 60px;
+
+  border: #009aa8 solid 2px;
+}
+
+.item.list-view .device-info {
+  display: grid;
+
+  padding: 10px;
+}
+
+.item.list-view .device-info .item{
+  display: flex;
+  align-items: flex-start;
+
+  width: stretch;
+  height: fit-content;
+  
+  border: 0;
+}
+
 .device-list-container .item .device-type{
   display: flex;
   justify-content: center;
@@ -37,6 +68,14 @@
 
   color: white;
   background-color: #009aa8;
+}
+
+.device-list-container .item .device-type.list-view{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
 }
 
 .device-list-container .item .image {
@@ -77,6 +116,10 @@
     font-size: medium;
     height: 300px;
     width: 300px;
+  }
+
+  .item.list-view .device-info {
+    grid-template-columns: 2fr 1fr;
   }
   
 }
