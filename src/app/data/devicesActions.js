@@ -1,10 +1,12 @@
 import {
   getDocs, getDoc, doc,
-  addDoc, setDoc
+  addDoc, setDoc,
+  query, where
 } from 'firebase/firestore';
 import { devicesCollection } from '../../app/firebase/firestoreConfig';
 import { uploadFile } from './storageActions';
 import { setFormPrompt } from '../redux/form/formActions';
+import { FORM_TYPE_LAPTOP } from '../utilities';
 
 const uploadDeviceImages = async images => {
   const imagesUrl = [];
@@ -60,9 +62,18 @@ const editDeviceById = async data => {
   }
 }
 
+const getNumberOfLaptopOfUser = async userId => {
+  const deviceQuery = query(devicesCollection, where("userId", "==", userId), where("type", "==", FORM_TYPE_LAPTOP));
+  const response = await getDocs(deviceQuery);
+  const documents = response.docs;
+ 
+  return documents.length;
+}
+
 export {
   getAllDevices,
   getDeviceById,
   addNewDevice,
-  editDeviceById
+  editDeviceById,
+  getNumberOfLaptopOfUser
 }
