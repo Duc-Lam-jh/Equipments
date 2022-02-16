@@ -69,14 +69,14 @@ const RequestListPage = () => {
     let sortedArray = [];
     switch (type) {
       case SORT_DATE_ASCENDING_KEYWORD: {
-        sortedArray = [...requests.sort((a, b) => {
+        sortedArray = [...originalRequests.sort((a, b) => {
           return a.date - b.date;
         })];
         break;
       }
       case SORT_DATE_DESCENDING_KEYWORD:
       default: {
-        sortedArray = [...requests.sort((a, b) => {
+        sortedArray = [...originalRequests.sort((a, b) => {
           return b.date - a.date;
         })];
         break;
