@@ -87,12 +87,9 @@ class DeclareForm extends Component {
   }
 
   render() {
-    const msg = this.props.msg;
-    const loadingMsg = this.props.loadingMsg;
-
     return <div className='content'>
-      {loadingMsg && <MessagePrompt msg={loadingMsg} />}
-      {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
+      {this.props.loadingMsg && <MessagePrompt msg={this.props.loadingMsg} />}
+      {this.props.msg && <MessagePrompt msg={this.props.msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
       <DeviceTypePicker />
       <Routes>
         <Route path='/' element={<Navigate to='laptop' />} />
