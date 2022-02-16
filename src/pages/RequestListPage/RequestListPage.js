@@ -43,8 +43,19 @@ const RequestListPage = () => {
     }
   ]
 
+  const sortList = [
+    {
+      name: 'Date ascending',
+      type: 'date-asc'
+    },
+    {
+      name: 'Date descending',
+      type: 'date-dsc'
+    },
+  ]
+
   const filterRequestList = type => {
-    if(type === 'all') {
+    if (type === 'all') {
       setRequests([...originalRequests]);
       return;
     }
@@ -57,10 +68,10 @@ const RequestListPage = () => {
     const getPendingRequests = async () => {
       const requestData = await getRequestsByStatus(PENDING_KEYWORD);
 
-      for(let i = 0; i < requestData.length; i++) {
+      for (let i = 0; i < requestData.length; i++) {
         requestData[i].user = await getUserById(requestData[i].userId);
       }
-      
+
       setRequests(requestData);
       setOriginalRequests(requestData);
       setIsLoading(false);
@@ -79,22 +90,25 @@ const RequestListPage = () => {
 
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>
-  } 
+  }
 
   return (
-      <>
+    <>
       {msg &&
-          <MessagePrompt
-            msg={msg} button={{ text: 'OK' }}
-            handleClick={() => { dispatch(setFormPrompt(null)) }} />
-        }
-        <div className='content'>
-          <h1>List of requests</h1>
-          <ArrayFilter filterList={filterList} handleFilterArray={(type) => filterRequestList(type)} />
-          {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
-        </div>
-      </>
-    )
-  }
+        <MessagePrompt
+          msg={msg} button={{ text: 'OK' }}
+          handleClick={() => { dispatch(setFormPrompt(null)) }} />
+      }
+      <div className='content'>
+        <h1>List of requests</h1>
+
+        <ArrayFilter title='Filter' filterList={filterList} handleFilterArray={(type) => filterRequestList(type)} />
+        <ArrayFilter title='Sort' filterList={sortList} />
+
+        {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
+      </div>
+    </>
+  )
+}
 
 export default RequestListPage;
