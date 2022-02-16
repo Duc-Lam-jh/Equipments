@@ -6,7 +6,7 @@ import ImageInput from '../../ImageInput/ImageInput';
 
 import { FORM_TYPE_LAPTOP, LOADING_MESSAGE } from '../../../app/utilities/index';
 import { setLoadingPrompt } from '../../../app/redux';
-import { getNumberOfLaptopOfUser } from '../../../app/data/devicesActions';
+import { getNumberOfDeviceOfUserByType } from '../../../app/data/devicesActions';
 
 class LaptopForm extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class LaptopForm extends Component {
 
   componentDidMount = () => {
     this.props.setLoading(LOADING_MESSAGE);
-    getNumberOfLaptopOfUser(this.state.userId)
+    getNumberOfDeviceOfUserByType(this.state.userId, FORM_TYPE_LAPTOP)
       .then(numberOfLaptop => {
         if (numberOfLaptop > 0) {
           this.setState({ isLaptopDeclared: true });

@@ -64,8 +64,8 @@ const editDeviceById = async data => {
   }
 }
 
-const getNumberOfLaptopOfUser = async userId => {
-  const deviceQuery = query(devicesCollection, where("userId", "==", userId), where("type", "==", FORM_TYPE_LAPTOP));
+const getNumberOfDeviceOfUserByType = async (userId, type) => {
+  const deviceQuery = query(devicesCollection, where("userId", "==", userId), where("type", "==", type));
   const response = await getDocs(deviceQuery);
   const documents = response.docs;
  
@@ -77,5 +77,5 @@ export {
   getDeviceById,
   addNewDevice,
   editDeviceById,
-  getNumberOfLaptopOfUser
+  getNumberOfDeviceOfUserByType
 }
