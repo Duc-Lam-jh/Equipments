@@ -11,10 +11,11 @@ export const WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS = 'You need to fill in all
 
 export const SUCCESS_MESSAGE = 'Successful!';
 export const LOADING_MESSAGE = 'Loading...';
-export const DECLARE_DEVICE_SUCCESSFUL = 'Successfully registered your device!';
-export const EDIT_DEVICE_SUCCESSFUL = 'Device data is saved!';
-export const REQUEST_DEVICE_SUCCESSFUL = 'Your request has been received!';
-export const EDIT_REQUEST_SUCCESSFUL = 'Request has been processed successfully!';
+export const NEED_TO_DECLARE_DEVICE_MESSAGE = 'You need to register a device before requesting a new one!';
+export const DECLARE_DEVICE_SUCCESSFUL_MESSAGE = 'Successfully registered your device!';
+export const EDIT_DEVICE_SUCCESSFUL_MESSAGE = 'Device data is saved!';
+export const REQUEST_DEVICE_SUCCESSFUL_MESSAGE = 'Your request has been received!';
+export const EDIT_REQUEST_SUCCESSFUL_MESSAGE = 'Request has been processed successfully!';
 
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
