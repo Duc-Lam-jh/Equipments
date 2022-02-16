@@ -63,6 +63,26 @@ const RequestListPage = () => {
     setRequests([...filteredArray]);
   }
 
+  const sortRequestList = type => {
+    let sortedArray = [];
+    switch (type) {
+      case 'date-asc': {
+        sortedArray = [...requests.sort((a, b) => {
+          return a.date - b.date;
+        })];
+        break;
+      }
+      case 'date-dsc':
+      default: {
+        sortedArray = [...requests.sort((a, b) => {
+          return b.date - a.date;
+        })];
+        break;
+      }
+    }
+    setRequests([...sortedArray]);
+  }
+
   useEffect(() => {
 
     const getPendingRequests = async () => {
@@ -103,7 +123,7 @@ const RequestListPage = () => {
         <h1>List of requests</h1>
 
         <ArrayFilter title='Filter' filterList={filterList} handleFilterArray={(type) => filterRequestList(type)} />
-        <ArrayFilter title='Sort' filterList={sortList} />
+        <ArrayFilter title='Sort' filterList={sortList} handleFilterArray={(type) => sortRequestList(type)} />
 
         {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
       </div>
