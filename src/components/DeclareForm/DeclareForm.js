@@ -27,23 +27,8 @@ class DeclareForm extends Component {
     this.state = {
       userId: props.userId,
       userName: props.userName,
-      images: [],
-      isLaptopDeclared: false
+      images: []
     }
-  }
-
-  componentDidMount = () => {
-    this.props.setLoading(LOADING_MESSAGE);
-    getNumberOfLaptopOfUser(this.state.userId)
-      .then(numberOfLaptop => {
-        if (numberOfLaptop > 0) {
-          this.setState({ isLaptopDeclared: true });
-        } else {
-          this.setState({ isLaptopDeclared: false });
-        }
-        this.props.setLoading(null)
-      })
-
   }
 
   validateFormData = formData => {
@@ -113,7 +98,7 @@ class DeclareForm extends Component {
         <Route path='/' element={<Navigate to='laptop' />} />
         <Route path='/laptop'
           element={<LaptopForm
-            isLaptopDeclared={this.state.isLaptopDeclared}
+            userId={this.state.userId}
             handleSubmit={(formData) => this.handleSubmit(formData)}
             handleAddImage={(image) => this.handleAddImage(image)} />}
         />
@@ -150,8 +135,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submit: formData => dispatch(declareNewDevice(formData)),
-    setFormPrompt: msg => dispatch(setFormPrompt(msg)),
-    setLoading: msg => dispatch(setLoadingPrompt(msg))
+    setFormPrompt: msg => dispatch(setFormPrompt(msg))
   }
 }
 
