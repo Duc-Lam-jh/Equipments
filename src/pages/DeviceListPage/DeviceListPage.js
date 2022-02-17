@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getAllDevices, getNumberOfDevices } from '../../app/data/devicesActions';
+import { getAllDevices } from '../../app/data/devicesActions';
+import { getNumberOfDevices } from '../../app/data/metadataActions';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
