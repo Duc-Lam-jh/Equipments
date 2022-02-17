@@ -19,6 +19,7 @@ h1, h2, h3{
 select,
 input {
 	width: stretch;
+  width: -webkit-fill-available;
   height: 25px;
 	padding: 5px 15px;
 	text-align: left;
