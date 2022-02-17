@@ -1,6 +1,7 @@
 .toggle-button{
   display: flex;
   flex-direction: row;
+  padding: 0;
 
   position: fixed;
   left: auto;
@@ -36,21 +37,9 @@
 
 @media screen and (min-width: 600px) {
   .toggle-button{
-    display: flex;
-    flex-direction: row;
-  
-    position: fixed;
     left: auto;
     right: 20px;
     top: auto;
     bottom: 15px;
-  
-    border: #009aa8 solid 3px;
-    border-radius: 30px;
-    
-    background-color: white;
-  
-    overflow: hidden;
-    z-index: 5;
   }
 }
