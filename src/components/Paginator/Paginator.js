@@ -67,21 +67,23 @@ const Paginator = (props) => {
     const button = e.currentTarget;
     const pageNumberInputContainer = button.parentNode;
     const newPageNumber = Number.parseInt(pageNumberInputContainer.querySelector('#page-number-input').value);
-    if (newPageNumber) {
+    if (newPageNumber > 0 && newPageNumber <= lastPage) {
       setCurrentPage(newPageNumber);
     }
   }
 
   const handleClickPrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+    if (currentPage === 1) {
+      return;
     }
+    setCurrentPage(currentPage - 1);
   }
 
   const handleClickNext = () => {
-    if (currentPage < lastPage) {
-      setCurrentPage(currentPage + 1);
+    if (currentPage === lastPage) {
+      return;
     }
+    setCurrentPage(currentPage + 1);
   }
 
   return (
