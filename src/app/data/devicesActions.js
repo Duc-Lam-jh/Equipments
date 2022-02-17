@@ -3,10 +3,10 @@ import {
   addDoc, setDoc,
   query, where
 } from 'firebase/firestore';
-import { devicesCollection } from '../../app/firebase/firestoreConfig';
+import { devicesCollection, metadataCollection } from '../../app/firebase/firestoreConfig';
 import { uploadFile } from './storageActions';
 import { setFormPrompt } from '../redux/form/formActions';
-import { FORM_TYPE_LAPTOP } from '../utilities';
+import { METADATA_NUMBER_OF_DEVICES_KEYWORD } from '../utilities';
 
 const uploadDeviceImages = async images => {
   const imagesUrl = [];
@@ -15,6 +15,14 @@ const uploadDeviceImages = async images => {
     imagesUrl.push(url);
   }
   return imagesUrl;
+}
+
+const getNumberOfDevices = async () => {
+  const deviceQuery = query(metadataCollection, where("name", "==", METADATA_NUMBER_OF_DEVICES_KEYWORD));
+  const response = await getDocs(deviceQuery);
+  const documents = response.docs;
+
+  return documents[0].data().value;
 }
 
 const getAllDevices = async () => {
@@ -75,5 +83,6 @@ export {
   getDeviceById,
   addNewDevice,
   editDeviceById,
-  getNumberOfDeviceOfUserByType
+  getNumberOfDeviceOfUserByType,
+  getNumberOfDevices
 }

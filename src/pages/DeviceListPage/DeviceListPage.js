@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllDevices } from '../../app/data/devicesActions';
+import { getAllDevices, getNumberOfDevices } from '../../app/data/devicesActions';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
@@ -83,6 +83,8 @@ const DeviceListPage = () => {
 
   useEffect(() => {
     const getDevices = async () => {
+      const numberOfDevices = await getNumberOfDevices();
+
       const devices = await getAllDevices();
       setDevices([...devices]);
       setOriginalDevices([...devices]);
