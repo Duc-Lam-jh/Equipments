@@ -68,11 +68,15 @@ const Paginator = (props) => {
   }
 
   const handleClickPrevious = () => {
-    setCurrentPage(currentPage - 1);
+    if(currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   }
 
   const handleClickNext = () => {
-    setCurrentPage(currentPage + 1);
+    if(currentPage < lastPage){
+      setCurrentPage(currentPage + 1);
+    }
   }
 
   return (
