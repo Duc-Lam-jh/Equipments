@@ -36,3 +36,5 @@ export const REMOVE_BUTTON_SIZE = 60;
 export const DEVICE_TYPE_ICON_SIZE = 40;
 export const DEVICE_TYPE_ICON_SIZE_SMALL = 25;
 export const TOGGLE_BUTTON_SIZE = 25;
+
+export const ITEMS_PER_PAGE = 20;
