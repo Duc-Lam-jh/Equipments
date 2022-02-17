@@ -21,12 +21,14 @@ import cardViewIcon_Active from '../../app/img/card-icon_active.png';
 
 import './style.css';
 import Paginator from '../../components/Paginator/Paginator';
+import { calculateNumberOfPages } from '../../app/utilities/utilities';
 
 const DeviceListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [view, setView] = useState(TOGGLE_VIEW_CARD);
   const [devices, setDevices] = useState(null);
   const [originalDevices, setOriginalDevices] = useState(null);
+  const [numberOfPages, setNumberOfPages] = useState(1);
 
   const filterList = [
     {
@@ -84,6 +86,8 @@ const DeviceListPage = () => {
   useEffect(() => {
     const getDevices = async () => {
       const numberOfDevices = await getNumberOfDevices();
+      const numberOfPages = calculateNumberOfPages(numberOfDevices, 20);
+      setNumberOfPages(numberOfPages);
 
       const devices = await getAllDevices();
       setDevices([...devices]);
@@ -109,7 +113,7 @@ const DeviceListPage = () => {
         {devices && <DeviceList
           devices={devices} listStyle={view} />}
 
-        <Paginator lastPage={20} />
+        <Paginator lastPage={numberOfPages} />
       </div>
     </>
   )
