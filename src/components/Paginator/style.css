@@ -1,4 +1,63 @@
 .paginator-container{
+  display: grid;
+  grid-template-columns: auto 100px;
+
+  margin: 30px 50px;
+  box-sizing: border-box;
+
+  width: stretch;
+  width: -webkit-fill-available;
+}
+
+.paginator-container .paginator-controls{
   display: flex;
-  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  color: #009aa8;
+}
+
+.paginator-container .paginator-controls .button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+}
+
+.paginator-container .paginator-controls div.button{
+  width: 40px;
+  height: 30px;
+}
+
+.paginator-container .paginator-controls button.button{
+  width: fit-content;
+}
+
+.paginator-container .paginator-controls div.button:hover,
+.paginator-container .paginator-controls .button.active{
+  background-color: white;
+  border: #009aa8 1px solid;
+  border-radius: 10px;
+}
+
+.paginator-container .page-number-input{
+  grid-column: 2;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.paginator-container .page-number-input input{
+  width: 35px;
+}
+
+.paginator-container .page-number-input button{
+  margin: 0 10px;
+  width: fit-content;
 }
