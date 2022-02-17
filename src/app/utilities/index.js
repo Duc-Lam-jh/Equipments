@@ -17,6 +17,13 @@ export const EDIT_DEVICE_SUCCESSFUL_MESSAGE = 'Device data is saved!';
 export const REQUEST_DEVICE_SUCCESSFUL_MESSAGE = 'Your request has been received!';
 export const EDIT_REQUEST_SUCCESSFUL_MESSAGE = 'Request has been processed successfully!';
 
+export const USER_COLLECTION_KEYWORD = 'users';
+export const DEVICE_COLLECTION_KEYWORD = 'devices';
+export const REQUEST_COLLECTION_KEYWORD = 'requests';
+export const METADATA_COLLECTION_KEYWORD = 'metadata';
+export const METADATA_NUMBER_OF_PENDING_REQUESTS_KEYWORD = 'numberOfPendingRequests';
+export const METADATA_NUMBER_OF_DEVICES_KEYWORD = 'numberOfDevices';
+
 export const PENDING_KEYWORD = 'pending';
 export const ACCEPT_KEYWORD = 'accepted';
 export const DECLINE_KEYWORD = 'declined';
