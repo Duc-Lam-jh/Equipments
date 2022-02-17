@@ -8,13 +8,12 @@ const Paginator = (props) => {
 
   const renderNumberButton = (isActive, number) => {
     if (isActive) {
-      return (<div className='button active' onClick={(e) => handleClickNumber(e)}>{number}</div>);
+      return (<div key='number' className='button active' onClick={(e) => handleClickNumber(e)}>{number}</div>);
     }
-    return (<div className='button' onClick={(e) => handleClickNumber(e)}>{number}</div>);
+    return (<div key='number' className='button' onClick={(e) => handleClickNumber(e)}>{number}</div>);
   }
 
   const renderNumbers = () => {
-    console.log(currentPage, lastPage);
     if (currentPage <= lastPage) {
       if (lastPage <= 3) {
         let buttons = [];
