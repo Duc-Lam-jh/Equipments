@@ -9,7 +9,7 @@
   top: 15px;
   bottom: auto;
 
-  border: #009aa8 solid 3px;
+  border: #009aa8 solid 2px;
   border-radius: 30px;
   
   background-color: white;
@@ -26,6 +26,7 @@
   
   color: #009aa8;
   background-color: white;
+  border: 0;
 
   cursor: pointer;
 }
