@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createElement, useState } from 'react';
 
 import './style.css';
 
@@ -6,31 +6,37 @@ const Paginator = (props) => {
   const { lastPage } = props;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const renderNumbers = () => {
-    if (currentPage <= 1) {
-      return (
-        <>
-          <div className='button active' onClick={(e) => handleClickNumber(e)}>1</div>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>2</div>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>3</div>
-        </>
-      )
+  const renderNumberButton = (isActive, number) => {
+    if (isActive) {
+      return (<div className='button active' onClick={(e) => handleClickNumber(e)}>{number}</div>);
     }
+    return (<div className='button' onClick={(e) => handleClickNumber(e)}>{number}</div>);
+  }
 
+  const renderNumbers = () => {
     if (currentPage < lastPage) {
       if (lastPage <= 3) {
-        const buttons = [];
+        let buttons = [];
         for (let i = 1; i <= lastPage; i++) {
           if (currentPage === i) {
-            buttons.push("<div className='button active' onClick={(e) => handleClickNumber(e)}>" + i + "</div>");
+            buttons.push(renderNumberButton(true, i));
           } else {
-            buttons.push("<div className='button' onClick={(e) => handleClickNumber(e)}>" + i + "</div>");
+            buttons.push(renderNumberButton(false, i));
           }
         }
         return buttons;
       }
 
       if (lastPage > 3) {
+        if (currentPage === 1) {
+          return (
+            <>
+              <div className='button active' onClick={(e) => handleClickNumber(e)}>1</div>
+              <div className='button' onClick={(e) => handleClickNumber(e)}>2</div>
+              <div className='button' onClick={(e) => handleClickNumber(e)}>3</div>
+            </>
+          )
+        }
         return (
           <>
             <div className='button' onClick={(e) => handleClickNumber(e)}>{currentPage - 1}</div>
@@ -44,8 +50,8 @@ const Paginator = (props) => {
     if (currentPage >= lastPage) {
       return (
         <>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage-2}</div>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage-1}</div>
+          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 2}</div>
+          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 1}</div>
           <div className='button active' onClick={(e) => handleClickNumber(e)}>{lastPage}</div>
         </>
       )
@@ -62,19 +68,19 @@ const Paginator = (props) => {
     const button = e.currentTarget;
     const pageNumberInputContainer = button.parentNode;
     const newPageNumber = Number.parseInt(pageNumberInputContainer.querySelector('#page-number-input').value);
-    if(newPageNumber){
+    if (newPageNumber) {
       setCurrentPage(newPageNumber);
     }
   }
 
   const handleClickPrevious = () => {
-    if(currentPage > 1) {
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   }
 
   const handleClickNext = () => {
-    if(currentPage < lastPage){
+    if (currentPage < lastPage) {
       setCurrentPage(currentPage + 1);
     }
   }

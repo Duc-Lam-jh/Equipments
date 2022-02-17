@@ -86,7 +86,7 @@ const DeviceListPage = () => {
   useEffect(() => {
     const getDevices = async () => {
       const numberOfDevices = await getNumberOfDevices();
-      const numberOfPages = calculateNumberOfPages(numberOfDevices, 20);
+      const numberOfPages = calculateNumberOfPages(numberOfDevices, 1);
       setNumberOfPages(numberOfPages);
 
       const devices = await getAllDevices();
