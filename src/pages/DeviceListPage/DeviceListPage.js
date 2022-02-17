@@ -107,7 +107,7 @@ const DeviceListPage = () => {
         {devices && <DeviceList
           devices={devices} listStyle={view} />}
 
-        <Paginator />
+        <Paginator lastPage={20} />
       </div>
     </>
   )
