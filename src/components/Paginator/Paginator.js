@@ -7,7 +7,7 @@ const Paginator = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const renderNumbers = () => {
-    if (currentPage === 1) {
+    if (currentPage <= 1) {
       return (
         <>
           <div className='button active' onClick={(e) => handleClickNumber(e)}>1</div>
@@ -67,12 +67,20 @@ const Paginator = (props) => {
     }
   }
 
+  const handleClickPrevious = () => {
+    setCurrentPage(currentPage - 1);
+  }
+
+  const handleClickNext = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
   return (
     <div className='paginator-container'>
       <div className='paginator-controls'>
-        <button className='button'>Prev</button>
+        <button className='button' onClick={() => handleClickPrevious()}>Prev</button>
         {renderNumbers()}
-        <button className='button'>Next</button>
+        <button className='button' onClick={() => handleClickNext()}>Next</button>
       </div>
 
       <div className='page-number-input'>
