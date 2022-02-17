@@ -23,5 +23,8 @@ export const getUserFromBrowser = () => {
 
 export const calculateNumberOfPages = (numberOfItems, itemsPerPage) => {
   const numberOfPages = numberOfItems / itemsPerPage;
-  return Number.parseInt(numberOfPages) + 1;
+  if (numberOfItems % numberOfPages !== 0){
+    return Number.parseInt(numberOfPages) + 1;
+  }
+  return Number.parseInt(numberOfPages);
 }
