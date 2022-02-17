@@ -14,7 +14,8 @@ const Paginator = (props) => {
   }
 
   const renderNumbers = () => {
-    if (currentPage < lastPage) {
+    console.log(currentPage, lastPage);
+    if (currentPage <= lastPage) {
       if (lastPage <= 3) {
         let buttons = [];
         for (let i = 1; i <= lastPage; i++) {
@@ -37,6 +38,15 @@ const Paginator = (props) => {
             </>
           )
         }
+        if (currentPage === lastPage) {
+          return (
+            <>
+              <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 2}</div>
+              <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 1}</div>
+              <div className='button active' onClick={(e) => handleClickNumber(e)}>{lastPage}</div>
+            </>
+          )
+        }
         return (
           <>
             <div className='button' onClick={(e) => handleClickNumber(e)}>{currentPage - 1}</div>
@@ -45,16 +55,6 @@ const Paginator = (props) => {
           </>
         )
       }
-    }
-
-    if (currentPage >= lastPage) {
-      return (
-        <>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 2}</div>
-          <div className='button' onClick={(e) => handleClickNumber(e)}>{lastPage - 1}</div>
-          <div className='button active' onClick={(e) => handleClickNumber(e)}>{lastPage}</div>
-        </>
-      )
     }
   }
 
