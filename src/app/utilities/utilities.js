@@ -20,3 +20,8 @@ export const getUserFromBrowser = () => {
     } 
   }
 }
+
+export const calculateNumberOfPages = (numberOfItems, itemsPerPage) => {
+  const numberOfPages = numberOfItems / itemsPerPage;
+  return Number.parseInt(numberOfPages) + 1;
+}
