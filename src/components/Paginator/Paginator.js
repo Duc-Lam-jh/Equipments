@@ -95,6 +95,7 @@ const Paginator = (props) => {
 
       <div className='page-number-input'>
         <input id='page-number-input' type='number' name='pageNumber' />
+        <span>/{lastPage}</span>
         <button onClick={(e) => handleClickGoToPage(e)}>Go</button>
       </div>
     </div>
