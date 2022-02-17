@@ -5,6 +5,7 @@ import {
 } from 'firebase/firestore';
 import { requestsCollection } from '../../app/firebase/firestoreConfig';
 import { setFormPrompt } from '../redux/form/formActions';
+import { incrementNumberOfPendingRequests } from './metadataActions';
 
 const getAllRequests = async () => {
   const response = await getDocs(requestsCollection);
@@ -44,7 +45,8 @@ const getRequestById = async id => {
 
 const addNewRequest = async (data) => {
   try{
-    addDoc(requestsCollection, data)
+    addDoc(requestsCollection, data);
+    incrementNumberOfPendingRequests();
   }
   catch (error) {
     setFormPrompt(error);

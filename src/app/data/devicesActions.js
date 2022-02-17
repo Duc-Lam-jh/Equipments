@@ -6,7 +6,7 @@ import {
 import { devicesCollection, metadataCollection } from '../../app/firebase/firestoreConfig';
 import { uploadFile } from './storageActions';
 import { setFormPrompt } from '../redux/form/formActions';
-import { METADATA_NUMBER_OF_DEVICES_KEYWORD } from '../utilities';
+import { incrementNumberOfDevices } from './metadataActions';
 
 const uploadDeviceImages = async images => {
   const imagesUrl = [];
@@ -15,14 +15,6 @@ const uploadDeviceImages = async images => {
     imagesUrl.push(url);
   }
   return imagesUrl;
-}
-
-const getNumberOfDevices = async () => {
-  const deviceQuery = query(metadataCollection, where("name", "==", METADATA_NUMBER_OF_DEVICES_KEYWORD));
-  const response = await getDocs(deviceQuery);
-  const documents = response.docs;
-
-  return documents[0].data().value;
 }
 
 const getAllDevices = async () => {
@@ -50,6 +42,7 @@ const addNewDevice = async data => {
   data.images = [...imagesUrl];
   try {
     addDoc(devicesCollection, data);
+    incrementNumberOfDevices();
   }
   catch (error) {
     setFormPrompt(error);
@@ -84,5 +77,4 @@ export {
   addNewDevice,
   editDeviceById,
   getNumberOfDeviceOfUserByType,
-  getNumberOfDevices
 }
