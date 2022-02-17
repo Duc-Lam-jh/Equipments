@@ -10,6 +10,7 @@ import {
   FORM_TYPE_LAPTOP,
   FORM_TYPE_MOUSE,
   FORM_TYPE_OTHER,
+  ITEMS_PER_PAGE,
   TOGGLE_VIEW_CARD,
   TOGGLE_VIEW_LIST,
 } from '../../app/utilities/index'
@@ -86,7 +87,7 @@ const DeviceListPage = () => {
   useEffect(() => {
     const getDevices = async () => {
       const numberOfDevices = await getNumberOfDevices();
-      const numberOfPages = calculateNumberOfPages(numberOfDevices, 1);
+      const numberOfPages = calculateNumberOfPages(numberOfDevices, ITEMS_PER_PAGE);
       setNumberOfPages(numberOfPages);
 
       const devices = await getAllDevices();
