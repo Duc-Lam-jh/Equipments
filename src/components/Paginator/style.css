@@ -55,6 +55,14 @@
 
 .paginator-container .page-number-input input{
   width: 35px;
+
+  -moz-appearance: textfield;
+}
+
+.paginator-container .page-number-input input::-webkit-outer-spin-button,
+.paginator-container .page-number-input input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .paginator-container .page-number-input button{
