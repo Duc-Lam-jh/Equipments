@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './style.css';
 
-const Paginator = () => {
+const Paginator = (props) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+
   return (
-    <div>Paginator</div>
+    <div className='paginator-container'>Paginator</div>
   )
 }
 

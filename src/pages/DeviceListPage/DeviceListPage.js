@@ -20,6 +20,7 @@ import cardViewIcon from '../../app/img/card-icon.png';
 import cardViewIcon_Active from '../../app/img/card-icon_active.png';
 
 import './style.css';
+import Paginator from '../../components/Paginator/Paginator';
 
 const DeviceListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +69,7 @@ const DeviceListPage = () => {
   ]
 
   const filterDeviceList = type => {
-    if(type === 'all') {
+    if (type === 'all') {
       setDevices([...originalDevices]);
       return;
     }
@@ -101,10 +102,12 @@ const DeviceListPage = () => {
         <h1>Device list</h1>
 
         <ArrayFilter title='Filter' filterList={filterList} handleFilterArray={(type) => filterDeviceList(type)} />
-        <ToggleButton buttonList={toggleButtonList} handleToggleButton={(type) => changeView(type)}/>
+        <ToggleButton buttonList={toggleButtonList} handleToggleButton={(type) => changeView(type)} />
 
         {devices && <DeviceList
           devices={devices} listStyle={view} />}
+
+        <Paginator />
       </div>
     </>
   )
