@@ -21,10 +21,9 @@ export const getUserFromBrowser = () => {
   }
 }
 
-export const calculateNumberOfPages = (numberOfItems, itemsPerPage) => {
-  const numberOfPages = numberOfItems / itemsPerPage;
-  if (numberOfItems % numberOfPages !== 0){
-    return Number.parseInt(numberOfPages) + 1;
+export const checkListOverflow = (list, limit) => {
+  if (list.length > limit) {
+    return false;
   }
-  return Number.parseInt(numberOfPages);
+  return true;
 }
