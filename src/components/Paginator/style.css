@@ -12,7 +12,7 @@
 .paginator-container .paginator-controls{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 5%;
 
@@ -26,14 +26,23 @@
   margin: 0;
 
   box-sizing: border-box;
+  font-style: italic;
 
   cursor: pointer;
+  transition: 300ms;
 }
 
-.paginator-container .paginator-controls button.button {
-  width: fit-content;
+.paginator-container .paginator-controls div.button {
+  position: relative;
+  right: 0;
 }
 
-.paginator-container .paginator-controls button.button:disabled {
+.paginator-container .paginator-controls div.button:hover {
+  position: relative;
+  right: -20px;
+  transition: 300ms;
+}
+
+.paginator-container .paginator-controls div.button.disabled {
   display: none;
 }
