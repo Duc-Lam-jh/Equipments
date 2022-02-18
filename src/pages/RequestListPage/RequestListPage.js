@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import RequestList from '../../components/RequestList/RequestList';
 import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
+import Paginator from '../../components/Paginator/Paginator';
 import { editRequest, setFormPrompt } from '../../app/redux';
-
-import { getRequestsByStatus } from '../../app/data/requestsActions';
+import { checkListOverflow } from '../../app/utilities/utilities';
+import { getRequestsByStatus, getNextPageByStatus, getFirstPageByStatus } from '../../app/data/requestsActions';
 import { getUserById } from '../../app/data/usersActions';
 
 import {
@@ -15,13 +16,16 @@ import {
   FORM_TYPE_MOUSE,
   PENDING_KEYWORD,
   SORT_DATE_ASCENDING_KEYWORD,
-  SORT_DATE_DESCENDING_KEYWORD
+  SORT_DATE_DESCENDING_KEYWORD,
+  ITEMS_PER_PAGE
 } from '../../app/utilities/index'
 
 const RequestListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [requests, setRequests] = useState([]);
   const [originalRequests, setOriginalRequests] = useState([]);
+  const [lastRequest, setLastRequest] = useState(null);
+  const [isLastPage, setIsLastPage] = useState(null);
   const dispatch = useDispatch();
   const msg = useSelector(state => state.form.msg);
 
@@ -85,22 +89,17 @@ const RequestListPage = () => {
     setRequests([...sortedArray]);
   }
 
-  useEffect(() => {
+  const loadMoreRequests = async () => {
+    const requestsData = await getNextPageByStatus(lastRequest, PENDING_KEYWORD);
+    const isLastPage = checkListOverflow(requestsData, ITEMS_PER_PAGE);
+    setIsLastPage(isLastPage);
+    requestsData.shift();
 
-    const getPendingRequests = async () => {
-      const requestData = await getRequestsByStatus(PENDING_KEYWORD);
+    setLastRequest({ ...requestsData[requestsData.length - 1] });
 
-      for (let i = 0; i < requestData.length; i++) {
-        requestData[i].user = await getUserById(requestData[i].userId);
-      }
-
-      setRequests(requestData);
-      setOriginalRequests(requestData);
-      setIsLoading(false);
-    }
-
-    getPendingRequests();
-  }, [])
+    setRequests([...requests, ...requestsData]);
+    setOriginalRequests([...requests, ...requestsData]);
+  }
 
   const handleChangeRequestStatus = (request) => {
     dispatch(editRequest(request));
@@ -109,6 +108,23 @@ const RequestListPage = () => {
     setOriginalRequests(originalRequests.filter(item => item.id !== request.id));
 
   }
+
+  useEffect(() => {
+    const getPendingRequests = async () => {
+      const requestData = await getFirstPageByStatus(PENDING_KEYWORD);
+
+      for (let i = 0; i < requestData.length; i++) {
+        requestData[i].user = await getUserById(requestData[i].userId);
+      }
+
+      setLastRequest({...requestData[requestData.length-1]});
+      setRequests(requestData);
+      setOriginalRequests(requestData);
+      setIsLoading(false);
+    }
+
+    getPendingRequests();
+  }, [])
 
   if (isLoading) {
     return <div className='content'><p>loading...</p></div>
@@ -128,6 +144,11 @@ const RequestListPage = () => {
         <ArrayFilter title='Sort' filterList={sortList} handleFilterArray={(type) => sortRequestList(type)} />
 
         {requests && <RequestList requests={requests} handleChangeRequestStatus={handleChangeRequestStatus} />}
+
+        <Paginator
+          isLastPage={isLastPage}
+          handleChangePage={() => loadMoreRequests()}
+        />
       </div>
     </>
   )
