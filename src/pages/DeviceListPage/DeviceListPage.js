@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getAllDevices, getFirstPage, getNextPage, getPreviousPage } from '../../app/data/devicesActions';
+import { getAllDevices, getFirstPage, getNextPage } from '../../app/data/devicesActions';
+import { checkListOverflow } from '../../app/utilities/utilities';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
@@ -94,13 +95,6 @@ const DeviceListPage = () => {
 
     setDevices([...devices, ...devicesData]);
     setOriginalDevices([...devices, ...devicesData]);
-  }
-
-  const checkListOverflow = (list, limit) => {
-    if (list.length > limit) {
-      return false;
-    }
-    return true;
   }
 
   useEffect(() => {
