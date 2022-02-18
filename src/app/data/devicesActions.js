@@ -1,12 +1,15 @@
 import {
   getDocs, getDoc, doc,
   addDoc, setDoc,
-  query, where
+  query, where,
+  startAfter, endAt, orderBy, 
+  limit, endBefore, startAt, limitToLast,
 } from 'firebase/firestore';
 import { devicesCollection, metadataCollection } from '../../app/firebase/firestoreConfig';
 import { uploadFile } from './storageActions';
 import { setFormPrompt } from '../redux/form/formActions';
 import { incrementNumberOfDevices } from './metadataActions';
+import { ITEMS_PER_PAGE } from '../utilities';
 
 const uploadDeviceImages = async images => {
   const imagesUrl = [];
@@ -19,6 +22,33 @@ const uploadDeviceImages = async images => {
 
 const getAllDevices = async () => {
   const response = await getDocs(devicesCollection);
+  const documents = response.docs;
+
+  return documents.map(item => {
+    return {
+      id: item.id,
+      ...item.data()
+    }
+  })
+}
+
+const getFirstPage = async () => {
+  const deviceQuery = query(devicesCollection, orderBy('brand'), limit(ITEMS_PER_PAGE));
+  const response = await getDocs(deviceQuery);
+  const documents = response.docs;
+
+  return documents.map(item => {
+    return {
+      id: item.id,
+      ...item.data()
+    }
+  })
+}
+
+const getNextPage = async (lastDevice) => {
+  const lastDeviceRef = await getDoc(doc(devicesCollection, lastDevice.id));
+  const deviceQuery = query(devicesCollection, orderBy('brand'), limit(ITEMS_PER_PAGE + 1), startAt(lastDeviceRef));
+  const response = await getDocs(deviceQuery);
   const documents = response.docs;
 
   return documents.map(item => {
@@ -77,4 +107,6 @@ export {
   addNewDevice,
   editDeviceById,
   getNumberOfDeviceOfUserByType,
+  getFirstPage,
+  getNextPage,
 }
