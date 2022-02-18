@@ -35,5 +35,5 @@
 }
 
 .paginator-container .paginator-controls button.button:disabled {
-  background-color: gray;
+  display: none;
 }
