@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllDevices } from '../../app/data/devicesActions';
-import { getNumberOfDevices } from '../../app/data/metadataActions';
+import { getAllDevices, getFirstPage, getNextPage, getPreviousPage } from '../../app/data/devicesActions';
 
 import ArrayFilter from '../../components/ArrayFilter/ArrayFilter';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
@@ -23,14 +22,14 @@ import cardViewIcon_Active from '../../app/img/card-icon_active.png';
 
 import './style.css';
 import Paginator from '../../components/Paginator/Paginator';
-import { calculateNumberOfPages } from '../../app/utilities/utilities';
 
 const DeviceListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [view, setView] = useState(TOGGLE_VIEW_CARD);
   const [devices, setDevices] = useState(null);
   const [originalDevices, setOriginalDevices] = useState(null);
-  const [numberOfPages, setNumberOfPages] = useState(1);
+  const [lastDevice, setLastDevice] = useState(null);
+  const [isLastPage, setIsLastPage] = useState(null);
 
   const filterList = [
     {
@@ -85,13 +84,33 @@ const DeviceListPage = () => {
     setView(type);
   }
 
+  const loadMoreDevices = async () => {
+    const devicesData = await getNextPage(lastDevice);
+    const isLastPage = checkListOverflow(devicesData, ITEMS_PER_PAGE);
+    setIsLastPage(isLastPage);
+    devicesData.shift();
+
+    setLastDevice({ ...devicesData[devicesData.length - 1] });
+
+    setDevices([...devices, ...devicesData]);
+    setOriginalDevices([...devices, ...devicesData]);
+  }
+
+  const checkListOverflow = (list, limit) => {
+    if (list.length > limit) {
+      return false;
+    }
+    return true;
+  }
+
   useEffect(() => {
     const getDevices = async () => {
-      const numberOfDevices = await getNumberOfDevices();
-      const numberOfPages = calculateNumberOfPages(numberOfDevices, ITEMS_PER_PAGE);
-      setNumberOfPages(numberOfPages);
+      const devices = await getFirstPage();
 
-      const devices = await getAllDevices();
+      setIsLastPage(checkListOverflow(devices, ITEMS_PER_PAGE));
+
+      setLastDevice({ ...devices[devices.length - 1] });
+
       setDevices([...devices]);
       setOriginalDevices([...devices]);
       setIsLoading(false);
@@ -115,7 +134,10 @@ const DeviceListPage = () => {
         {devices && <DeviceList
           devices={devices} listStyle={view} />}
 
-        <Paginator lastPage={numberOfPages} />
+        <Paginator
+          isLastPage={isLastPage}
+          handleChangePage={() => loadMoreDevices()}
+        />
       </div>
     </>
   )
