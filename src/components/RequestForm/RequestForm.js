@@ -9,12 +9,14 @@ class RequestForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: props.userId
+      userId: props.userId,
+      userName: props.userName
     }
   }
 
   handleSubmit = (formData) => {
     formData.userId = this.state.userId;
+    formData.userName = this.state.userName;
     this.props.submit(formData);
   }
 
@@ -87,6 +89,7 @@ class RequestForm extends Component {
 const mapStateToProps = (state) => {
   return {
     userId: state.auth.userId,
+    userName: state.auth.userName,
     msg: state.form.msg,
     loadingMsg: state.form.loading
   }
