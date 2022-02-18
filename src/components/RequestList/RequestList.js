@@ -26,7 +26,7 @@ const RequestList = (props) => {
         <div id={'request' + request.id} key={request.id} className='item'>
           {renderDeviceTypeIcon(request.type)}
           <div className='info'>
-            <div className='title'>Requester: {request.user.name}</div>
+            <div className='title'>Requester: {request.userName}</div>
             <div className='subtitle'>Date: {requestDate.toDateString()}</div>
             <div className='subtitle'>{request.reason}</div>
           </div>
