@@ -113,10 +113,6 @@ const RequestListPage = () => {
     const getPendingRequests = async () => {
       const requestData = await getFirstPageByStatus(PENDING_KEYWORD);
 
-      for (let i = 0; i < requestData.length; i++) {
-        requestData[i].user = await getUserById(requestData[i].userId);
-      }
-
       setLastRequest({...requestData[requestData.length-1]});
       setRequests(requestData);
       setOriginalRequests(requestData);
