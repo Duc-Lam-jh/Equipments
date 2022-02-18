@@ -30,47 +30,10 @@
   cursor: pointer;
 }
 
-.paginator-container .paginator-controls div.button{
-  width: 40px;
-  height: 30px;
-}
-
-.paginator-container .paginator-controls button.button{
+.paginator-container .paginator-controls button.button {
   width: fit-content;
 }
 
-.paginator-container .paginator-controls div.button:hover,
-.paginator-container .paginator-controls .button.active{
-  background-color: white;
-  border: #009aa8 1px solid;
-  border-radius: 10px;
-}
-
-.paginator-container .page-number-input{
-  grid-column: 2;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  margin-left: 10px;
-}
-
-.paginator-container .page-number-input input{
-  height: 100%;
-  width: 25px;
-  padding: 5px;
-
-  -moz-appearance: textfield;
-}
-
-.paginator-container .page-number-input input::-webkit-outer-spin-button,
-.paginator-container .page-number-input input::-webkit-inner-spin-button{
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.paginator-container .page-number-input button{
-  margin: 0 10px;
-  width: fit-content;
+.paginator-container .paginator-controls button.button:disabled {
+  background-color: gray;
 }
