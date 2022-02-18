@@ -114,6 +114,8 @@ const RequestListPage = () => {
       const requestData = await getFirstPageByStatus(PENDING_KEYWORD);
 
       setLastRequest({...requestData[requestData.length-1]});
+      setIsLastPage(checkListOverflow(requestData, ITEMS_PER_PAGE));
+      
       setRequests(requestData);
       setOriginalRequests(requestData);
       setIsLoading(false);
