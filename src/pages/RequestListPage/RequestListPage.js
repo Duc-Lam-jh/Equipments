@@ -26,7 +26,8 @@ const RequestListPage = () => {
   const filterList = [
     {
       name: 'All',
-      type: 'all'
+      type: 'all',
+      isDefault: true
     },
     {
       name: 'Laptop/PC',

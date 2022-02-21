@@ -1,7 +1,9 @@
 const FORM_PROMPT = 'FORM_PROMPT';
 const FORM_ERROR = 'FORM_ERROR';
+const FORM_LOADING = 'FORM_LOADING';
 
 export default {
   FORM_ERROR,
-  FORM_PROMPT
+  FORM_PROMPT,
+  FORM_LOADING
 }

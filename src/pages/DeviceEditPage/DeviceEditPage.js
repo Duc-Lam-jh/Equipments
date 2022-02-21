@@ -8,10 +8,18 @@ import MessagePrompt from '../../components/MessagePrompt/MessagePrompt';
 
 import { editDeviceDetail, setFormPrompt } from '../../app/redux';
 import { getDeviceById } from '../../app/data/devicesActions';
+import {
+  FORM_TYPE_DESKTOP,
+  FORM_TYPE_LAPTOP,
+  FORM_TYPE_OTHER,
+  WARNING_AT_LEAST_ONE_PICTURE_MESSAGE,
+  WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS
+} from '../../app/utilities/index';
 
 const DeviceEditPage = () => {
   const dispatch = useDispatch();
   const msg = useSelector(state => state.form.msg);
+  const loadingMsg = useSelector(state => state.form.loading);
 
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -39,13 +47,47 @@ const DeviceEditPage = () => {
     getDevice();
   }, [])
 
+  const validateFormData = formData => {
+    if(!formData.brand){
+      return false;
+    }
+
+    switch (formData.type) {
+      case FORM_TYPE_LAPTOP: {
+        if (!formData.configuration || !formData.seriesNumber) {
+          return false;
+        }
+        break;
+      }
+      case FORM_TYPE_DESKTOP: {
+        if (!formData.configuration || !formData.size){
+          return false;
+        }
+        break;
+      }
+      case FORM_TYPE_OTHER: {
+        if (!formData.description){
+          return false;
+        }
+        break;
+      }
+    }
+
+    return true;
+  }
+
   const handleSubmit = (formData) => {
     if (images.length === 0) {
-      dispatch(setFormPrompt('Cần có ít nhất 1 ảnh!'));
+      dispatch(setFormPrompt(WARNING_AT_LEAST_ONE_PICTURE_MESSAGE));
       return;
     }
-    formData.newImages = [...images.filter(item => item instanceof(File))];
-    formData.images = [...images.filter(item => !(item instanceof(File)))];
+    if (!validateFormData(formData)) {
+      dispatch(setFormPrompt(WARNING_NEED_TO_FILL_ALL_REQUIRED_FIELDS));
+      return;
+    }
+
+    formData.newImages = [...images.filter(item => item instanceof (File))];
+    formData.images = [...images.filter(item => !(item instanceof (File)))];
 
     dispatch(editDeviceDetail(formData));
   }
@@ -64,6 +106,9 @@ const DeviceEditPage = () => {
   return (
     <>
       <div className='content'>
+        {loadingMsg &&
+          <MessagePrompt msg={loadingMsg} />
+        }
         {msg &&
           <MessagePrompt
             msg={msg} button={{ text: 'OK' }}
