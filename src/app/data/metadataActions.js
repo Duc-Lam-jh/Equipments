@@ -38,6 +38,7 @@ const incrementNumberOfDevices = async () => {
     updateDoc(documentRef, { value: numberOfDevices + 1 });
   }
   catch (error) {
+    throw error;
   }
 }
 
@@ -50,6 +51,7 @@ const incrementNumberOfPendingRequests = async () => {
     updateDoc(documentRef, { value: numberOfRequests + 1 });
   }
   catch (error) {
+    throw error;
   }
 }
 
