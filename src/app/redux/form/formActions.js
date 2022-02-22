@@ -69,14 +69,13 @@ const requestNewDevice = (formData) => {
         if (numberOfDevice === 0) {
           dispatch(setFormPrompt(NEED_TO_DECLARE_DEVICE_MESSAGE));
           return;
-        } else {
-          addNewRequest(formData)
-            .then(() => {
-              dispatch(setFormPrompt(REQUEST_DEVICE_SUCCESSFUL_MESSAGE));
-            }).catch(error => {
-              dispatch(setFormError(error.message));
-            })
         }
+        addNewRequest(formData)
+          .then(() => {
+            dispatch(setFormPrompt(REQUEST_DEVICE_SUCCESSFUL_MESSAGE));
+          }).catch(error => {
+            dispatch(setFormError(error.message));
+          })
       })
   }
 }
