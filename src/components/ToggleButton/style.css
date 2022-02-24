@@ -1,0 +1,46 @@
+.toggle-button{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+
+  position: fixed;
+  left: auto;
+  right: 20px;
+  top: 15px;
+  bottom: auto;
+
+  border: #009aa8 solid 2px;
+  border-radius: 30px;
+  
+  background-color: white;
+
+  overflow: hidden;
+  z-index: 5;
+}
+
+.toggle-button .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  
+  color: #009aa8;
+  background-color: white;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.toggle-button .item.active{
+  color: white;
+  background-color: #009aa8;
+} 
+
+@media screen and (min-width: 600px) {
+  .toggle-button{
+    left: auto;
+    right: 20px;
+    top: auto;
+    bottom: 15px;
+  }
+}

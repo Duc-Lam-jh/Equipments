@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 const ArrayFilter = (props) => {
-  const { filterList } = props;
+  const { filterList, title } = props;
   const filterContainer = useRef(null);
 
   const handleChangeFilter = (type) => {
@@ -32,7 +32,8 @@ const ArrayFilter = (props) => {
 
   return (
     <>
-      <div className='device-type-picker' ref={filterContainer}>
+      <div className='filter' ref={filterContainer}>
+        {title}:
         {renderFilter()}
       </div>
     </>

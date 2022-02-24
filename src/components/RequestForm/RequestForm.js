@@ -9,20 +9,21 @@ class RequestForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: props.userId
+      userId: props.userId,
+      userName: props.userName
     }
   }
 
   handleSubmit = (formData) => {
     formData.userId = this.state.userId;
+    formData.userName = this.state.userName;
     this.props.submit(formData);
   }
 
   render() {
-    const msg = this.props.msg;
-
     return <div className='content'>
-      {msg && <MessagePrompt msg={msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
+      {this.props.msg && <MessagePrompt msg={this.props.msg} button={{ text: 'OK' }} handleClick={() => { this.props.setFormPrompt(null) }} />}
+      {this.props.loadingMsg && <MessagePrompt msg={this.props.loadingMsg} />}
       <h2>Fill in the form to request a new device</h2>
       <Form
         onSubmit={this.handleSubmit}
@@ -88,7 +89,9 @@ class RequestForm extends Component {
 const mapStateToProps = (state) => {
   return {
     userId: state.auth.userId,
-    msg: state.form.msg
+    userName: state.auth.userName,
+    msg: state.form.msg,
+    loadingMsg: state.form.loading
   }
 }
 

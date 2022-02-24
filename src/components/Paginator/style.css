@@ -1,0 +1,48 @@
+.paginator-container{
+  display: grid;
+  grid-template-columns: auto 100px;
+
+  margin: 30px 50px;
+  box-sizing: border-box;
+
+  width: stretch;
+  width: -webkit-fill-available;
+}
+
+.paginator-container .paginator-controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5%;
+
+  color: #009aa8;
+}
+
+.paginator-container .paginator-controls .button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  box-sizing: border-box;
+  font-style: italic;
+
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.paginator-container .paginator-controls div.button {
+  position: relative;
+  right: 0;
+}
+
+.paginator-container .paginator-controls div.button:hover {
+  position: relative;
+  right: -20px;
+  transition: 300ms;
+}
+
+.paginator-container .paginator-controls div.button.disabled {
+  display: none;
+}

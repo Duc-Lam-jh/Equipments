@@ -21,11 +21,13 @@ const RequestList = (props) => {
 
   const renderListItem = () => {
     const requestList = requests.map(request => {
+      const requestDate = new Date(request.date.seconds*1000);
       return (
         <div id={'request' + request.id} key={request.id} className='item'>
           {renderDeviceTypeIcon(request.type)}
           <div className='info'>
-            <div className='title'>Requester: {request.user.name}</div>
+            <div className='title'>Requester: {request.userName}</div>
+            <div className='subtitle'>Date: {requestDate.toDateString()}</div>
             <div className='subtitle'>{request.reason}</div>
           </div>
           <div className='controls'>

@@ -20,3 +20,10 @@ export const getUserFromBrowser = () => {
     } 
   }
 }
+
+export const checkListOverflow = (list, limit) => {
+  if (list.length > limit) {
+    return false;
+  }
+  return true;
+}

@@ -1,13 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Form, Field } from 'react-final-form';
+
 import ImageInput from '../../ImageInput/ImageInput';
 
-import { FORM_TYPE_LAPTOP } from '../../../app/utilities/index';
+import { FORM_TYPE_LAPTOP, LOADING_MESSAGE } from '../../../app/utilities/index';
+import { setLoadingPrompt } from '../../../app/redux';
+import { getNumberOfDeviceOfUserByType } from '../../../app/data/devicesActions';
 
 class LaptopForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: props.userId,
+      isLaptopDeclared: false
+    }
+  }
+
+
+  componentDidMount = () => {
+    this.props.setLoading(LOADING_MESSAGE);
+    getNumberOfDeviceOfUserByType(this.state.userId, FORM_TYPE_LAPTOP)
+      .then(numberOfLaptop => {
+        if (numberOfLaptop > 0) {
+          this.setState({ isLaptopDeclared: true });
+        } else {
+          this.setState({ isLaptopDeclared: false });
+        }
+        this.props.setLoading(null)
+      })
+  }
+
   handleSubmit = (formData) => {
     formData.type = FORM_TYPE_LAPTOP;
     this.props.handleSubmit(formData);
+    this.setState({ isLaptopDeclared: true });
   }
 
   handleAddImage = (image) => {
@@ -15,6 +42,12 @@ class LaptopForm extends Component {
   }
 
   render() {
+    if (this.state.isLaptopDeclared) {
+      return <>
+        <h2>You already declared a laptop</h2>
+      </>
+    }
+
     return <>
       <h2>Give us information on your laptop/PC</h2>
       <Form
@@ -92,8 +125,15 @@ class LaptopForm extends Component {
         )
         }
       />
+
     </>;
   }
 }
 
-export default LaptopForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoading: msg => dispatch(setLoadingPrompt(msg))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LaptopForm);

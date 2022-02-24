@@ -1,10 +1,13 @@
 import { 
   getDocs, getDoc, doc, 
   setDoc, addDoc,
-  query, where 
+  query, where,
+  orderBy, limit, startAt
 } from 'firebase/firestore';
 import { requestsCollection } from '../../app/firebase/firestoreConfig';
 import { setFormPrompt } from '../redux/form/formActions';
+import { incrementNumberOfPendingRequests } from './metadataActions';
+import { ITEMS_PER_PAGE, PENDING_KEYWORD } from '../utilities';
 
 const getAllRequests = async () => {
   const response = await getDocs(requestsCollection);
@@ -34,6 +37,33 @@ const getRequestsByStatus = async (status) => {
   })
 }
 
+const getFirstPageByStatus = async (status) => {
+  const requestQuery = query(requestsCollection, orderBy('date'), limit(ITEMS_PER_PAGE + 1), where('status', '==', status));
+  const response = await getDocs(requestQuery);
+  const documents = response.docs;
+
+  return documents.map(item => {
+    return {
+      id: item.id,
+      ...item.data()
+    }
+  })
+}
+
+const getNextPageByStatus = async (lastRequest, status) => {
+  const lastRequestRef = await getDoc(doc(requestsCollection, lastRequest.id));
+  const requestQuery = query(requestsCollection, orderBy('date'), limit(ITEMS_PER_PAGE + 1), startAt(lastRequestRef), where('status', '==', status));
+  const response = await getDocs(requestQuery);
+  const documents = response.docs;
+
+  return documents.map(item => {
+    return {
+      id: item.id,
+      ...item.data()
+    }
+  })
+}
+
 const getRequestById = async id => {
   const snap = await getDoc(doc(requestsCollection, id));
   if (snap.exists()) {
@@ -44,7 +74,8 @@ const getRequestById = async id => {
 
 const addNewRequest = async (data) => {
   try{
-    addDoc(requestsCollection, data)
+    addDoc(requestsCollection, data);
+    incrementNumberOfPendingRequests();
   }
   catch (error) {
     setFormPrompt(error);
@@ -67,5 +98,7 @@ export {
   getRequestsByStatus,
   getRequestById,
   addNewRequest,
-  editRequestById
+  editRequestById,
+  getFirstPageByStatus,
+  getNextPageByStatus
 }
